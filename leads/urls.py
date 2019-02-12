@@ -2,8 +2,8 @@ from django.urls import path
 from leads.views import (
     LeadListView, CreateLeadView, LeadDetailView, UpdateLeadView, DeleteLeadView, ConvertLeadView,
     GetLeadsView, AddCommentView, UpdateCommentView, DeleteCommentView,
-    AddAttachmentsView,DeleteAttachmentsView
-)
+    AddAttachmentsView, DeleteAttachmentsView,
+    LeadContactAlreadyExist, RelateLeadAndContact)
 
 
 app_name = 'leads'
@@ -25,4 +25,7 @@ urlpatterns = [
 
     path('attachment/add/', AddAttachmentsView.as_view(), name="add_attachment"),
     path('attachment/remove/', DeleteAttachmentsView.as_view(), name="remove_attachment"),
+
+    path('contact/exists/<int:pk>/', LeadContactAlreadyExist.as_view(), name="contact_exist"),
+    path('relate/<int:pk>/', RelateLeadAndContact.as_view(), name="relate_lead_contact"),
 ]

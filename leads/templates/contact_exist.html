@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extralinks %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <body>
+    <div class="container">
+        <p>Contact with email {{ lead.contact_email }} already exists</p>
+        <a href="/leads/create/" style="color: red;">Return to lead creation</a>
+        <form method='POST' action='/leads/relate/{{ lead.id }}/'>
+            {% csrf_token %}
+            <input type='hidden' value='{{ lead.id }}' name='id'>
+            <input type="submit" name='lead_id' value="Continue">
+        </form>
+    </div>
+    </body>
+{% endblock %}

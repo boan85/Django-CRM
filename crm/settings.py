@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mwx@&97%!$fx_*zgj(2ygi^(s=oh5j(cqb$=+-mkd9scbt!0v0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -72,8 +72,8 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dj_crm',
-        'USER': 'postgres',
+        'NAME': 'dj_crm1',
+        'USER': 'postgress',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '5432'
@@ -149,8 +149,7 @@ COMPRESS_ROOT = BASE_DIR + '/static/'
 COMPRESS_URL = STATIC_URL
 COMPRESS_ENABLED = True
 
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_REBUILD_TIMEOUT = 5400
 
 COMPRESS_OUTPUT_DIR = 'CACHE'
