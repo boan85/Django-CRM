@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dj_crm1',
+        'NAME': 'dj_crm_fork',
         'USER': 'postgress',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
@@ -158,8 +158,8 @@ COMPRESS_ENABLED = True
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
-    ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'sass --scss {infile} {outfile}'),
+    ('text/x-sass', 'django_libsass.SassCompiler'),
+    ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
 COMPRESS_OFFLINE_CONTEXT = {
@@ -188,3 +188,5 @@ try:
     from .dev_settings import *
 except ImportError:
     pass
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# STATIC_ROOT = '/root/django_crm/Django-CRM/static'
