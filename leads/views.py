@@ -422,12 +422,13 @@ class DeleteLeadView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
-    @user_passes_test(lambda u: u.is_superuser)
+    # @user_passes_test(lambda u: u.is_superuser)
     def post(self, request, *args, **kwargs):
-        self.object = get_object_or_404(Lead, id=kwargs.get("pk"))
-        if self.object.address_id:
-            self.object.address.delete()
-        self.object.delete()
+        if request.user.is_superuser:
+            self.object = get_object_or_404(Lead, id=kwargs.get("pk"))
+            if self.object.address_id:
+                self.object.address.delete()
+            self.object.delete()
         return redirect("leads:list")
 
 
