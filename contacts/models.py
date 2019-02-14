@@ -9,7 +9,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Contact(models.Model):
     first_name = models.CharField(_("First name"), max_length=255)
     last_name = models.CharField(_("Last name"), max_length=255)
-    account = models.ForeignKey(Account, related_name='lead_account_contacts', on_delete=models.CASCADE, blank=True, null=True)
+    # account = models.ForeignKey(Account, related_name='lead_account_contacts', on_delete=models.CASCADE, blank=True, null=True)
+    company = models.ForeignKey(Account, related_name='lead_company_contacts', on_delete=models.CASCADE, blank=True, null=True)
     email = models.EmailField(unique=True)
     phone = PhoneNumberField(null=True, unique=True)
     address = models.ForeignKey(Address, related_name='adress_contacts', on_delete=models.CASCADE, blank=True, null=True)
