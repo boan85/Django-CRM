@@ -10,7 +10,7 @@
   <!-- heading_create starts here -->
   <div class="row marl">
     <div class="col-lg-12 text-right">
-      <span class="d-inline"><a class="primary_btn" href="{% url 'accounts:new_account' %}"><i class="fa fa-plus"></i> Add New Account</a></span>
+      <span class="d-inline"><a class="primary_btn" href="{% url 'accounts:new_account' %}"><i class="fa fa-plus"></i> Add New Company</a></span>
     </div>
   </div>
   <div class="filter_row list_filter_row row marl">
@@ -24,7 +24,7 @@
                 <div class="filter_col col-md-2">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" placeholder="Account Name" name="name" {% if request.POST %} value="{{request.POST.name}}" {%endif%}/>
+                    <input type="text" class="form-control" placeholder="Company Name" name="name" {% if request.POST %} value="{{request.POST.name}}" {%endif%}/>
                   </div>
                 </div>
                 <div class="filter_col col-md-2">
@@ -98,7 +98,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="panel-heading-list card-title text-right">
-                    <span class="total_count float-left">Open Accounts - {% if show_pageitems %} {% show_pageitems %}{% else %}{{open_accounts|length}}{% endif %}</span>
+                    <span class="total_count float-left">Open Companies - {% if show_pageitems %} {% show_pageitems %}{% else %}{{open_accounts|length}}{% endif %}</span>
                     <span class="filter_toggle ">
                     <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
                     </span>
@@ -165,7 +165,7 @@
                     </table>
                   </div>
                   {% ifequal open_accounts|length 0 %}
-                  <h6 class="text-center">No Acccount Records Found</h6>
+                  <h6 class="text-center">No Companies Records Found</h6>
                   {% endifequal %}
                   <div class="text-center row marl">
                     {% show_pages %}
@@ -177,7 +177,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="panel-heading-list card-title text-right">
-                    <span class="total_count float-left">Closed Accounts - {% if show_pageitems %} {% show_pageitems %}{% else %}{{close_accounts|length}}{% endif %}</span>
+                    <span class="total_count float-left">Closed Companies - {% if show_pageitems %} {% show_pageitems %}{% else %}{{close_accounts|length}}{% endif %}</span>
                     <span class="filter_toggle ">
                     <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
                     </span>                  
@@ -243,7 +243,7 @@
                     </table>
                   </div>
                   {% ifequal close_accounts|length 0 %}
-                  <h6 class="text-center">No Closed Acccount Records Found</h6>
+                  <h6 class="text-center">No Closed Companies Records Found</h6>
                   {% endifequal %}
                   <div class="text-center row marl">
                     {% show_pages %}

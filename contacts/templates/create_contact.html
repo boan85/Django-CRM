@@ -39,15 +39,15 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Account{% if contact_form.account.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {% if account %}
-                  <select name="account" placeholder="Account" class="form-control" id="id_account" readonly>
-                      <option value="{{account.id}}" selected="">{{account.name}}</option>
+                  <label for="exampleInputEmail1">Company{% if contact_form.company.field.required %}<span class="error">*</span>{% endif %}</label>
+                  {% if company %}
+                  <select name="account" placeholder="Company" class="form-control" id="id_account" readonly>
+                      <option value="{{company.id}}" selected="">{{company.name}}</option>
                   </select>
                   {% else %}
-                  {{contact_form.account}}
+                  {{contact_form.company}}
                   {% endif %}
-                  <span class="error">{{ contact_form.account.errors }}</span>
+                  <span class="error">{{ contact_form.company.errors }}</span>
                 </div>
               </div>
               <div class="filter_col col-md-12">

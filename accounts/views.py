@@ -188,14 +188,13 @@ class AccountDetailView(LoginRequiredMixin, DetailView):
         for each in context['account_record'].assigned_to.all():
             assigned_dict = {}
             assigned_dict['id'] = each.id
-            assigned_dict['name'] =  each.email
+            assigned_dict['name'] = each.email
             assigned_data.append(assigned_dict)
-
         context.update({
             "comments": account_record.accounts_comments.all(),
             "attachments": account_record.account_attachment.all(),
             "opportunity_list": Opportunity.objects.filter(account=account_record),
-            "contacts": Contact.objects.filter(account=account_record),
+            "contacts": Contact.objects.filter(company=account_record),
             "users": User.objects.filter(is_active=True).order_by('email'),
             "cases": Case.objects.filter(account=account_record),
             "teams": Team.objects.all(),

@@ -6,7 +6,7 @@
 {% endblock %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'accounts:list' %}">Accounts</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'accounts:list' %}">Companies</a></li>
     <li class="breadcrumb-item active">{% if account_obj %}Edit{% else %}Create{% endif %}</li>
   </ol>
 </nav>
@@ -24,7 +24,7 @@
       <div class="card">
         <div class="card-body">
           <div class="card-title text-center">
-            {% if account_obj %}EDIT{% else %}CREATE{% endif %} ACCOUNT
+            {% if account_obj %}EDIT{% else %}CREATE{% endif %} COMPANY
           </div>
           <div class="row marl">
             <div class="col-md-4">

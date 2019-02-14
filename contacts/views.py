@@ -22,13 +22,13 @@ class ContactsListView(LoginRequiredMixin, TemplateView):
     template_name = "contacts.html"
 
     def get_queryset(self):
-        queryset = self.model.objects.all().select_related("account")
+        queryset = self.model.objects.all().select_related("company")
         request_post = self.request.POST
         if request_post:
             if request_post.get('first_name'):
                 queryset = queryset.filter(first_name__icontains=request_post.get('first_name'))
             if request_post.get('account'):
-                queryset = queryset.filter(account_id=request_post.get('account'))
+                queryset = queryset.filter(account_id=request_post.get('company'))
             if request_post.get('city'):
                 queryset = queryset.filter(address__city__icontains=request_post.get('city'))
             if request_post.get('phone'):
@@ -61,7 +61,7 @@ class CreateContactView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super(CreateContactView, self).get_form_kwargs()
-        kwargs.update({"assigned_to": self.users, "account": self.accounts})
+        kwargs.update({"assigned_to": self.users, "company": self.accounts})
         return kwargs
 
     def post(self, request, *args, **kwargs):
@@ -178,7 +178,7 @@ class UpdateContactView(LoginRequiredMixin, UpdateView):
 
     def get_form_kwargs(self):
         kwargs = super(UpdateContactView, self).get_form_kwargs()
-        kwargs.update({"assigned_to": self.users, "account": self.accounts})
+        kwargs.update({"assigned_to": self.users, "company": self.accounts})
         return kwargs
 
     def post(self, request, *args, **kwargs):

@@ -6,6 +6,7 @@ from common.models import Comment, Attachments
 class ContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
+        print(kwargs)
         assigned_users = kwargs.pop('assigned_to', [])
         contact_account = kwargs.pop('company', [])
         super(ContactForm, self).__init__(*args, **kwargs)
