@@ -1,0 +1,84 @@
+.counter-companies {
+    display: table-cell;
+    margin: 1.5%;
+    font-size: 50px;
+    background-color: #80bdff;
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    vertical-align: middle;
+    text-align: center;
+    color: ghostwhite;
+    /*opacity: 0.3;*/
+    border: 4px solid #007bff;
+}
+
+.counter-contacts {
+    display: table-cell;
+    margin: 1.5%;
+    font-size: 50px;
+    background-color: #65e7c0;
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    vertical-align: middle;
+    text-align: center;
+    color: ghostwhite;
+    border: 4px solid #20c997;
+
+}
+
+.counter-leads {
+    display: table-cell;
+    margin: 1.5%;
+    font-size: 50px;
+    background-color: #ef76ae;
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    vertical-align: middle;
+    text-align: center;
+    color: ghostwhite;
+    border: 4px solid #e83e8c;
+
+}
+
+.counter-opportunities {
+    display: table-cell;
+    margin: 1.5%;
+    font-size: 50px;
+    background-color: #feb981;
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+    vertical-align: middle;
+    text-align: center;
+    color: ghostwhite;
+    border: 4px solid #fd7e14;
+
+}
+
+.slab {
+    background: #576b75 url("../images/bg-pattern-2.png");
+    background-size: 650px 500px;
+}
+
+.icon-companies {
+    font-size: 100px;
+    color: #80bdff;
+}
+
+.icon-contacts {
+    font-size: 100px;
+    color: #65e7c0;
+}
+
+.icon-leads {
+    font-size: 100px;
+    color: #ef76ae;
+}
+
+.icon-opportunities {
+    font-size: 100px;
+    color: #feb981;
+}

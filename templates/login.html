@@ -20,7 +20,7 @@
     {% endcompress %}
     {% block extralinks %}{% endblock %}
   </head>
-  <body class="login_register_body">
+  <body class="login_register_body" style="background-color: #4f616a;">
     <div class="container">
       <div class="row marl justify-content-center login_row">
         <div class="col-md-6 col-lg-6 col-xl-4">
@@ -29,22 +29,17 @@
               <div class="welcome">Django CRM</div>
               <form method="POST" action="">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" style="background-color: #576b75; color: ghostwhite;">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" style="background-color: #576b75; color: ghostwhite;">
                 </div>
-                <div class="forgot">Forgot Password <a href="{% url "common:password_reset" %}">Click Here?</a></div>
+                <div class="forgot" style="color: ghostwhite;">Forgot Password <a href="{% url "common:password_reset" %}">Click Here?</a></div>
                 {% if error %}
                 <p class="error">{{ message }}</p>
                 {% endif %}
                 <button type="submit" class="btn btn-danger">Login</button>
               </form>
-              <div class="credentials">
-                <span class="heading">Test credentials to Login</span>
-                <span>Email: <b>admin@micropyramid.com</b></span><br>
-                <span>Password:<b> admin</b>
-              </div>
             </div>
           </div>
         </div>

@@ -12,13 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     {% compress css %}
     <link href="{% static 'css/main.scss' %}" type="text/x-scss" rel="stylesheet">
     <link href="{% static 'css/mention.scss' %}" type="text/x-scss" rel="stylesheet">
     {% endcompress %}
     {% block extralinks %} {% endblock %}
   </head>
-  <body class="main_body_bg_color">
+  <body class="bg-color">
     <div class="wrapper">
       <!-- header starts here -->
       <header>
@@ -53,12 +55,12 @@
                 {% endthumbnail %}
                 {% endif %}
                 <b class="caret"></b></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="background-color: #576b75;">
                   {% if request.user.email != "admin@micropyramid.com" %}
-                  <a class="dropdown-item" href="/change-password/"><i class="fas fa-key"></i> Change Password</a>
+                  <a class="dropdown-item" href="/change-password/" style="background-color: #576b75;"><i class="fas fa-key"></i> Change Password</a>
                   {% endif %}
-                  <a class="dropdown-item" href="{% url 'common:profile' %}"><i class="fas fa-user"></i> Profile</a>
-                  <a class="dropdown-item" href="{% url 'common:logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                  <a class="dropdown-item" href="{% url 'common:profile' %}" style="background-color: #576b75;"><i class="fas fa-user"></i> Profile</a>
+                  <a class="dropdown-item" href="{% url 'common:logout' %}" style="background-color: #576b75;"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
               </li>
             </ul>

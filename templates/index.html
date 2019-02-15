@@ -1,124 +1,215 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-{% load common_tags %}
-<!-- <a href="{% url "common:logout" %}"><button class="btn btn-primary" type="button">Logout</button></a> -->
-<div class="row marl justify-content-center">
-  <div class="col-md-9">
-    <!-- count_blocks_row starts here -->
-    <div class="row count_blocks_row">
-      <div class="col-md-3">
-        <div class="item sky_blue">
-          <a href="{% url 'accounts:list'%}">
-            <div class="title">Companies</div>
-            <div class="count">{{accounts|length}}</div>
-            <!-- <div class="more"><a href="#">Go Live</a></div> -->
-          </a>
+    {% load common_tags %}
+    <link href="{% static 'css/charts.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/charts.js' %}"></script>
+    <!-- <a href="{% url "common:logout" %}"><button class="btn btn-primary" type="button">Logout</button></a> -->
+    <div class="row marl justify-content-center">
+        <div class="col-md-9">
+            <!-- count_blocks_row starts here -->
+            <div class="row count_blocks_row">
+                <div class="col-md-3">
+                    <div class="container">
+                        <div class="row slab rounded">
+                            <div class="col-sm-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{% url 'accounts:list' %}">
+                                            <div class="col-sm-1"><i class="fas fa-user-circle icon-companies"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <a href="{% url 'accounts:list' %}">
+                                            <div style="align-content: center; color: ghostwhite;">Companies</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8"><a href="{% url 'accounts:list' %}">
+                                <div class="counter-companies" data-count="{{ accounts|length }}">0</div>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="container">
+                        <div class="row slab rounded">
+                            <div class="col-sm-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{% url 'contacts:list' %}">
+                                            <div class="col-sm-1"><i class="fas fa-user-tie icon-contacts"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <a href="{% url 'contacts:list' %}">
+                                            <div style="align-content: center; color: ghostwhite;">Contacts</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8"><a href="{% url 'contacts:list' %}">
+                                <div class="counter-contacts" data-count="{{ contacts_count }}">0</div>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="container">
+                        <div class="row slab rounded">
+                            <div class="col-sm-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{% url 'leads:list' %}">
+                                            <div class="col-sm-1"><i class="fas fa-user-secret icon-leads"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <a href="{% url 'leads:list' %}">
+                                            <div style="align-content: center; color: ghostwhite;">Leads</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8"><a href="{% url 'leads:list' %}">
+                                <div class="counter-leads" data-count="{{ leads_count|length }}">0</div>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                                        <div class="container">
+                        <div class="row slab rounded">
+                            <div class="col-sm-4">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{% url 'opportunity:list' %}">
+                                            <div class="col-sm-1"><i class="far fa-user icon-opportunities"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <a href="{% url 'opportunity:list' %}">
+                                            <div style="align-content: center; color: ghostwhite;">Opportunities</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8"><a href="{% url 'opportunity:list' %}">
+                                <div class="counter-opportunities" data-count="{{ opportunities|length }}">0</div>
+                            </a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- count_blocks_row ends here -->
+            <div class="open_sections row">
+                <div class="col-md-6 table_container_row">
+                    <div class="card" style="background-color: #576b75;">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <span>Open Companies</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table" style="background-color: #576b75;">
+                                    <thead>
+                                    <tr>
+                                        <th width="45%" style="color: ghostwhite;">Name</th>
+                                        <th width="50%" style="color: ghostwhite;">Tags</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for account in accounts|slice:"15" %}
+                                        <tr>
+                                            <td><a href="{% url 'accounts:view_account' account.id %}"
+                                                   style="color: ghostwhite">{{ account.name }}</a></td>
+                                            <td style="display: block;">
+                                                {% for tag in account.tags.all|slice:'3' %}
+                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag"
+                                                          style="color: ghostwhite">{{ tag.name }}</span>
+                                                {% empty %}
+                                                    <span class="text-left" style="color: ghostwhite">No Tags</span>
+                                                {% endfor %}
+                                                {% if account.tags.all|length > 3 %}
+                                                    <span class="text-left"
+                                                          id="list_tag">{{ account.tags.all|length|subtract:'3' }}<span>+</span></span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 table_container_row">
+                    <div class="card" style="background-color: #576b75;">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <span>Open Opportunities</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table" style="background-color: #576b75;">
+                                    <thead>
+                                    <tr>
+                                        <th width="45%" style="color: ghostwhite">Name</th>
+                                        <th width="50%" style="color: ghostwhite">Tags</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for opportunity in opportunities|slice:"15" %}
+                                        <tr>
+                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}"
+                                                   style="color: ghostwhite">{{ opportunity.name }}</a></td>
+                                            <td style="display: block;">
+                                                {% for tag in opportunity.tags.all|slice:'3' %}
+                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag"
+                                                          style="color: ghostwhite">{{ tag.name }}</span>
+                                                {% empty %}
+                                                    <span class="text-left" style="color: ghostwhite">No Tags</span>
+                                                {% endfor %}
+                                                {% if opportunity.tags.all|length > 3 %}
+                                                    {{ opportunity.tags.all|length|subtract:'3' }}<span>+</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="item green">
-          <a href="{% url 'contacts:list' %}">
-            <div class="title">Contacts</div>
-            <div class="count">{{contacts_count}}</div>
-          </a>
-          <!-- <div class="more"><a href="#">Go Live</a></div> -->
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="item red">
-          <a href="{% url 'leads:list' %}">
-            <div class="title">Leads</div>
-            <div class="count">{{leads_count|length}}</div>
-            <!-- <div class="more"><a href="#">Go Live</a></div> -->
-          </a>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="item yellow">
-          <a href="{% url 'opportunity:list' %}">
-            <div class="title">Opportunities</div>
-            <div class="count">{{opportunities|length}}</div>
-            <!-- <div class="more"><a href="#">Go Live</a></div> -->
-          </a>
-        </div>
-      </div>
     </div>
-    <!-- count_blocks_row ends here -->
-    <div class="open_sections row">
-      <div class="col-md-6 table_container_row">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              <span >Open Companies</span>
-            </div>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th width="45%">Name</th>
-                    <th width="50%">Tags</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for account in accounts|slice:"15" %}
-                  <tr>
-                    <td><a href="{% url 'accounts:view_account' account.id %}">{{account.name}}</a></td>
-                    <td style="display: block;">
-                    {% for tag in account.tags.all|slice:'3' %}
-                      <span class="text-left color{{forloop.counter}}" id="list_tag">{{tag.name}}</span>
-                    {% empty %}
-                      <span class="text-left">No Tags</span>
-                    {% endfor %}
-                    {% if account.tags.all|length > 3 %}
-                    <span class="text-left" id="list_tag">{{account.tags.all|length|subtract:'3'}}<span>+</span></span>
-                    {% endif %}
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 table_container_row">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              <span >Open Opportunities</span>
-            </div>
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th width="45%">Name</th>
-                    <th width="50%">Tags</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for opportunity in opportunities|slice:"15" %}
-                  <tr>
-                    <td><a href="{% url 'opportunity:opp_view' opportunity.id %}">{{opportunity.name}}</a></td>
-                    <td style="display: block;">
-                      {% for tag in opportunity.tags.all|slice:'3' %}
-                      <span class="text-left color{{forloop.counter}}" id="list_tag">{{tag.name}}</span>
-                      {% empty %}
-                      <span class="text-left">No Tags</span>
-                      {% endfor %}
-                      {% if opportunity.tags.all|length > 3 %}
-                      {{opportunity.tags.all|length|subtract:'3'}}<span>+</span>
-                      {% endif %}
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
+<script>
+
+
+</script>
