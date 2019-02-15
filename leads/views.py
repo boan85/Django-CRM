@@ -55,7 +55,6 @@ class LeadListView(LoginRequiredMixin, TemplateView):
         context['tags'] = Tags.objects.all()
         context['open_leads'] = self.get_queryset()
         context['close_leads'] = self.get_queryset()
-        print(context)
         return context
 
     def post(self, request, *args, **kwargs):
