@@ -37,7 +37,7 @@
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Account{% if opportunity_form.account.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1">Company{% if opportunity_form.account.field.required %}<span class="error">*</span>{% endif %}</label>
                            {% if account %}
                            <select name="account" placeholder="Account" class="form-control" id="id_account" readonly>
                               <option value="{{account.id}}" selected="">{{account.name}}</option>
