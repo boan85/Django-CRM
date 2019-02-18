@@ -1,223 +1,254 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block breadcrumb %}
-{% block extralinks %}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-{% endblock %}
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'accounts:list' %}">Companies</a></li>
-    <li class="breadcrumb-item active">{% if account_obj %}Edit{% else %}Create{% endif %}</li>
-  </ol>
-</nav>
+    {% block extralinks %}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+        <link href="{% static 'css/main.scss' %}" rel="stylesheet"/>
+    {% endblock %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'accounts:list' %}">Companies</a></li>
+            <li class="breadcrumb-item active" style="color: ghostwhite">{% if account_obj %}Edit{% else %}Create{% endif %}</li>
+        </ol>
+    </nav>
 {% endblock %}
 {% block content %}
-<head>
-  <link rel="stylesheet" type="text/css" href="//xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
-  <script type="text/javascript" src="//xoxco.com/projects/code/tagsinput/jquery.tagsinput.js"></script>
-  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'></script>
-  <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css" />
-</head>
-<form id="formid" action='' method="POST" novalidate>
-  <div class="overview_form_block row marl justify-content-center">
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title text-center">
-            {% if account_obj %}EDIT{% else %}CREATE{% endif %} COMPANY
-          </div>
-          <div class="row marl">
-            <div class="col-md-4">
-              <div class="filter_col col-md-12">
-                <div class="form-group">
-                  <label for="exampleInputEmail1" class="required">Name{% if account_form.name.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ account_form.name }}
-                  <span class="error">{{ account_form.name.errors }}</span>
+    <head>
+        <link rel="stylesheet" type="text/css" href="//xoxco.com/projects/code/tagsinput/jquery.tagsinput.css"/>
+        <script type="text/javascript" src="//xoxco.com/projects/code/tagsinput/jquery.tagsinput.js"></script>
+        <script type='text/javascript'
+                src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'></script>
+        <link rel="stylesheet" type="text/css"
+              href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css"/>
+    </head>
+    <form id="formid" action='' method="POST" novalidate>
+        <div class="overview_form_block row marl justify-content-center">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body crm-table">
+                        <div class="card-title text-center" style="color: black">
+                            {% if account_obj %}EDIT{% else %}CREATE{% endif %} COMPANY
+                        </div>
+                        <div class="row marl">
+                            <div class="col-md-4">
+                                <div class="filter_col col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="required">Name
+                                            {% if account_form.name.field.required %}
+                                                <span class="error">*</span>{% endif %}</label>
+                                        {{ account_form.name }}
+                                        <span class="error">{{ account_form.name.errors }}</span>
+                                    </div>
+                                </div>
+                                <div class="filter_col col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Website
+                                            {% if account_form.website.field.required %}
+                                                <span class="error">*</span>{% endif %}</label>
+                                        {{ account_form.website }}
+                                        <span class="error">{{ account_form.website.errors }}</span>
+                                    </div>
+                                </div>
+                                <div class="filter_col col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="required">Phone
+                                            {% if account_form.phone.field.required %}
+                                                <span class="error">*</span>{% endif %}</label>
+                                        {{ account_form.phone }}
+                                        <span class="error">{{ account_form.phone.errors }}</span>
+                                    </div>
+                                </div>
+                                <div class="filter_col col-md-12">
+                                    <div class="form-group ">
+                                        <label for="exampleInputEmail1" class="required">Email Address
+                                            {% if account_form.email.field.required %}
+                                                <span class="error">*</span>{% endif %}</label>
+                                        {{ account_form.email }}
+                                        <span class="error">{{ account_form.email.errors }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="filter_col billing_block col-md-12" style="padding: 0px;">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Billing Address
+                                            {% if billing_form.address_line.field.required %}
+                                                <span class="error">*</span>{% endif %}</label>
+                                        {{ billing_form.address_line }}
+                                        <span class="error">{{ billing_form.address_line.errors }}</span>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Street
+                                                    {% if billing_form.street.field.required %}
+                                                        <span class="error">*</span>{% endif %}</label>
+                                                {{ billing_form.street }}
+                                                <span class="error">{{ billing_form.street.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">PostCode
+                                                    {% if billing_form.postcode.field.required %}
+                                                        <span class="error">*</span>{% endif %}</label>
+                                                {{ billing_form.postcode }}
+                                                <span class="error">{{ billing_form.postcode.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">City
+                                                    {% if billing_form.city.field.required %}
+                                                        <span class="error">*</span>{% endif %}</label>
+                                                {{ billing_form.city }}
+                                                <span class="error">{{ billing_form.city.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">State
+                                                    {% if billing_form.state.field.required %}
+                                                        <span class="error">*</span>{% endif %}</label>
+                                                {{ billing_form.state }}
+                                                <span class="error">{{ billing_form.state.errors }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 10px;">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Country
+                                                    {% if billing_form.country.field.required %}
+                                                        <span class="error">*</span>{% endif %}</label>
+                                                {{ billing_form.country }}
+                                                <span class="error">{{ billing_form.country.errors }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 style="color:white;">Copy Address</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="filter_col col-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Assigned Users</label>
+                                        {{ request.POST.assigned_to }}
+                                        <select class="assigned_users form-control" name="assigned_to"
+                                                multiple="multiple">
+                                            {% for user in users %}
+                                                <option value="{{ user.id }}"
+                                                        {% if user in account_obj.assigned_to.all  or user.id in assignedto_list %}
+                                                        selected="" {% endif %}>{{ user.email }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        {{ account_form.assigned_to.errors }}
+                                    </div>
+                                </div>
+                                <div class="filter_col col-12">
+                                    <div class="form-group">
+                                        <label for="id_sattus">Status{% if account_form.status.field.required %}
+                                            <span class="error">*</span>{% endif %}</label>
+                                        {{ account_form.status }}
+                                        <span class="error">{{ account_form.status.errors }}</span>
+                                    </div>
+                                </div>
+                                <div class="filter_col col-12">
+                                    <div class="form-group">
+                                        <label>Tags</label>
+                                        <div class="txt-box-div" id="tag-div"><input type="text" name="tags" id="tags_1"
+                                                                                     value="
+                                                                                             {% for t in account_obj.tags.all %}{{ t.name }}, {% endfor %}"
+                                                                                     class="tags"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row marl buttons_row form_btn_row text-center">
+                                    <button class="btn btn-default save" type="submit">Save</button>
+                                    <a href="{% url 'accounts:list' %}" class="btn btn-default clear"
+                                       id="create_user_cancel">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="filter_col col-md-12">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Website{% if account_form.website.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ account_form.website }}
-                  <span class="error">{{ account_form.website.errors }}</span>
-                </div>
-              </div>
-              <div class="filter_col col-md-12">
-                <div class="form-group">
-                  <label for="exampleInputEmail1" class="required">Phone{% if account_form.phone.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ account_form.phone }}
-                  <span class="error">{{ account_form.phone.errors }}</span>
-                </div>
-              </div>
-              <div class="filter_col col-md-12">
-                <div class="form-group ">
-                  <label for="exampleInputEmail1" class="required">Email Address{% if account_form.email.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ account_form.email }}
-                  <span class="error">{{ account_form.email.errors }}</span>
-                </div>
-              </div>
             </div>
-            <div class="col-md-4">
-              <div class="filter_col billing_block col-md-12" style="padding: 0px;">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Billing Address {% if billing_form.address_line.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ billing_form.address_line }}
-                  <span class="error">{{ billing_form.address_line.errors }}</span>
-                </div>
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Street {% if billing_form.street.field.required %}<span class="error">*</span>{% endif %}</label>
-                      {{ billing_form.street }}
-                      <span class="error">{{ billing_form.street.errors }}</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">PostCode {% if billing_form.postcode.field.required %}<span class="error">*</span>{% endif %}</label>
-                      {{ billing_form.postcode }}
-                      <span class="error">{{ billing_form.postcode.errors }}</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">City {% if billing_form.city.field.required %}<span class="error">*</span>{% endif %}</label>
-                      {{ billing_form.city }}
-                      <span class="error">{{ billing_form.city.errors }}</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">State {% if billing_form.state.field.required %}<span class="error">*</span>{% endif %}</label>
-                      {{ billing_form.state }}
-                      <span class="error">{{ billing_form.state.errors }}</span>
-                    </div>
-                  </div>
-                  <div class="col-md-12" style="margin-top: 10px;">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Country {% if billing_form.country.field.required %}<span class="error">*</span>{% endif %}</label>
-                      {{ billing_form.country }}
-                      <span class="error">{{ billing_form.country.errors }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h6 style="color:white;">Copy Address</h6>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="filter_col col-12">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Assigned Users</label>
-                  {{request.POST.assigned_to}}
-                  <select class="assigned_users form-control" name="assigned_to" multiple="multiple">
-                  {% for user in users %}
-                  <option value="{{user.id}}" {% if user in account_obj.assigned_to.all  or user.id in assignedto_list %} selected="" {% endif %}>{{user.email}}</option>
-                  {% endfor %}
-                  </select>
-                  {{ account_form.assigned_to.errors }}
-                </div>
-              </div>
-              <div class="filter_col col-12">
-                <div class="form-group">
-                  <label for="id_sattus">Status{% if account_form.status.field.required %}<span class="error">*</span>{% endif %}</label>
-                  {{ account_form.status }}
-                  <span class="error">{{ account_form.status.errors }}</span>
-                </div>
-              </div>
-              <div class="filter_col col-12">
-                <div class="form-group">
-                  <label>Tags</label>
-                  <div class="txt-box-div" id="tag-div"><input type="text" name="tags" id="tags_1" value="{% for t in account_obj.tags.all %}{{t.name}}, {% endfor %}" class="tags"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="row marl buttons_row form_btn_row text-center">
-                <button class="btn btn-default save" type="submit">Save</button>
-                <a href="{% url 'accounts:list' %}" class="btn btn-default clear" id="create_user_cancel">Cancel</a>
-              </div>
-            </div>
-          </div>
+            <input type="hidden" id="save_new_form" name="savenewform">
         </div>
-      </div>
-    </div>
-    <input type="hidden" id="save_new_form" name="savenewform">
-  </div>
-  <!-- overview ends here -->
-</form>
+        <!-- overview ends here -->
+    </form>
 {% endblock %}
 {% block js_block %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
-<script type="text/javascript">
-  $("#copy_billing_btn").click(function(){
-    var address_line = $("#id_address_line").val()
-    var street = $("#id_street").val()
-    var city = $("#id_city").val()
-    var state = $("#id_state").val()
-    var postcode = $("#id_postcode").val()
-    var country = $("#id_country").val()
-    $("#id_ship-address_line").val(address_line)
-    $("#id_ship-street").val(street)
-    $("#id_ship-city").val(city)
-    $("#id_ship-state").val(state)
-    $("#id_ship-postcode").val(postcode)
-    $("#id_ship-country").val(country)
-  });
-  
-  $(".savenew").on('click', function(e){
-    e.preventDefault()
-    $("#save_new_form").val('true')
-    $('#formid').submit()
-  });
-  $(document).ready(function() {
-    $('.assigned_users').select2();
-  });
-  
-  function onAddTag(tag) {
-    alert("Added a tag: " + tag);
-  }
-  function onRemoveTag(tag) {
-    alert("Removed a tag: " + tag);
-  }
-  
-  function onChangeTag(input,tag) {
-    alert("Changed a tag: " + tag);
-  }
-  
-  $(function() {
-  
-    $('#tags_1').tagsInput({width:'auto'});
-    $('#tags_2').tagsInput({
-      width: 'auto',
-      onChange: function(elem, elem_tags)
-      {
-        var languages = ['php','ruby','javascript'];
-        $('.tag', elem_tags).each(function()
-        {
-          if($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
-            $(this).css('background-color', 'yellow');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css"
+          rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript">
+        $("#copy_billing_btn").click(function () {
+            var address_line = $("#id_address_line").val()
+            var street = $("#id_street").val()
+            var city = $("#id_city").val()
+            var state = $("#id_state").val()
+            var postcode = $("#id_postcode").val()
+            var country = $("#id_country").val()
+            $("#id_ship-address_line").val(address_line)
+            $("#id_ship-street").val(street)
+            $("#id_ship-city").val(city)
+            $("#id_ship-state").val(state)
+            $("#id_ship-postcode").val(postcode)
+            $("#id_ship-country").val(country)
         });
-      }
-    });
-    $('#tags_3').tagsInput({
-      width: 'auto',
-  
-      //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
-      autocomplete_url:'test/fake_json_endpoint.html' // jquery ui autocomplete requires a json endpoint
-    });
-    
-  
-  // Uncomment this line to see the callback functions in action
-  //      $('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});   
-  
-  // Uncomment this line to see an input with no interface for adding new tags.
-  //      $('input.tags').tagsInput({interactive:false});
-  });
-  
-</script>
+
+        $(".savenew").on('click', function (e) {
+            e.preventDefault()
+            $("#save_new_form").val('true')
+            $('#formid').submit()
+        });
+        $(document).ready(function () {
+            $('.assigned_users').select2();
+        });
+
+        function onAddTag(tag) {
+            alert("Added a tag: " + tag);
+        }
+
+        function onRemoveTag(tag) {
+            alert("Removed a tag: " + tag);
+        }
+
+        function onChangeTag(input, tag) {
+            alert("Changed a tag: " + tag);
+        }
+
+        $(function () {
+
+            $('#tags_1').tagsInput({width: 'auto'});
+            $('#tags_2').tagsInput({
+                width: 'auto',
+                onChange: function (elem, elem_tags) {
+                    var languages = ['php', 'ruby', 'javascript'];
+                    $('.tag', elem_tags).each(function () {
+                        if ($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
+                            $(this).css('background-color', 'yellow');
+                    });
+                }
+            });
+            $('#tags_3').tagsInput({
+                width: 'auto',
+
+                //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
+                autocomplete_url: 'test/fake_json_endpoint.html' // jquery ui autocomplete requires a json endpoint
+            });
+
+
+            // Uncomment this line to see the callback functions in action
+            //      $('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});
+
+            // Uncomment this line to see an input with no interface for adding new tags.
+            //      $('input.tags').tagsInput({interactive:false});
+        });
+
+    </script>
 {% endblock js_block %}

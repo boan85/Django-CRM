@@ -12,11 +12,11 @@
   </div>
   <div class="filter_row list_filter_row row marl">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card crm-table">
         <div class="card-body">
           <form id="cases_filter" method="POST" action="" >
             <div class="card-body">
-              <div class="card-title">Filters</div>
+              <div class="card-title black-color">Filters</div>
               <div class="row marl">
                 <div class="filter_col col-md-2">
                   <div class="form-group">
@@ -76,10 +76,10 @@
   <!-- filter_row starts here -->
   <div class="table_container_row row marl ">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card crm-table">
         <div class="card-body">
           <div class="panel-heading-list card-title text-right">
-            <span class="total_count float-left">Cases - {% if show_pageitems %} {% show_pageitems %}{% else %}{{ cases|length }}{% endif %}</span>
+            <span class="total_count float-left black-color">Cases - {% if show_pageitems %} {% show_pageitems %}{% else %}{{ cases|length }}{% endif %}</span>
             <span class="filter_toggle ">
             <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
             </span>
@@ -89,12 +89,12 @@
               <thead>
                 {% if cases|length > 0 %}
                 <tr>
-                  <th width="5%">S.No</th>
-                  <th width="20%">Name</th>
-                  <th width="20%">Account</th>
-                  <th width="15%">Status</th>
-                  <th width="15%">Priority</th>
-                  <th width="15%">Actions</th>
+                  <th style="color: ghostwhite" width="5%">S.No</th>
+                  <th style="color: ghostwhite" width="20%">Name</th>
+                  <th style="color: ghostwhite" width="20%">Account</th>
+                  <th style="color: ghostwhite" width="15%">Status</th>
+                  <th style="color: ghostwhite" width="15%">Priority</th>
+                  <th style="color: ghostwhite" width="15%">Actions</th>
                 </tr>
                 {% endif %}
               </thead>
@@ -106,17 +106,17 @@
                 {% endif %}
                 {% for case in cases %}
                 <tr class="case_row{{case.id}}" style="text-align:center;">
-                  <td scope="row">{{ forloop.counter }}</td>
-                  <td><a href="{% url 'cases:view_case' case.id %}">{{ case.name }}</a></td>
+                  <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                  <td style="color: ghostwhite"><a href="{% url 'cases:view_case' case.id %}">{{ case.name }}</a></td>
                   <td>
                     {% if case.account %}
                     <a href="{% url  'accounts:view_account' case.account.id %}">{{ case.account }}</a>
                     {% else %}
-                    No Related Account
+                        <p style="color: ghostwhite">No Related Account</p>
                     {% endif %}
                   </td>
-                  <td id="status_id{{case.id}}" status="{{case.status}}">{{ case.status }}</td>
-                  <td>{{ case.priority }}</td>
+                  <td style="color: ghostwhite" id="status_id{{case.id}}" status="{{case.status}}">{{ case.status }}</td>
+                  <td style="color: ghostwhite">{{ case.priority }}</td>
                   <td class="actions">
                     {#  <a href="{% url 'cases:view_case' case.id %}" class="btn btn-info view"><i class="fas fa-eye"></i> View</a> #}
                     <a href="{% url 'cases:edit_case' case.id %}" class="btn btn-success edit"><i class="fas fa-pencil-alt"></i></a>

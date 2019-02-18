@@ -12,11 +12,11 @@
   </div>
   <div class="filter_row list_filter_row row marl">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card crm-table">
         <div class="card-body">
           <form id="docs_filter" method="POST" action="">
             <div class="card-body">
-              <div class="card-title">Filters</div>
+              <div class="card-title black-color">Filters</div>
               <div class="row marl">
                 <div class="filter_col col-md-4">
                   <div class="form-group">
@@ -51,10 +51,10 @@
   <!-- heading_create ends here -->
   <div class="table_container_row row marl ">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card crm-table">
         <div class="card-body">
           <div class="panel-heading-list card-title text-right">
-            <span class="total_count float-left">Documents - {% if show_pageitems %} {% show_pageitems %}{% else %} {{documents|length}}{% endif %}</span>
+            <span class="total_count float-left black-color">Documents - {% if show_pageitems %} {% show_pageitems %}{% else %} {{documents|length}}{% endif %}</span>
             <span class="filter_toggle ">
             <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
             </span>
@@ -64,11 +64,11 @@
               <thead>
                 {% if documents|length > 0 %}
                 <tr>
-                  <th>S.No</th>
-                  <th>Title</th>
-                  <th>Created By</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th style="color: ghostwhite">S.No</th>
+                  <th style="color: ghostwhite">Title</th>
+                  <th style="color: ghostwhite">Created By</th>
+                  <th style="color: ghostwhite">Status</th>
+                  <th style="color: ghostwhite">Actions</th>
                 </tr>
                 {% endif %}
               </thead>
@@ -80,10 +80,10 @@
                 {% endif %}
                 {% for document in documents %}
                 <tr id="account_details{{each_account.id}}" class="text-center">
-                  <td scope="row">{{ forloop.counter }}</td>
+                  <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
                   <td>{% if document.title %}<a href="{% url 'common:view_doc' document.id %}">{{ document.title }}</a>{% endif %}</td>
-                  <td>{{document.created_by}}</td>
-                  <td>{{document.status}}</td>
+                  <td style="color: ghostwhite">{{document.created_by}}</td>
+                  <td style="color: ghostwhite">{{document.status}}</td>
                   <td class="actions">
                     <a href="{% url 'common:edit_doc' document.id %}" class="btn btn-success edit"><i class="fas fa-pencil-alt"></i></a>
                     <a href="{% url 'common:remove_doc' document.id %}" class="btn btn-danger delete remove_document"><i class="fas fa-trash-alt"></i></a>

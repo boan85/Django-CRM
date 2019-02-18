@@ -5,7 +5,7 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item"> <a  href="{% url 'contacts:list' %}">Contacts</a></li>
-  <li class="breadcrumb-item active">view</li>
+  <li class="breadcrumb-item active" style="color: ghostwhite">{{ contact_record.first_name }}</li>
 </ol>
 </nav>
 {% endblock %}
@@ -14,19 +14,19 @@
   <div class="main_container" id="maincontainer">
     <div class="overview_form_block row marl justify-content-center">
       <div class="col-md-8">
-        <div class="card">
+        <div class="card crm-table">
           
           <div class="card-body" id="datashow">
 
            <div class="card-title text-right">
             <h5>
-              <span class="float-left title">Overview</span>
+              <span class="float-left title black-color">Overview</span>
               <span class="" style="margin-top: 0px">
                 <div class="dropdown buttons_row">
                   <button class="btn primary_btn dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'contacts:edit_contact' contact_record.id %}">Edit</a></li>
+                    <li><a class="bg-color" style="color: ghostwhite" href="{% url 'contacts:edit_contact' contact_record.id %}">Edit</a></li>
                   </ul>
                 </div>
               </span>
@@ -43,8 +43,8 @@
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label class="contact_field_label" for="id_contact_account" data-name="name">Account</label>
-                    <div class="contact_field" id ="contact_account" data-name="name">{{ contact_record.account }}</div>
+                    <label class="contact_field_label" for="id_contact_account" data-name="name">Company</label>
+                    <div class="contact_field" id ="contact_account" data-name="name">{{ contact_record.company }}</div>
                   </div>
                 </div>
                 <div class="filter_col col-md-12">
@@ -95,7 +95,7 @@
       <div>
       <div class="card-body mar-top" id="datashow">
           <div class="card-title view-pad">
-              <h5>Attachments</h5>
+              <h5 class="black-color">Attachments</h5>
          </div>
           <div class="row marl">
               <div class="col-md-12">
@@ -112,7 +112,7 @@
                   </form>
                   <ul class="list-group" id="attachment_div">
                       {% for attachment in attachments %}
-                          <li class="list-group-item list-row" id="attachment{{attachment.id}}">
+                          <li class="list-group-item list-row " id="attachment{{attachment.id}}" style="background: #4f616a">
                             {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == attachment.created_by %}
                               <div class="float-right right-container">
                                 <div class="list-row-buttons btn-group float-right">
@@ -122,12 +122,12 @@
                             {% endif %}
 
                               <div class="stream-post-container" id="attachment_name{{attachment.id}}">
-                                <pre> <span class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}}"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
+                                <pre> <span style="color: ghostwhite" class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}}"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
                               </div>
 
                               <div class="stream-container">
-                                <pre class="float-left">{{ attachment.created_by }}</pre>
-                                <pre class="float-right date">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                                <pre class="float-left ghost-color">{{ attachment.created_by }}</pre>
+                                <pre class="float-right date ghost-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
                               </div>
                           </li>
                       {% endfor %}
@@ -141,13 +141,13 @@
          
           <div class="card-body" id="datashow">
            <div class="card-title view-pad">
-            <h5>Comments</h5>
+            <h5 class="black-color">Comments</h5>
           </div>
             <div class="row marl">
               <div class="col-md-12">
                 <form id="comment_form" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
-                    <textarea class="form-control" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea><div><i id="CommentError" style="display:none; color:red"></i></div>
+                    <textarea class="form-control bg-color" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea><div><i id="CommentError" style="display:none; color:red"></i></div>
                     </br>
                     <div class="buttons_row">
                     <button class="btn btn-default save" style="text-align: center;" id="comment_submit" type="submit">Submit</button>
@@ -157,26 +157,26 @@
                 </form>
                 <ul class="list-group" id="comments_div">
                   {% for comment in comments %}
-                  <li class="list-group-item list-row" id="comment{{comment.id}}">
+                  <li class="list-group-item list-row" id="comment{{comment.id}}" style="background: #4f616a">
                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                     <div class="float-right right-container">
                       <div class="list-row-buttons btn-group float-right">
                         <button class="btn primary_btn btn-sm dropdown-toggle" data-toggle="dropdown" type="button">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu text-center">
                           <li>
-                            <a class="action" onclick="edit_comment({{comment.id}})">Edit</a>
+                            <a class="action bg-color" style="color: ghostwhite" onclick="edit_comment({{comment.id}})">Edit</a>
                           </li>
                           <li>
-                            <a class="action" onclick="remove_comment({{comment.id}})">Remove</a>
+                            <a class="action bg-color" style="color: ghostwhite" onclick="remove_comment({{comment.id}})">Remove</a>
                           </li>
                         </ul>
                       </div>
                     </div>
                     {% endif %}
-                    <div class="stream-post-container" id="comment_name{{comment.id}}"><pre>{{ comment.comment }}</pre></div>
+                    <div class="stream-post-container" id="comment_name{{comment.id}}"><pre class="ghost-color">{{ comment.comment }}</pre></div>
                     <div class="stream-container">
-                      <pre class="float-left">{{ comment.commented_by }}</pre>
-                      <pre class="float-right">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                      <pre class="float-left ghost-color">{{ comment.commented_by }}</pre>
+                      <pre class="float-right ghost-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
                     </div>
                   </li>
                   {% endfor %}
@@ -185,7 +185,7 @@
             </div>
             <div class="modal fade" id="Comments_Contacts_Modal" role="dialog" data-keyboard="false" data-backdrop="static">
               <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content crm-table">
                   <div class="modal-header">
                     <h4 class="modal-title">Update Your Comment</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
@@ -199,7 +199,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button class="btn btn-default save" id="comment_edit" type="submit">Update</button>
+                      <button class="btn btn-default save ghost-color" id="comment_edit" type="submit">Update</button>
                     </div>
                   </form>
                 </div>

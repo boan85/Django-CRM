@@ -7,7 +7,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{% url 'cases:list' %}">Cases</a></li>
-    <li class="breadcrumb-item active">{% if case_obj %}Edit{% else %}Create{% endif %}</li>
+    <li class="breadcrumb-item active" style="color: ghostwhite">{% if case_obj %}Edit{% else %}Create{% endif %}</li>
   </ol>
 </nav>
 {% endblock %}
@@ -15,9 +15,9 @@
 <form id="submitForm" method="POST" action="" novalidate>
   <div class="overview_form_block row marl justify-content-center">
     <div class="col-md-9">
-      <div class="card">
+      <div class="card crm-table">
         <div class="card-body">
-          <div class="card-title text-center">
+          <div class="card-title text-center black-color">
             {% if case_obj %}EDIT{% else %}CREATE{% endif %} CASE
           </div>
           <div class="row marl no-gutters">

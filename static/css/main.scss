@@ -5,6 +5,41 @@
 .bg-color {
     background-color: #4f616a;
 }
+.bg-img {
+  background-image: url("../images/bg.png");
+}
+.bg-secondary {
+  background-color: #576b75;
+}
+.crm-table {
+  background-color: #576b75;
+  color: ghostwhite;
+}
+
+.ghost-color {
+  color: white;
+  //color: #f8f8ff;
+}
+
+.tr-ghost {
+  tr:hover a {
+    color: #CC0000;
+}
+}
+
+.black-color {
+  color: black;
+}
+
+.text-input {
+  background-color: #4f616a;
+  color: ghostwhite;
+}
+
+.crm-secondary {
+  background-color: #4f616a;
+  color: ghostwhite;
+}
 body {
   font-family: 'Muli', sans-serif;
   padding: 0;
