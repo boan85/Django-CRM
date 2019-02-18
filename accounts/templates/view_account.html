@@ -22,7 +22,7 @@
                                 <span class="float-left title" style="color: black">Overview</span>
                                 <span style="margin-top: 0px">
                 <div class="dropdown buttons_row">
-                  <button class="btn primary_btn dropdown-toggle" type="button" data-toggle="dropdown">Actions
+                  <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a style="background-color: #576b75; color: ghostwhite" href="{% url 'accounts:edit_account' account_record.id %}">Edit</a></li>
@@ -178,7 +178,7 @@
                                                     </div>
                                                     <br>
                                                     <div class="buttons_row">
-                                                        <button class="btn btn-default save" style="text-align: center;"
+                                                        <button class="btn my-button-save" style="text-align: center;"
                                                                 id="attachment_submit">Save
                                                         </button>
                                                     </div>
@@ -192,7 +192,7 @@
                                                         {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == attachment.created_by %}
                                                             <div class="float-right right-container">
                                                                 <div class="list-row-buttons btn-group float-right">
-                                                                    <button class="action btn primary_btn"
+                                                                    <button class="btn my-button-remove"
                                                                             onclick="remove_attachment({{ attachment.id }})">
                                                                         Remove
                                                                     </button>
@@ -233,7 +233,7 @@
                                                         </div>
                                                         </br>
                                                         <div class="buttons_row">
-                                                            <button class="btn btn-default save"
+                                                            <button class="btn my-button-submit"
                                                                     style="text-align: center;" id="comment_submit"
                                                                     type="submit">Submit
                                                             </button>
@@ -248,7 +248,7 @@
                                                     <li class="list-group-item list-row" id="comment{{ comment.id }}" style="background-color: #4f616a">
                                                         {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                                                             <div class="list-row-buttons btn-group float-right">
-                                                                <button class="btn primary_btn btn-sm dropdown-toggle"
+                                                                <button class="btn my-button-action dropdown-toggle"
                                                                         data-toggle="dropdown" type="button">
                                                                     Actions<span class="caret"></span></button>
                                                                 <ul class="dropdown-menu text-center">

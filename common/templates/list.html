@@ -2,14 +2,13 @@
 {% load staticfiles %}
 {% load paginate %}
 {% block content %}
-    <link href="{% static 'css/main.scss' %}" rel="stylesheet">
+    <link href="{% static 'css/.css' %}" rel="stylesheet">
     <!-- main_container starts here -->
     <div class="main_container">
         <!-- filter_row starts here -->
         <div class="row marl">
             <div class="col-lg-12 text-right">
-                <span class="d-inline"><a href="{% url 'common:create_user' %}" class="btn primary_btn"><i
-                        class="fa fa-plus"></i> Add New User</a></span>
+                <a href="{% url 'common:create_user' %}"><button class="btn my-button-addnew-user">Add new user</button></a>
             </div>
         </div>
         <!-- filter_row ends here -->
@@ -17,14 +16,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title list text-right" style="background-color: #576b75; color: ghostwhite">
-                            <span  class="float-left">Users - {% if show_pageitems %} {% show_pageitems %}{% else %}
+                        <div class="card-title list text-right">
+                            <span  class="float-left ">Users - {% if show_pageitems %} {% show_pageitems %}{% else %}
                                 {{ users|length }}{% endif %}</span>
                             <span class="filter_toggle">
             <a href="#" class="primary_btn"></a>
             </span>
                         </div>
-                        <div class="table-responsive" style="background-color: #576b75;">
+                        <div class="table-responsive">
                             <table class="table" style="background-color: #576b75;">
                                 <thead>
                                 {% if users|length > 0 %}
@@ -65,10 +64,10 @@
                                             <!-- <a href="{% url 'common:view_user' user.id %}" class="btn btn-info view"><i class="fas fa-eye"></i>View</a> -->
                                             {% if user.email != admin_email  or request.user.email == admin_email %}
                                                 <a href="{% url 'common:edit_user' user.id %}"
-                                                   class="btn btn-success edit action"><i class="fas fa-pencil-alt"></i>Edit</a>
+                                                   class="btn my-button-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
                                             {% endif %}
                                             <a href="{% url 'common:remove_user' user.id %}"
-                                               class="btn btn-danger trash action"
+                                               class="btn my-button-delete"
                                                     {% if request.user.email == user.email %}
                                                style="visibility: hidden;" {% endif %}><i class="fas fa-trash-alt"></i>Delete</a>
                                         </td>

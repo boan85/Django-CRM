@@ -23,7 +23,7 @@
                                 <span class="float-left title">Overview</span>
                                 <span style="margin-top: 0px;" data-style="">
                 <div class="dropdown buttons_row">
-                  <button class="btn primary_btn dropdown-toggle " type="button" data-toggle="dropdown">Actions
+                  <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a class="text-input" style="color: ghostwhite" href="{% url 'common:edit_user' user_obj.id %}">Edit</a></li>
@@ -124,7 +124,7 @@
                                                 <div><i id="CommentError" style="display:none; color:red"></i></div>
                                                 </br>
                                                 <div class="buttons_row">
-                                                    <button class="btn btn-default save" style="text-align: center;"
+                                                    <button class="btn my-button-submit" style="text-align: center;"
                                                             id="comment_submit" type="submit">Submit
                                                     </button>
                                                 </div>
@@ -137,7 +137,7 @@
                                                     style="background-color: #576b75;">
                                                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                                                         <div class="list-row-buttons btn-group float-right">
-                                                            <button class="btn primary_btn btn-sm dropdown-toggle"
+                                                            <button class="btn my-button-action dropdown-toggle"
                                                                     data-toggle="dropdown" type="button">Actions<span
                                                                     class="caret"></span></button>
                                                             <ul class="dropdown-menu text-center comment_actions">

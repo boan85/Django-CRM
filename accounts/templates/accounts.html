@@ -11,8 +11,7 @@
         <!-- heading_create starts here -->
         <div class="row marl">
             <div class="col-lg-12 text-right">
-                <span class="d-inline"><a class="primary_btn" href="{% url 'accounts:new_account' %}"><i
-                        class="fa fa-plus"></i> Add New Company</a></span>
+                <a href="{% url 'accounts:new_account' %}"><button class="btn my-button-addnew-company">Add new Company</button></a>
             </div>
         </div>
         <div class="filter_row list_filter_row row marl">
@@ -79,8 +78,8 @@
                                     </div>
                                     <div class="filter_col col-lg-2">
                                         <div class="form-group buttons_row">
-                                            <button class="btn btn-primary save" type="submit">Search</button>
-                                            <a href="{% url 'accounts:list' %}" class="btn btn-default clear">Clear</a>
+                                            <button class="btn my-button-search" type="submit">Search</button>
+                                            <a href="{% url 'accounts:list' %}"><button class="btn my-button-clear">Clear</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +114,7 @@
                                                 {% if show_pageitems %} {% show_pageitems %}{% else %}
                                                     {{ open_accounts|length }}{% endif %}</span>
                                             <span class="filter_toggle ">
-                    <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
+                    <a href="#" class="my-button"><i class="fas fa-filter"></i></a>
                     </span>
                                         </div>
                                         <div class="table-responsive crm-table">
@@ -182,10 +181,10 @@
                                                         <td class="actions">
                                                             {#  <a href="{% url 'accounts:view_account' each_account.id %}" class="btn btn-info view"><i class="fas fa-eye"></i> View</a> #}
                                                             <a href="{% url 'accounts:edit_account' each_account.id %}"
-                                                               class="btn btn-success edit"><i
+                                                               class="btn my-button-edit"><i
                                                                     class="fas fa-pencil-alt"></i></a>
                                                             <a href="{% url 'accounts:remove_account' each_account.id %}"
-                                                               class="btn btn-danger delete remove_account"><i
+                                                               class="btn my-button-delete"><i
                                                                     class="fas fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>

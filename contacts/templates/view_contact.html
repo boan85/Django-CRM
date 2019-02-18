@@ -23,7 +23,7 @@
               <span class="float-left title black-color">Overview</span>
               <span class="" style="margin-top: 0px">
                 <div class="dropdown buttons_row">
-                  <button class="btn primary_btn dropdown-toggle" type="button" data-toggle="dropdown">Actions
+                  <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a class="bg-color" style="color: ghostwhite" href="{% url 'contacts:edit_contact' contact_record.id %}">Edit</a></li>
@@ -105,7 +105,7 @@
                           <div><i id="AttachmentError" style="display:none; color:red"></i></div>
                           <br>
                           <div class="buttons_row">
-                              <button class="btn btn-default save" style="text-align: center;" id="attachment_submit">Save</button>
+                              <button class="btn my-button-save" style="text-align: center;" id="attachment_submit">Save</button>
                           </div>
                       </div>
                       <input type="hidden" value="{{contact_record.id}}" name="contactid">
@@ -116,7 +116,7 @@
                             {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == attachment.created_by %}
                               <div class="float-right right-container">
                                 <div class="list-row-buttons btn-group float-right">
-                                  <button  class="action btn primary_btn" onclick="remove_attachment({{attachment.id}})">Remove</button>
+                                  <button  class="action btn my-button-remove" onclick="remove_attachment({{attachment.id}})">Remove</button>
                                 </div>
                               </div>
                             {% endif %}
@@ -150,7 +150,7 @@
                     <textarea class="form-control bg-color" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea><div><i id="CommentError" style="display:none; color:red"></i></div>
                     </br>
                     <div class="buttons_row">
-                    <button class="btn btn-default save" style="text-align: center;" id="comment_submit" type="submit">Submit</button>
+                    <button class="btn my-button-submit" style="text-align: center;" id="comment_submit" type="submit">Submit</button>
                     </div>
                   </div>
                   <input type="hidden" value="{{contact_record.id}}" name="contactid">
@@ -161,7 +161,7 @@
                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                     <div class="float-right right-container">
                       <div class="list-row-buttons btn-group float-right">
-                        <button class="btn primary_btn btn-sm dropdown-toggle" data-toggle="dropdown" type="button">Actions <span class="caret"></span></button>
+                        <button class="btn my-button-action btn-sm dropdown-toggle" data-toggle="dropdown" type="button">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu text-center">
                           <li>
                             <a class="action bg-color" style="color: ghostwhite" onclick="edit_comment({{comment.id}})">Edit</a>

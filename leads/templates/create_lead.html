@@ -161,11 +161,12 @@
               </div>
               <div class="col-md-12">
                  <div class="row marl buttons_row text-center form_btn_row">
-                  <button  class="btn btn-default save" type="submit">Save</button>
+                  <button  class="btn my-button-save" type="submit">Save</button>
                   {% if not lead_obj %}
-                    <button class="btn btn-success save savenew" type="submit">Save & New</button>
+                    <button class="btn my-button-save" type="submit">Save & New</button>
                   {% endif %}
-                  <a href="{% url 'leads:list' %}" class="btn btn-default clear" id="create_lead_cancel">Cancel</a>
+                  <a href="{% url 'leads:list' %}">
+                      <button class="btn my-button-cancel" id="create_lead_cancel">Cancel</button></a>
                 </div>
               </div>
             </div>

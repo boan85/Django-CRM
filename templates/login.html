@@ -35,11 +35,11 @@
                 <div class="form-group">
                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" style="background-color: #576b75; color: ghostwhite;">
                 </div>
-                <div class="forgot" style="color: ghostwhite;">Forgot Password <a href="{% url "common:password_reset" %}">Click Here?</a></div>
+                  <div class="forgot" style="color: ghostwhite;">Forgot Password <a href="{% url "common:password_reset" %}"><p class="links_and_buttons">Click Here?</p></a></div>
                 {% if error %}
                 <p class="error">{{ message }}</p>
                 {% endif %}
-                <button type="submit" class="btn btn-danger">Login</button>
+                <button type="submit" class="btn my-button">Login</button>
               </form>
             </div>
           </div>

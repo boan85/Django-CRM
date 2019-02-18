@@ -105,10 +105,10 @@
                     </div>
                     <p style="color:red" id="forbiden_error"></p>
                     <div class="row marl buttons_row form_btn_row text-center"  style="background-color: #576b75; color: ghostwhite">
-                        <button class="btn btn-default save" type="submit">Save</button>
+                        <button class="btn my-button-save" type="submit">Save</button>
                         <a href="
-                                {% if not user_obj or request.user.is_superuser or request.user.role == 'ADMIN' %}{% url 'common:users_list' %}{% else %}{% url 'common:profile' %}{% endif %}"
-                           class="btn btn-default clear" id="create_user_cancel">Cancel</a>
+                                {% if not user_obj or request.user.is_superuser or request.user.role == 'ADMIN' %}{% url 'common:users_list' %}{% else %}{% url 'common:profile' %}{% endif %}">
+                            <button class="btn my-button-cancel" id="create_user_cancel">Cancel</button></a>
                     </div>
                 </div>
             </div>
