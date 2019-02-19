@@ -30,14 +30,16 @@
                   <div class="col-md-4">
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1" class="required">Name{% if opportunity_form.name.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1" class="required"><div class="my-label-color">
+                               Name{% if opportunity_form.name.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {{ opportunity_form.name }}
                            <span class="error">{{opportunity_form.name.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Company{% if opportunity_form.account.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1"><div class="my-label-color">
+                               Company{% if opportunity_form.account.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {% if account %}
                            <select name="account" placeholder="Account" class="form-control" id="id_account" readonly>
                               <option value="{{account.id}}" selected="">{{account.name}}</option>
@@ -50,21 +52,22 @@
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Amount</label>
+                            <label for="exampleInputEmail1"><div class="my-label-color">Amount</div></label>
                            {{ opportunity_form.amount }}
                            <span class="error">{{opportunity_form.amount.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Currency</label>
+                            <label for="exampleInputEmail1"><div class="my-label-color">Currency</div></label>
                            {{ opportunity_form.currency }}
                            <span class="error">{{opportunity_form.currency.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1" class="required">Stage{% if opportunity_form.stage.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1" class="required"><div class="my-label-color">
+                               Stage{% if opportunity_form.stage.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {{ opportunity_form.stage }}
                            <span class="error">{{opportunity_form.stage.errors}}</span>
                         </div>
@@ -73,21 +76,23 @@
                   <div class="col-md-4">
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Lead Source{% if opportunity_form.lead_source.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1"><div class="my-label-color">
+                               Lead Source{% if opportunity_form.lead_source.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {{ opportunity_form.lead_source }}
                            <span class="error">{{opportunity_form.lead_source.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Probability %{% if opportunity_form.probability.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1"><div class="my-label-color">
+                               Probability %{% if opportunity_form.probability.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {{ opportunity_form.probability }}
                            <span class="error">{{opportunity_form.probability.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Assigned Users</label>
+                            <label for="exampleInputEmail1"><div class="my-label-color">Assigned Users</div></label>
                            <select class="assigned_users form-control" name="assigned_to" multiple="multiple">
                            {% for user in users %}
                            <option value="{{user.id}}" {% if user in opportunity_obj.assigned_to.all or user.id in assignedto_list %} selected="" {% endif %}>{{user.email}}</option>
@@ -97,14 +102,16 @@
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Contacts{% if opportunity_form.contacts.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1"><div class="my-label-color">
+                               Contacts{% if opportunity_form.contacts.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            {{ opportunity_form.contacts }}
                            <span class="error">{{opportunity_form.contacts.errors}}</span>
                         </div>
                      </div>
                      <div class="filter_col col-md-12">
                         <div class="form-group">
-                           <label for="exampleInputEmail1">Due Date{% if opportunity_form.closed_on.field.required %}<span class="error">*</span>{% endif %}</label>
+                           <label for="exampleInputEmail1"><div class="my-label-color">
+                               Due Date{% if opportunity_form.closed_on.field.required %}<span class="error">*</span>{% endif %}</div></label>
                            <div class='input-group date' id='datepicker1'>
                               {{ opportunity_form.closed_on }}
                               <span class="input-group-addon">
@@ -118,13 +125,14 @@
                   <div class="col-md-4">
                      <div class="filter_col col-12">
                         <div class="form-group">
-                           <label>Tags</label>
+                            <label><div class="my-label-color">Tags</div></label>
                            <div class="txt-box-div" id="tag-div"><input type="text" name="tags" id="tags_1" value="{% for t in opportunity_obj.tags.all %}{{t.name}}, {% endfor %}" class="tags"/>
                            </div>
                         </div>
                      </div>
                      <div class="form-group col-md-12">
-                        <label for="exampleInputEmail1" >Description{% if opportunity_form.description.field.required %}<span class="error">*</span>{% endif %}</label>
+                        <label for="exampleInputEmail1"><div class="my-label-color">
+                            Description{% if opportunity_form.description.field.required %}<span class="error">*</span>{% endif %}</div></label>
                         {{ opportunity_form.description }}
                         <span class="error">{{opportunity_form.description.errors}}</span>
                      </div>

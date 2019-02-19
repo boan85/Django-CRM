@@ -37,20 +37,20 @@
             <div class="col-md-4">
               <div class="filter_col col-md-12" id="iname">
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_name" data-name="name">Name</label>
+                    <label class="opportunity_field_label" for="id_name" data-name="name"><div class="my-label-color">Name</div></label>
                   <div class="opportunity_field" id="opportunity_name" data-name="name">{{ opportunity_record.name }}</div>
                 </div>
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_opportunity_account" data-name="name">Account</label>
+                    <label class="opportunity_field_label" for="id_opportunity_account" data-name="name"><div class="my-label-color">Account</div></label>
                   <div class="opportunity_field" id ="opportunity_account" data-name="name">{{ opportunity_record.account }}</div>
                 </div>
               </div>
               <div class="filter_col col-md-12">
                 {% if opportunity_record.contacts.all %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_contact" data-name="name">Contact(s)</label>
+                    <label class="opportunity_field_label" for="id_contact" data-name="name"><div class="my-label-color">Contact(s)</div></label>
                   <div class="opportunity_field" id="opportunity_contact" data-name="name">
                     {% for contact in opportunity_record.contacts.all %}
                     <li>{{ contact }}</li>
@@ -62,7 +62,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.amount %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_amount" data-name="name">Amount</label>
+                    <label class="opportunity_field_label" for="id_amount" data-name="name"><div class="my-label-color">Amount</div></label>
                   <div class="opportunity_field" id="opportunity_amount" data-name="name">{{ opportunity_record.currency }} {{ opportunity_record.amount }}</div>
                 </div>
                 {% endif %}
@@ -72,7 +72,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.stage %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_stage" data-name="name">Stage</label>
+                    <label class="opportunity_field_label" for="id_stage" data-name="name"><div class="my-label-color">Stage</div></label>
                   <div class="opportunity_field" id="opportunity_stage" data-name="name">{{ opportunity_record.stage }}</div>
                 </div>
                 {% endif %}
@@ -80,7 +80,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.lead_source %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_lead_source" data-name="name">Lead Source</label>
+                    <label class="opportunity_field_label" for="id_lead_source" data-name="name"><div class="my-label-color">Lead Source</div></label>
                   <div class="opportunity_field" id="opportunity_lead_source" data-name="name">{{ opportunity_record.lead_source }}</div>
                 </div>
                 {% endif %}
@@ -88,7 +88,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.probability %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_probability" data-name="name">Probability</label>
+                    <label class="opportunity_field_label" for="id_probability" data-name="name"><div class="my-label-color">Probability</div></label>
                   <div class="opportunity_field" id="opportunity_probability" data-name="name">{{opportunity_record.probability}} %</div>
                 </div>
                 {% endif %}
@@ -96,7 +96,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.closed_on %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_close_date" data-name="name">Close Date</label>
+                    <label class="opportunity_field_label" for="id_close_date" data-name="name"><div class="my-label-color">Close Date</div></label>
                   <div class="opportunity_field" id="opportunity_close_date" data-name="name">{{opportunity_record.closed_on|date}}</div>
                 </div>
                 {% endif %}
@@ -106,7 +106,7 @@
               <div class="filter_col col-md-12">
                 {% if opportunity_record.description %}
                 <div class="form-group">
-                  <label class="opportunity_field_label" for="id_description" data-name="name">Description</label>
+                    <label class="opportunity_field_label" for="id_description" data-name="name"><div class="my-label-color">Description</div></label>
                   <div class="opportunity_field" id="opportunity_description" data-name="name">{{opportunity_record.description}}</div>
                 </div>
                 {% endif %}
@@ -114,7 +114,7 @@
               {% if opportunity_record.tags.all %}
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="acc_field_label" for="id_tags" data-name="name">Tags</label>
+                    <label class="acc_field_label" for="id_tags" data-name="name"><div class="my-label-color">Tags</div></label>
                   <div class="account_field" id="account_tags" data-name="name">
                     {% for tag in opportunity_record.tags.all %}
                     <span class="text-left" id="list_tag">{{ tag.name }}</span>
@@ -152,7 +152,7 @@
                 </form>
                 <ul class="list-group" id="attachment_div">
                   {% for attachment in attachments %}
-                  <li class="list-group-item list-row" id="attachment{{attachment.id}}" style="background: #4f616a">
+                  <li class="list-group-item list-row" id="attachment{{attachment.id}}">
                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == attachment.created_by %}
                     <div class="float-right right-container">
                       <div class="list-row-buttons btn-group float-right">
@@ -162,12 +162,12 @@
                     {% endif %}
 
                     <div class="stream-post-container" id="attachment_name{{attachment.id}}">
-                      <pre> <span class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}} ghost-color"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
+                      <pre> <span class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}}"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
                     </div>
 
                     <div class="stream-container">
-                      <pre class="float-left ghost-color">{{ attachment.created_by }}</pre>
-                      <pre class="float-right date ghost-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                      <pre class="float-left">{{ attachment.created_by }}</pre>
+                        <pre class="float-right date"><div class="my-label-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                     </div>
                   </li>
                   {% endfor %}
@@ -185,7 +185,7 @@
               <div class="col-md-12">
                 <form id="comment_form" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
-                    <textarea class="form-control bg-color" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea>
+                    <textarea class="form-control" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea>
                     <div><i id="CommentError" style="display:none; color:red"></i></div>
                     </br>
                     <div class="buttons_row">
@@ -196,7 +196,7 @@
                 </form>
                 <ul class="list-group" id="comments_div">
                   {% for comment in comments %}
-                  <li class="list-group-item list-row" id="comment{{comment.id}}" style="background: #4f616a">
+                  <li class="list-group-item list-row" id="comment{{comment.id}}">
                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                     <div class="float-right right-container">
                       <div class="list-row-buttons btn-group float-right">
@@ -212,12 +212,12 @@
                       </div>
                     </div>
                     {% endif %}
-                    <div class="stream-post-container ghost-color" id="comment_name{{comment.id}}" >
-                      <pre class="ghost-color">{{ comment.comment }}</pre>
+                    <div class="stream-post-container" id="comment_name{{comment.id}}" >
+                      <pre>{{ comment.comment }}</pre>
                     </div>
                     <div class="stream-container">
-                      <pre class="float-left ghost-color">{{ comment.commented_by }}</pre>
-                      <pre class="float-right date ghost-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                      <pre class="float-left">{{ comment.commented_by }}</pre>
+                        <pre class="float-right date"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                     </div>
                   </li>
                   {% endfor %}
