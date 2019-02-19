@@ -17,9 +17,9 @@
             <div class="col-md-8">
                 <div class="card crm-table">
                     <div class="card-body" id="datashow">
-                        <div class="card-title text-right">
+                        <div class="text-right my-table-color my-table-title-bg">
                             <h5>
-                                <span class="float-left title" style="color: black">Overview</span>
+                                <span class="float-left">Overview</span>
                                 <span style="margin-top: 0px">
                 <div class="dropdown buttons_row">
                   <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
@@ -165,8 +165,8 @@
                             <div class="col-md-12 " style="padding:0">
                                 <!-- Attachment Section start -->
                                 <div class="card-body mar-top" id="datashow">
-                                    <div class="card-title view-pad">
-                                        <h5 style="color: black">Attachments</h5>
+                                    <div class="my-table-title-bg my-table-color text-left">
+                                        <span>Attachments</span>
                                     </div>
                                     <div class="row marl">
                                         <div class="col-md-12">
@@ -218,8 +218,8 @@
                                 <!-- Attachment Section end -->
                                 <!-- Comments Section starts-->
                                 <div class="card-body" id="datashow">
-                                    <div class="card-title">
-                                        <h5 class="black-color">Comments</h5>
+                                    <div class="my-table-title-bg my-table-color text-left">
+                                        <span>Comments</span>
                                     </div>
                                     <div class="row marl">
                                         <div class="col-md-12">
@@ -321,7 +321,7 @@
                         <div class="col-md-12">
                             <div class="card crm-table">
                                 <div class="card-body">
-                                    <div class="panel-heading-list card-title view-pad black-color">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left ">
                                         Contacts
                                         <a href="{% url 'contacts:add_contact' %}?view_account={{ account_record.id }}"><span
                                                 class="fa fa-plus pull-right" style="color:black;"></span></a>
@@ -373,7 +373,7 @@
                         <div class="col-md-12">
                             <div class="card crm-table">
                                 <div class="card-body">
-                                    <div class="panel-heading-list card-title view-pad" style="color: black">
+                                    <div class="panel-heading-list my-table-color my-table-title-bg text-left">
                                         Opportunities
                                         <a href="{% url 'opportunity:save' %}?view_account={{ account_record.id }}"><span
                                                 class="fa fa-plus pull-right" style="color:black;"></span></a>
@@ -426,7 +426,7 @@
                         <div class="col-md-12">
                             <div class="card crm-table">
                                 <div class="card-body">
-                                    <div class="panel-heading-list card-title view-pad " style="color: black">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Cases
                                         <a href="{% url 'cases:add_case' %}?view_account={{ account_record.id }}"><span
                                                 class="fa fa-plus pull-right" style="color:black;"></span></a>
