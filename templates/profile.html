@@ -30,20 +30,20 @@
                 {% if user_obj.first_name %}
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label class="contact_field_label" for="id_name" data-name="name">Name</label>
+                    <label class="contact_field_label" for="id_name" data-name="name"><div class="my-label-color">Name</div></label>
                     <div class="contact_field" id="contact_name" data-name="name">{{ user_obj.first_name }} {{ user_obj.last_name }}</div>
                   </div>
                 </div>
                 {% endif %}
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label class="contact_field_label" for="id_contact_account" data-name="name">UserName</label>
+                      <label class="contact_field_label" for="id_contact_account" data-name="name"><div class="my-label-color">UserName</div></label>
                     <div class="contact_field" id="contact_account" data-name="name">{{ user_obj.username }}</div>
                   </div>
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label class="contact_field_label" for="id_email" data-name="name">Email</label>
+                      <label class="contact_field_label" for="id_email" data-name="name"><div class="my-label-color">Email</div></label>
                     <div class="contact_field" id="contact_email" data-name="name">{{ user_obj.email }}</div>
                   </div>
                 </div>
