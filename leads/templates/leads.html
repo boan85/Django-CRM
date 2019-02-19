@@ -132,13 +132,13 @@
                                             <thead>
                                             {% if open_leads|length > 0 %}
                                                 <tr>
-                                                    <th style="color: ghostwhite" width="5%">ID</th>
-                                                    <th style="color: ghostwhite" width="10%">Name</th>
-                                                    <th style="color: ghostwhite" width="10%">Status</th>
-                                                    <th style="color: ghostwhite" width="20%">Assigned User</th>
-                                                    <th style="color: ghostwhite" width="20%">Tags</th>
-                                                    <th style="color: ghostwhite" width="15%">Created On</th>
-                                                    <th style="color: ghostwhite" width="10%">Actions</th>
+                                                    <th width="5%">ID</th>
+                                                    <th width="10%">Name</th>
+                                                    <th width="10%">Status</th>
+                                                    <th width="20%">Assigned User</th>
+                                                    <th width="20%">Tags</th>
+                                                    <th width="15%">Created On</th>
+                                                    <th width="10%">Actions</th>
                                                 </tr>
                                             {% endif %}
                                             </thead>
@@ -150,12 +150,12 @@
                                             {% endif %}
                                             {% for lead in open_leads %}
                                                 <tr class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'leads:view_lead' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ lead.get_status_display }}</td>
-                                                    <td style="color: ghostwhite">
+                                                    <td>{{ lead.get_status_display }}</td>
+                                                    <td>
                                                         {% with lead_users=lead.assigned_to.all %}
                                                             {% if lead_users %}
                                                                 {% for user in lead_users %}
@@ -166,7 +166,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td style="display: flex; color: ghostwhite ">
+                                                    <td>
                                                         {% with tags=lead.tags.all %}
                                                             {% if tags %}
                                                                 {% for tag in tags %}
@@ -178,7 +178,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ lead.created_on }}</td>
+                                                    <td>{{ lead.created_on }}</td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}"
                                                            class="btn my-button-edit edit"><i
@@ -216,13 +216,13 @@
                                             <thead>
                                             {% if close_leads|length > 0 %}
                                                 <tr>
-                                                    <th style="color: ghostwhite" width="5%">ID</th>
-                                                    <th style="color: ghostwhite" width="10%">Name</th>
-                                                    <th style="color: ghostwhite" width="10%">Status</th>
-                                                    <th style="color: ghostwhite" width="20%">Assigned User</th>
-                                                    <th style="color: ghostwhite" width="20%">Tags</th>
-                                                    <th style="color: ghostwhite" width="15%">Created On</th>
-                                                    <th style="color: ghostwhite" width="10%">Actions</th>
+                                                    <th width="5%">ID</th>
+                                                    <th width="10%">Name</th>
+                                                    <th width="10%">Status</th>
+                                                    <th width="20%">Assigned User</th>
+                                                    <th width="20%">Tags</th>
+                                                    <th width="15%">Created On</th>
+                                                    <th width="10%">Actions</th>
                                                 </tr>
                                             {% endif %}
                                             </thead>
@@ -234,12 +234,12 @@
                                             {% endif %}
                                             {% for lead in close_leads %}
                                                 <tr class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'leads:view_lead' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ lead.get_status_display }}</td>
-                                                    <td style="color: ghostwhite">
+                                                    <td>{{ lead.get_status_display }}</td>
+                                                    <td>
                                                         {% with lead_users=lead.assigned_to.all %}
                                                             {% if lead_users %}
                                                                 {% for user in lead_users %}
@@ -250,7 +250,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td style="display: flex; color: ghostwhite">
+                                                    <td>
                                                         {% with tags=lead.tags.all %}
                                                             {% if tags %}
                                                                 {% for tag in tags %}
@@ -262,7 +262,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ lead.created_on }}</td>
+                                                    <td>{{ lead.created_on }}</td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}">
                                                             <button class="btn my-button-edit">

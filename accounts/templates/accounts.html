@@ -122,14 +122,14 @@
                                                 <thead>
                                                 {% if open_accounts|length > 0 %}
                                                     <tr>
-                                                        <th style="color: ghostwhite" width="5%">ID</th>
-                                                        <th style="color: ghostwhite" width="15%">Name</th>
-                                                        <th style="color: ghostwhite" width="15%">City</th>
-                                                        <th style="color: ghostwhite" width="15%">State</th>
-                                                        <th style="color: ghostwhite" width="15%">Assigned To</th>
-                                                        <th style="color: ghostwhite" width="15%">Industry</th>
-                                                        <th style="color: ghostwhite" width="10%">Tags</th>
-                                                        <th style="color: ghostwhite" width="10%">Actions</th>
+                                                        <th width="5%">ID</th>
+                                                        <th width="15%">Name</th>
+                                                        <th width="15%">City</th>
+                                                        <th width="15%">State</th>
+                                                        <th width="15%">Assigned To</th>
+                                                        <th width="15%">Industry</th>
+                                                        <th width="10%">Tags</th>
+                                                        <th width="10%">Actions</th>
                                                     </tr>
                                                 {% endif %}
                                                 </thead>
@@ -141,17 +141,17 @@
                                                 {% endif %}
                                                 {% for each_account in open_accounts %}
                                                     <tr id="account_details{{ each_account.id }}" class="text-center">
-                                                        <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                        <td scope="row">{{ forloop.counter }}</td>
                                                         <td>{% if each_account.name %}
                                                             <a href="{% url 'accounts:view_account' each_account.id %}">{{ each_account.name }}</a>{% endif %}
                                                         </td>
-                                                        <td style="color: ghostwhite" >{% if each_account.billing_address.city %}
+                                                        <td>{% if each_account.billing_address.city %}
                                                             {{ each_account.billing_address.city }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="color: ghostwhite" >{% if each_account.billing_address.state %}
+                                                        <td>{% if each_account.billing_address.state %}
                                                             {{ each_account.billing_address.state }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="color: ghostwhite" >
+                                                        <td>
                                                             {% with assigned_users=each_account.assigned_to.all %}
                                                                 {% if assigned_users %}
                                                                     {% for user in assigned_users %}
@@ -163,10 +163,10 @@
                                                                 {% endif %}
                                                             {% endwith %}
                                                         </td>
-                                                        <td style="color: ghostwhite" >{% if each_account.industry %}
+                                                        <td >{% if each_account.industry %}
                                                             {{ each_account.industry }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="display: block; color: ghostwhite">
+                                                        <td>
                                                             {% with tags=each_account.tags.all %}
                                                                 {% if tags %}
                                                                     {% for tag in tags %}
@@ -217,14 +217,14 @@
                                                 <thead>
                                                 {% if close_accounts|length > 0 %}
                                                     <tr>
-                                                        <th style="color: ghostwhite" width="5%">ID</th>
-                                                        <th style="color: ghostwhite" width="15%">Name</th>
-                                                        <th style="color: ghostwhite" width="10%">City</th>
-                                                        <th style="color: ghostwhite" width="10%">State</th>
-                                                        <th style="color: ghostwhite" width="22%">Assigned To</th>
-                                                        <th style="color: ghostwhite" width="10%">Industry</th>
-                                                        <th style="color: ghostwhite" width="18%">Tags</th>
-                                                        <th style="color: ghostwhite" width="15%">Actions</th>
+                                                        <th width="5%">ID</th>
+                                                        <th width="15%">Name</th>
+                                                        <th width="10%">City</th>
+                                                        <th width="10%">State</th>
+                                                        <th width="22%">Assigned To</th>
+                                                        <th width="10%">Industry</th>
+                                                        <th width="18%">Tags</th>
+                                                        <th width="15%">Actions</th>
                                                     </tr>
                                                 {% endif %}
                                                 </thead>
@@ -236,17 +236,17 @@
                                                 {% endif %}
                                                 {% for each_account in close_accounts %}
                                                     <tr id="account_details{{ each_account.id }}">
-                                                        <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                        <td scope="row">{{ forloop.counter }}</td>
                                                         <td>{% if each_account.name %}
                                                             <a href="{% url 'accounts:view_account' each_account.id %}">{{ each_account.name }}</a>{% endif %}
                                                         </td>
-                                                        <td style="color: ghostwhite">{% if each_account.billing_address.city %}
+                                                        <td>{% if each_account.billing_address.city %}
                                                             {{ each_account.billing_address.city }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="color: ghostwhite">{% if each_account.billing_address.state %}
+                                                        <td>{% if each_account.billing_address.state %}
                                                             {{ each_account.billing_address.state }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="color: ghostwhite">
+                                                        <td>
                                                             {% with assigned_users=each_account.assigned_to.all %}
                                                                 {% if assigned_users %}
                                                                     {% for user in assigned_users %}
@@ -258,10 +258,10 @@
                                                                 {% endif %}
                                                             {% endwith %}
                                                         </td>
-                                                        <td style="color: ghostwhite">{% if each_account.industry %}
+                                                        <td>{% if each_account.industry %}
                                                             {{ each_account.industry }} {% else %} Not
                                                             specified {% endif %}</td>
-                                                        <td style="display: block; color: ghostwhite">
+                                                        <td>
                                                             {% with tags=each_account.tags.all %}
                                                                 {% if tags %}
                                                                     {% for tag in tags %}

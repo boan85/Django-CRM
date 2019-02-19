@@ -83,13 +83,13 @@
                             <table class="table">
                                 <thead>
                                 {% if contact_obj_list|length > 0 %}
-                                    <tr class="ghost-color">
-                                        <th style="color: ghostwhite" width="5%">S.no</th>
-                                        <th style="color: ghostwhite" width="20%">Name</th>
-                                        <th style="color: ghostwhite" width="20%">Company</th>
-                                        <th style="color: ghostwhite" width="15%">City</th>
-                                        <th style="color: ghostwhite" width="15%">State</th>
-                                        <th style="color: ghostwhite" width="15%">Actions</th>
+                                    <tr>
+                                        <th width="5%">S.no</th>
+                                        <th width="20%">Name</th>
+                                        <th width="20%">Company</th>
+                                        <th width="15%">City</th>
+                                        <th width="15%">State</th>
+                                        <th width="15%">Actions</th>
                                     </tr>
                                 {% endif %}
                                 </thead>
@@ -100,26 +100,26 @@
                                     {% paginate 10 contact_obj_list %}
                                 {% endif %}
                                 {% for contact in contact_obj_list %}
-                                    <tr style="text-align:center;" class="tr-ghost">
-                                        <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
-                                        <td style="color: ghostwhite" class="ghost-color">
+                                    <tr>
+                                        <td scope="row">{{ forloop.counter }}</td>
+                                        <td class="ghost-color">
                                             <a href="{% url 'contacts:view_contact' contact.id %}">{{ contact.first_name }}</a>
                                         </td>
-                                        <td style="color: ghostwhite">
+                                        <td>
                                             {% if contact.company %}
                                                 <a href="{% url 'accounts:view_account' contact.company.id %}">{{ contact.company }}</a>
                                             {% else %}
                                                 No Related Company
                                             {% endif %}
                                         </td>
-                                        <td style="color: ghostwhite">
+                                        <td>
                                             {% if contact.address.city %}
                                                 {{ contact.address.city }}
                                             {% else %}
                                                 Not Specified
                                             {% endif %}
                                         </td>
-                                        <td style="color: ghostwhite">
+                                        <td>
                                             {% if contact.address.state %}
                                                 {{ contact.address.state }}
                                             {% else %}

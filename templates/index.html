@@ -129,31 +129,29 @@
             <!-- count_blocks_row ends here -->
             <div class="open_sections row">
                 <div class="col-md-6 table_container_row">
-                    <div class="card" style="background-color: #576b75;">
-                        <div class="card-body">
+                    <div class="card">
+                        <div class="card-body crm-table">
                             <div class="my-table-title-bg my-table-color">
                                 <span>Open Companies</span>
 
                             </div>
                             <div class="table-responsive">
-                                <table class="table" style="background-color: #576b75;">
+                                <table class="table">
                                     <thead>
                                     <tr>
-                                        <th width="45%" style="color: ghostwhite;">Name</th>
-                                        <th width="50%" style="color: ghostwhite;">Tags</th>
+                                        <th width="45%">Name</th>
+                                        <th width="50%">Tags</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for account in accounts|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'accounts:view_account' account.id %}"
-                                                   style="color: ghostwhite">{{ account.name }}</a></td>
+                                            <td><a href="{% url 'accounts:view_account' account.id %}">{{ account.name }}</a></td>
                                             <td style="display: block;">
                                                 {% for tag in account.tags.all|slice:'3' %}
-                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag"
-                                                          style="color: ghostwhite">{{ tag.name }}</span>
+                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>
                                                 {% empty %}
-                                                    <span class="text-left" style="color: ghostwhite">No Tags</span>
+                                                    <span class="text-left">No Tags</span>
                                                 {% endfor %}
                                                 {% if account.tags.all|length > 3 %}
                                                     <span class="text-left"
@@ -246,24 +244,22 @@
                                 <span>Open Opportunities</span>
                             </div>
                             <div class="table-responsive">
-                                <table class="table" style="background-color: #576b75;">
+                                <table class="table crm-table">
                                     <thead>
                                     <tr>
-                                        <th width="45%" style="color: ghostwhite">Name</th>
-                                        <th width="50%" style="color: ghostwhite">Tags</th>
+                                        <th width="45%">Name</th>
+                                        <th width="50%">Tags</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for opportunity in opportunities|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}"
-                                                   style="color: ghostwhite">{{ opportunity.name }}</a></td>
+                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}">{{ opportunity.name }}</a></td>
                                             <td style="display: block;">
                                                 {% for tag in opportunity.tags.all|slice:'3' %}
-                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag"
-                                                          style="color: ghostwhite">{{ tag.name }}</span>
+                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>
                                                 {% empty %}
-                                                    <span class="text-left" style="color: ghostwhite">No Tags</span>
+                                                    <span class="text-left">No Tags</span>
                                                 {% endfor %}
                                                 {% if opportunity.tags.all|length > 3 %}
                                                     {{ opportunity.tags.all|length|subtract:'3' }}<span>+</span>

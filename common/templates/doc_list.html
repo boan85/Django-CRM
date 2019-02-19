@@ -69,11 +69,11 @@
               <thead>
                 {% if documents|length > 0 %}
                 <tr>
-                  <th style="color: ghostwhite">S.No</th>
-                  <th style="color: ghostwhite">Title</th>
-                  <th style="color: ghostwhite">Created By</th>
-                  <th style="color: ghostwhite">Status</th>
-                  <th style="color: ghostwhite">Actions</th>
+                  <th>S.No</th>
+                  <th>Title</th>
+                  <th>Created By</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
                 {% endif %}
               </thead>
@@ -85,10 +85,10 @@
                 {% endif %}
                 {% for document in documents %}
                 <tr id="account_details{{each_account.id}}" class="text-center">
-                  <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                  <td scope="row">{{ forloop.counter }}</td>
                   <td>{% if document.title %}<a href="{% url 'common:view_doc' document.id %}">{{ document.title }}</a>{% endif %}</td>
-                  <td style="color: ghostwhite">{{document.created_by}}</td>
-                  <td style="color: ghostwhite">{{document.status}}</td>
+                  <td>{{document.created_by}}</td>
+                  <td>{{document.status}}</td>
                   <td class="actions">
                     <a href="{% url 'common:edit_doc' document.id %}" class="btn my-button-edit edit"><i class="fas fa-pencil-alt"></i></a>
                     <a href="{% url 'common:remove_doc' document.id %}" class="btn my-button-delete delete remove_document"><i class="fas fa-trash-alt"></i></a>

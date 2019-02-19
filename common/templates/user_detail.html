@@ -2,7 +2,6 @@
 {% load staticfiles %}
 {% block breadcrumb %}
     {% load thumbnail %}
-    <link href="{% static 'css/main.scss' %}" rel="stylesheet">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'common:users_list' %}">Users</a></li>
@@ -16,7 +15,7 @@
     <div class="main_container" id="maincontainer">
         <div class="overview_form_block row marl justify-content-center">
             <div class="col-md-8">
-                <div class="card bg-color">
+                <div class="card crm-table">
                     <div class="card-body" id="datashow">
                         <div class="my-table-title-bg my-table-color text-right">
                             <h5>
@@ -37,9 +36,9 @@
                                 {% if user_obj.first_name %}
                                     <div class="filter_col col-md-12" id="iname">
                                         <div class="form-group">
-                                            <label class="acc_field_label" for="id_name" data-name="name">First
-                                                Name</label>
-                                            <div class="account_field ghost-color" id="account_name"
+                                            <label class="acc_field_label" for="id_name" data-name="name">
+                                                <div class="my-label-color">First Name</div></label>
+                                            <div class="account_field" id="account_name"
                                                  data-name="name">{{ user_obj.first_name }}</div>
                                         </div>
                                     </div>
@@ -47,9 +46,9 @@
                                 {% if user_obj.last_name %}
                                     <div class="filter_col col-md-12">
                                         <div class="form-group">
-                                            <label class="acc_field_label" for="id_phone" data-name="name">Last
-                                                Name</label>
-                                            <div class="account_field ghost-color" id="account_phone"
+                                            <label class="acc_field_label" for="id_phone" data-name="name">
+                                                <div class="my-label-color">Last Name</div></label>
+                                            <div class="account_field" id="account_phone"
                                                  data-name="name">{{ user_obj.last_name }}</div>
                                         </div>
                                     </div>
@@ -57,8 +56,9 @@
                                 {% if user_obj.email %}
                                     <div class="filter_col col-md-12">
                                         <div class="form-group">
-                                            <label class="acc_field_label" for="id_email" data-name="name">Email</label>
-                                            <div class="account_field ghost-color" id="account_email"
+                                            <label class="acc_field_label" for="id_email" data-name="name">
+                                                <div class="my-label-color">Email</div></label>
+                                            <div class="account_field" id="account_email"
                                                  data-name="name">{{ user_obj.email }}</div>
                                         </div>
                                     </div>
@@ -67,8 +67,8 @@
                                     <div class="filter_col col-md-12">
                                         <div class="form-group">
                                             <label class="acc_field_label" for="id_website"
-                                                   data-name="name">Username</label>
-                                            <div class="account_field ghost-color" id="account_website"
+                                                   data-name="name"><div class="my-label-color">Username</div></label>
+                                            <div class="account_field" id="account_website"
                                                  data-name="name">{{ user_obj.username }}</div>
                                         </div>
                                     </div>
@@ -77,8 +77,8 @@
                                     <div class="filter_col col-md-12">
                                         <div class="form-group">
                                             <label class="acc_field_label" for="id_industry"
-                                                   data-name="name">Role</label>
-                                            <div class="account_field ghost-color" id="account_industry"
+                                                   data-name="name"><div class="my-label-color">Role</div></label>
+                                            <div class="account_field" id="account_industry"
                                                  data-name="name">{{ user_obj.role }}</div>
                                         </div>
                                     </div>
@@ -108,8 +108,8 @@
                 <br>
                 <div class="row no-gutters" style="margin-bottom: 1.5rem;">
                     <div class="col-md-12">
-                        <div class="card crm-secondary">
-                            <div class="card-body">
+                        <div class="card">
+                            <div class="card-body crm-table">
                                 {#                                <div class="panel-heading-list my-table-title-bg view-pad">#}
                                 {#                                    <div class="text-right my-table-title-bg my-table-color">#}
                                 <div class="my-table-title-bg my-table-color text-left">
@@ -120,11 +120,10 @@
                                 <div class="row marl">
                                     <div class="col-md-12">
                                         <form id="comment_form" method="POST" enctype="multipart/form-data">
-                                            <div class="form-group crm-secondary">
-                                                <textarea class="form-control crm-secondary" textarea cols="40" rows="3"
+                                            <div class="form-group">
+                                                <textarea class="form-control" textarea cols="40" rows="3"
                                                           id="id_comments" name="comment"
-                                                          placeholder="Submit Your Comments Here"
-                                                          style="background-color: #4f616a; color: ghostwhite"></textarea>
+                                                          placeholder="Submit Your Comments Here"></textarea>
                                                 <div><i id="CommentError" style="display:none; color:red"></i></div>
                                                 </br>
                                                 <div class="buttons_row">
@@ -137,8 +136,7 @@
                                         </form>
                                         <ul class="list-group" id="comments_div">
                                             {% for comment in comments %}
-                                                <li class="list-group-item list-row" id="comment{{ comment.id }}"
-                                                    style="background-color: #576b75;">
+                                                <li class="list-group-item list-row" id="comment{{ comment.id }}">
                                                     {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                                                         <div class="list-row-buttons btn-group float-right">
                                                             <button class="btn my-button-action dropdown-toggle"
@@ -159,12 +157,11 @@
                                                     {% endif %}
                                                     <div class="stream-post-container"
                                                          id="comment_name{{ comment.id }}">
-                                                        <pre style="color: ghostwhite">{{ comment.comment }}</pre>
+                                                        <pre>{{ comment.comment }}</pre>
                                                     </div>
                                                     <div class="stream-container">
-                                                        <pre style="color: ghostwhite"
-                                                             class="float-left">{{ comment.commented_by }}</pre>
-                                                        <pre class="float-right date">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                                                        <pre class="float-left">{{ comment.commented_by }}</pre>
+                                                        <pre class="float-right date"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                                                     </div>
                                                 </li>
                                             {% endfor %}
@@ -175,17 +172,16 @@
                                      data-backdrop="static">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
-                                            <div class="modal-header" style="background-color: #576b75">
+                                            <div class="modal-header">
                                                 <h4 class="modal-title">Update Your Comment</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">&times;
                                                 </button>
                                             </div>
                                             <form id="comment_edit_form" method="POST">
-                                                <div class="modal-body" style="background-color: #576b75">
+                                                <div class="modal-body">
                                                     <div class="form-group">
                                                         <textarea class="form-control" textarea cols="40" rows="3"
-                                                                  style="background-color: #4f616a; color: ghostwhite"
                                                                   id="id_editcomment" name="comment"
                                                                   placeholder="Submit Your Comments"></textarea><span><i
                                                             id="CommentEditError"
@@ -194,8 +190,7 @@
                                                         <input type="hidden" value="" name="commentid" id="commentid">
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer"
-                                                     style="background-color: #576b75; color: ghostwhite">
+                                                <div class="modal-footer">
                                                     <button class="btn my-button-update" id="comment_edit"
                                                             type="submit">Update
                                                     </button>
@@ -211,8 +206,8 @@
                 <form method='GET' class="accountdetails_row">
                     <div class="table_container_row row marl no-gutters">
                         <div class="col-md-12">
-                            <div class="card crm-secondary">
-                                <div class="card-body">
+                            <div class="card">
+                                <div class="card-body crm-table">
                                     <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Companies
                                     </div>
@@ -221,23 +216,22 @@
                                             {% if accounts|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th style="color: ghostwhite" width="5%">S.No</th>
-                                                    <th style="color: ghostwhite" width="25%">Account Name</th>
-                                                    <th style="color: ghostwhite" width="20%">Phone</th>
-                                                    <th style="color: ghostwhite" width="25%">Email</th>
+                                                    <th width="5%">S.No</th>
+                                                    <th width="25%">Account Name</th>
+                                                    <th width="20%">Phone</th>
+                                                    <th width="25%">Email</th>
                                                 </tr>
                                                 </thead>
                                             {% endif %}
                                             <tbody>
                                             {% for account in accounts %}
                                                 <tr id="contacts_details{{ account.id }}" class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'accounts:view_account' account.id %}">{{ account.name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite"
-                                                        class="ghost-color">{{ account.phone }}</td>
-                                                    <td style="color: ghostwhite">{{ account.email }}</td>
+                                                    <td>{{ account.phone }}</td>
+                                                    <td>{{ account.email }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -256,7 +250,7 @@
                     <div class="table_container_row row marl no-gutters">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body crm-secondary">
+                                <div class="card-body crm-table">
                                     <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Contacts
                                     </div>
@@ -265,22 +259,22 @@
                                             {% if contacts|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th style="color: ghostwhite" width="5%">S.No</th>
-                                                    <th style="color: ghostwhite" width="25%">Contact Name</th>
-                                                    <th style="color: ghostwhite" width="20%">Phone</th>
-                                                    <th style="color: ghostwhite" width="25%">Email</th>
+                                                    <th width="5%">S.No</th>
+                                                    <th width="25%">Contact Name</th>
+                                                    <th width="20%">Phone</th>
+                                                    <th width="25%">Email</th>
                                                 </tr>
                                                 </thead>
                                             {% endif %}
                                             <tbody>
                                             {% for contact in contacts %}
                                                 <tr id="contacts_details{{ contact.id }}" class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'contacts:view_contact' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ contact.phone }}</td>
-                                                    <td style="color: ghostwhite">{{ contact.email }}</td>
+                                                    <td>{{ contact.phone }}</td>
+                                                    <td>{{ contact.email }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -299,7 +293,7 @@
                     <div class="table_container_row row marl no-gutters">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body crm-secondary">
+                                <div class="card-body crm-table">
                                     <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Opportunities
                                     </div>
@@ -308,13 +302,13 @@
                                             {% if opportunity_list|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th width="5%" style="text-align:center; color: ghostwhite">S.No
+                                                    <th width="5%" style="text-align:center;">S.No
                                                     </th>
-                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name
+                                                    <th width="30%" style="text-align:center;">Name
                                                     </th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">Stage
+                                                    <th width="20%" style="text-align:center;">Stage
                                                     </th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                    <th width="20%" style="text-align:center;">
                                                         Probability
                                                     </th>
                                                 </tr>
@@ -323,12 +317,12 @@
                                             <tbody>
                                             {% for opportunity in opportunity_list %}
                                                 <tr id="opp_details{{ opportunity.id }}" class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'opportunities:opp_view' opportunity.id %}">{{ opportunity.name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ opportunity.stage }}</td>
-                                                    <td style="color: ghostwhite">{{ opportunity.probability }}
+                                                    <td>{{ opportunity.stage }}</td>
+                                                    <td>{{ opportunity.probability }}
                                                         {% if opportunity.probability %}
                                                             % {% endif %}</td>
                                                 </tr>
@@ -349,7 +343,7 @@
                     <div class="table_container_row row marl no-gutters">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body crm-secondary">
+                                <div class="card-body crm-table">
                                     <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Cases
                                     </div>
@@ -358,14 +352,14 @@
                                             {% if cases|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th width="5%" style="text-align:center; color: ghostwhite">S.No
+                                                    <th width="5%" style="text-align:center;">S.No
                                                     </th>
-                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name
+                                                    <th width="30%" style="text-align:center;">Name
                                                     </th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                    <th width="20%" style="text-align:center;">
                                                         Status
                                                     </th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                    <th width="20%" style="text-align:center;">
                                                         Priority
                                                     </th>
                                                 </tr>
@@ -374,12 +368,12 @@
                                             <tbody>
                                             {% for case in cases %}
                                                 <tr id="cases_details{{ case.id }}" class="text-center">
-                                                    <td style="color: ghostwhite" scope="row">{{ forloop.counter }}</td>
+                                                    <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
                                                         <a href="{% url 'cases:view_case' case.id %}">{{ case.name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite">{{ case.status }}</td>
-                                                    <td style="color: ghostwhite">{{ case.priority }}</td>
+                                                    <td>{{ case.status }}</td>
+                                                    <td>{{ case.priority }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

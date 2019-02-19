@@ -16,16 +16,16 @@
     <form id="add_form" method="POST" action="" novalidate>
         <div class="overview_form_block row marl justify-content-center">
             <div class="col-lg-7">
-                <div class="card"  style="background-color: #576b75; color: ghostwhite">
-                    <div class="card-body">
+                <div class="card">
+                    <div class="card-body crm-table">
                         <div class="my-table-color my-table-title-bg">
                             {% if user_obj %}EDIT{% else %}CREATE{% endif %} USER
                         </div>
-                        <div class="row marl" style="background-color: #576b75; color: ghostwhite">
+                        <div class="row marl">
                             <div class="filter_col col-md-4">
                                 <div class="form-group">
-                                    <label for="id_firstname">First Name{% if user_form.first_name.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="id_firstname"><div class="my-label-color">First Name{% if user_form.first_name.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     <input type="text" class="form-control" name="first_name" value="
                                             {% if user_obj %}{{ user_obj.first_name }}{% else %}{{ request.POST.first_name }}{% endif %}">
                                 </div>
@@ -33,8 +33,8 @@
                             </div>
                             <div class="filter_col col-md-4">
                                 <div class="form-group">
-                                    <label for="id_lastname">Last Name{% if user_form.last_name.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="id_lastname"><div class="my-label-color">Last Name{% if user_form.last_name.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     <input type="text" class="form-control" name="last_name" value="
                                             {% if user_obj %}{{ user_obj.last_name }}{% else %}{{ request.POST.last_name }}{% endif %}"
                                            placeholder="Last Name">
@@ -43,8 +43,8 @@
                             </div>
                             <div class="filter_col col-md-4">
                                 <div class="form-group">
-                                    <label for="id_username">Username{% if user_form.username.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="id_username"><div class="my-label-color">Username{% if user_form.username.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     <input type="text" class="form-control" name="username" value="
                                             {% if user_obj %}{{ user_obj.username }}{% else %}{{ request.POST.username }}{% endif %}"
                                            placeholder="Username">
@@ -53,8 +53,8 @@
                             </div>
                             <div class="filter_col col-md-6" {% if user_obj %} style="display: none;" {% endif %}>
                                 <div class="form-group">
-                                    <label for="id_email">Email Address{% if user_form.email.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="id_email"><div class="my-label-color">Email Address{% if user_form.email.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     <input type="text" class="form-control" name="email" value="
                                             {% if user_obj %}{{ user_obj.email }}{% else %}{{ request.POST.email }}{% endif %}"
                                             {% if user_obj %} readonly=""{% endif %} placeholder="Email">
@@ -64,8 +64,8 @@
                             <div class="filter_col col-md-6"
                                  {% if request.user.role != 'ADMIN' and not request.user.is_superuser or request.user.id == user_obj.id %}style="display:none;"{% endif %}>
                                 <div class="form-group">
-                                    <label for="id_role">User Role{% if user_form.role.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="id_role"><div class="my-label-color">User Role{% if user_form.role.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     {% if request.user.role == 'ADMIN' or request.user.is_superuser %}
                                         <select name="role" class="form-control">
                                             {% for key, value in form.role.field.choices %}
@@ -84,8 +84,8 @@
                             </div>
                             <div class="filter_col col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Password{% if user_form.password.field.required %}
-                                        <span class="error">*</span>{% endif %}</label>
+                                    <label for="exampleInputEmail1"><div class="my-label-color">Password{% if user_form.password.field.required %}
+                                        <span class="error">*</span>{% endif %}</div></label>
                                     <input type="password" class="form-control" name="password"
                                            value="{{ request.POST.password }}" placeholder="Password">
                                 </div>
@@ -93,10 +93,10 @@
                             </div>
                             <div class="filter_col col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Upload Profile Picture
+                                    <label for="exampleInputEmail1"><div class="my-label-color">Upload Profile Picture
                                         {% if user_form.profile_pic.field.required %}
-                                            <span class="error">*</span>{% endif %}</label>
-                                    <input type="file" name="profile_pic" style="background-color: #576b75; color: ghostwhite" accept="image/*" class="form-control button"/>
+                                            <span class="error">*</span>{% endif %}</div></label>
+                                    <input type="file" name="profile_pic" accept="image/*" class="form-control button"/>
                                 </div>
                                 {% if user_obj %}<span>{{ user_obj.profile_pic }}</span>{% endif %}
                                 <span class="error" id="id_profile_pic">{{ errors.profile_pic }}</span>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <p style="color:red" id="forbiden_error"></p>
-                    <div class="row marl buttons_row form_btn_row text-center"  style="background-color: #576b75; color: ghostwhite">
+                    <div class="row marl buttons_row form_btn_row text-center">
                         <button class="btn my-button-save" type="submit">Save</button>
                         <a href="
                                 {% if not user_obj or request.user.is_superuser or request.user.role == 'ADMIN' %}{% url 'common:users_list' %}{% else %}{% url 'common:profile' %}{% endif %}">
