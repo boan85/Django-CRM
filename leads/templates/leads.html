@@ -179,7 +179,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td>{{ lead.created_on }}</td>
+                                                    <td><div class="my-date-color">{{ lead.created_on }}</div></td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}"
                                                            class="btn my-button-edit edit"><i
@@ -263,7 +263,7 @@
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td>{{ lead.created_on }}</td>
+                                                    <td><div class="my-date-color">{{ lead.created_on }}</div></td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}">
                                                             <button class="btn my-button-edit">

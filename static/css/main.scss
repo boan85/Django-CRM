@@ -5,11 +5,20 @@
 }
 
 .bg-color {
-  background-color: #27425B;
-  opacity: 0.7;
+  background-color: #29455D;
+  opacity: 0.9;
 }
 
-.my-footer-bg {
+.my-footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 75px;
+  width: 100%;
+  background: #12314B;
+}
+
+.my-header-bg {
   background-color: #27425B;
 }
 
@@ -18,7 +27,6 @@
   width: 100%;
   text-align: center;
   padding: 5px 10px !important;
-  padding: 6px 10px;
   font-size: 1rem;
   margin-bottom: 0;
   font-weight: 600;
@@ -51,7 +59,7 @@
 }
 
 .my-label-color {
-  color: black;
+  color: #919191;
 }
 
 .links_and_buttons {
@@ -380,12 +388,13 @@ a {
 
 header {
   .navbar {
-    background: #4f616a;
-    background-image: url("../images/bg-pattern-2.png");
+    background: #27425B;
+    opacity: 0.7;
     border: 1px solid #576b75;
     padding: 0 15px;
     .navbar-brand {
-      color: $text_color, 10%;
+      color: #3970A7;
+      //color: $text_color, 10%;
       font-weight: 600;
       margin-right: 50px;
       &:hover {
@@ -395,7 +404,8 @@ header {
     .navbar-nav {
       .nav-item {
         a {
-          color: $text_color, 5% !important;
+          color: #919191 !important;
+          //color: $text_color, 5% !important;
           font-weight: 500;
           font-size: 0.9rem;
           padding: 10px 15px;
@@ -1031,7 +1041,7 @@ $color_2: #000;
 }
 
 .select2-container--default .select2-selection--multiple {
-  border-radius: 0 important;
+  border-radius: 0 !important;
   border: none !important;
 }
 
