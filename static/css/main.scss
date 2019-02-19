@@ -6,6 +6,7 @@
 
 .bg-color {
   background-color: #27425B;
+  opacity: 0.7;
 }
 
 .my-footer-bg {
@@ -59,6 +60,12 @@
 
 .my-date-color {
   color: #3979A7;
+}
+
+.my-tag-color {
+  background-color: #3970A7;
+  height: 100%;
+  width: 100%;
 }
 
 .my-button {
@@ -1118,7 +1125,11 @@ $color_2: #000;
   margin-bottom: 5px;
   border-radius: 2px;
   &.color1 {
-    background: darken($dark_sky, 5%);
+    background: #3970A7;
+    //background: darken($dark_sky, 5%);
+  }
+  &.color1:hover {
+    background: #336394;
   }
   &.red {
     background: darken($color_cerise_red_approx, 5%);

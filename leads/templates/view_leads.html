@@ -181,7 +181,7 @@
 
                               <div class="stream-container">
                                 <pre class="float-left">{{ attachment.created_by }}</pre>
-                                <pre class="float-right">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                                  <pre class="float-right"><div class="my-date-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                               </div>
                           </li>
                       {% endfor %}

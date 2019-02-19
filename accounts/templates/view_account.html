@@ -151,7 +151,7 @@
                                             <label class="acc_field_label" for="id_tags" data-name="name"><div class="my-label-color">Tags</div></label>
                                             <div class="account_field" id="account_tags" data-name="name">
                                                 {% for tag in account_record.tags.all %}
-                                                    <span class="text-left" id="list_tag">{{ tag.name }}</span>
+                                                    <span class="text-left color1" id="list_tag">{{ tag.name }}</span>
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -427,7 +427,7 @@
                         <div class="col-md-12">
                             <div class="card crm-table">
                                 <div class="card-body">
-                                    <div class="panel-heading-list card-title view-pad ">
+                                    <div class="panel-heading-list my-table-color my-table-title-bg text-left">
                                         Cases
                                         <a href="{% url 'cases:add_case' %}?view_account={{ account_record.id }}"><span
                                                 class="fa fa-plus pull-right"></span></a>

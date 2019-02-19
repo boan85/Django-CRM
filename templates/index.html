@@ -146,15 +146,17 @@
                                     <tbody>
                                     {% for account in accounts|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'accounts:view_account' account.id %}"><div class="links_and_buttons">{{ account.name }}</div></a></td>
+                                            <td><a href="{% url 'accounts:view_account' account.id %}">
+                                                <div class="links_and_buttons">{{ account.name }}</div>
+                                            </a></td>
                                             <td style="display: block;">
                                                 {% for tag in account.tags.all|slice:'3' %}
-                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>
+                                                    <span class="text-left color1" id="list_tag">{{ tag.name }}</span>
                                                 {% empty %}
                                                     <span class="text-left">No Tags</span>
                                                 {% endfor %}
                                                 {% if account.tags.all|length > 3 %}
-                                                    <span class="text-left"
+                                                    <span class="text-left color1"
                                                           id="list_tag">{{ account.tags.all|length|subtract:'3' }}<span>+</span></span>
                                                 {% endif %}
                                             </td>
@@ -254,15 +256,18 @@
                                     <tbody>
                                     {% for opportunity in opportunities|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}"><div class="links_and_buttons">{{ opportunity.name }}</div></a></td>
+                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}">
+                                                <div class="links_and_buttons">{{ opportunity.name }}</div>
+                                            </a></td>
                                             <td style="display: block;">
                                                 {% for tag in opportunity.tags.all|slice:'3' %}
-                                                    <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>
+                                                    <span class="text-left color1" id="list_tag">{{ tag.name }}</span>
                                                 {% empty %}
                                                     <span class="text-left">No Tags</span>
                                                 {% endfor %}
                                                 {% if opportunity.tags.all|length > 3 %}
-                                                    {{ opportunity.tags.all|length|subtract:'3' }}<span>+</span>
+                                                    <span class="text-left color1"
+                                                          id="list_tag">{{ account.tags.all|length|subtract:'3' }}<span>+</span></span>
                                                 {% endif %}
                                             </td>
                                         </tr>

@@ -67,7 +67,7 @@
                 <div class="filter_col col-md-12">
                   <div class="form-group">
                     {% if contact_record.address.address_line or contact_record.address.street or contact_record.address.city or  contact_record.address.state or contact_record.address.postcode or contact_record.address.country %}
-                    <label class="contact_field_label" for="id_address" data-name="name" >Billing Address</label>
+                        <label class="contact_field_label" for="id_address" data-name="name"><div class="my-label-color">Billing Address</div></label>
                     <div class="contact_field" id="contact_address" data-name="name">
                       {{contact_record.address.get_complete_address}}
                     </div>
@@ -77,7 +77,7 @@
                 <div class="filter_col col-md-12">
                   <div class="form-group">
                     {% if contact_record.description %}
-                    <label class="contact_field_label" for="id_description" data-name="name">Description</label>
+                    <label class="contact_field_label" for="id_description" data-name="name"><div class="my-label-color">Description</div></label>
                     <div class="contact_field" id="contact_description" data-name="name">{{ contact_record.description }}</div>
                     {% endif %}
                   </div>
@@ -127,7 +127,7 @@
 
                               <div class="stream-container">
                                 <pre class="float-left">{{ attachment.created_by }}</pre>
-                                <pre class="float-right date">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                                  <pre class="float-right date"><div class="my-date-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                               </div>
                           </li>
                       {% endfor %}
