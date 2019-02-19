@@ -161,7 +161,7 @@
                             <div class="col-md-12">
                                 <div class="created_information">
                                     Created by <b>{{ account_record.created_by }}</b> created on
-                                    <i><b>{{ account_record.created_on }}</b></i>
+                                    <i><b class="my-date-color">{{ account_record.created_on }}</b></i>
                                 </div>
                             </div>
                             <div class="col-md-12 " style="padding:0">
@@ -271,7 +271,7 @@
                                                         </div>
                                                         <div class="stream-container">
                                                             <pre class="float-left">{{ comment.commented_by }}</pre>
-                                                            <pre class="float-right date"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
+                                                            <pre class="float-right date"><div class="my-date-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                                                         </div>
                                                     </li>
                                                 {% endfor %}

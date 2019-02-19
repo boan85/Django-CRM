@@ -146,7 +146,7 @@
                                     <tbody>
                                     {% for account in accounts|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'accounts:view_account' account.id %}">{{ account.name }}</a></td>
+                                            <td><a href="{% url 'accounts:view_account' account.id %}"><div class="links_and_buttons">{{ account.name }}</div></a></td>
                                             <td style="display: block;">
                                                 {% for tag in account.tags.all|slice:'3' %}
                                                     <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>
@@ -239,12 +239,12 @@
 
                 <div class="col-md-6 table_container_row">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body crm-table">
                             <div class="my-table-color my-table-title-bg">
                                 <span>Open Opportunities</span>
                             </div>
                             <div class="table-responsive">
-                                <table class="table crm-table">
+                                <table class="table">
                                     <thead>
                                     <tr>
                                         <th width="45%">Name</th>
@@ -254,7 +254,7 @@
                                     <tbody>
                                     {% for opportunity in opportunities|slice:"15" %}
                                         <tr>
-                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}">{{ opportunity.name }}</a></td>
+                                            <td><a href="{% url 'opportunity:opp_view' opportunity.id %}"><div class="links_and_buttons">{{ opportunity.name }}</div></a></td>
                                             <td style="display: block;">
                                                 {% for tag in opportunity.tags.all|slice:'3' %}
                                                     <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>

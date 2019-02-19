@@ -161,7 +161,7 @@
                                                     </div>
                                                     <div class="stream-container">
                                                         <pre class="float-left">{{ comment.commented_by }}</pre>
-                                                        <pre class="float-right date"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
+                                                        <pre class="float-right date"><div class="my-date-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                                                     </div>
                                                 </li>
                                             {% endfor %}
@@ -228,7 +228,7 @@
                                                 <tr id="contacts_details{{ account.id }}" class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'accounts:view_account' account.id %}">{{ account.name }}</a>
+                                                        <a href="{% url 'accounts:view_account' account.id %}"><div class="links_and_buttons">{{ account.name }}</div></a>
                                                     </td>
                                                     <td>{{ account.phone }}</td>
                                                     <td>{{ account.email }}</td>
@@ -271,7 +271,8 @@
                                                 <tr id="contacts_details{{ contact.id }}" class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'contacts:view_contact' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a>
+                                                        <a href="{% url 'contacts:view_contact' contact.id %}"><div class="links_and_buttons">
+                                                            {{ contact.first_name }} {{ contact.last_name }}</div></a>
                                                     </td>
                                                     <td>{{ contact.phone }}</td>
                                                     <td>{{ contact.email }}</td>
@@ -319,7 +320,8 @@
                                                 <tr id="opp_details{{ opportunity.id }}" class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'opportunities:opp_view' opportunity.id %}">{{ opportunity.name }}</a>
+                                                        <a href="{% url 'opportunities:opp_view' opportunity.id %}"><div class="links_and_buttons">
+                                                            {{ opportunity.name }}</div></a>
                                                     </td>
                                                     <td>{{ opportunity.stage }}</td>
                                                     <td>{{ opportunity.probability }}
@@ -370,7 +372,7 @@
                                                 <tr id="cases_details{{ case.id }}" class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'cases:view_case' case.id %}">{{ case.name }}</a>
+                                                        <a href="{% url 'cases:view_case' case.id %}"><div class="links_and_buttons">{{ case.name }}</div></a>
                                                     </td>
                                                     <td>{{ case.status }}</td>
                                                     <td>{{ case.priority }}</td>

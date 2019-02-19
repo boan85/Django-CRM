@@ -86,7 +86,7 @@
                 {% for document in documents %}
                 <tr id="account_details{{each_account.id}}" class="text-center">
                   <td scope="row">{{ forloop.counter }}</td>
-                  <td>{% if document.title %}<a href="{% url 'common:view_doc' document.id %}">{{ document.title }}</a>{% endif %}</td>
+                    <td>{% if document.title %}<a href="{% url 'common:view_doc' document.id %}"><div class="links_and_buttons">{{ document.title }}</div></a>{% endif %}</td>
                   <td>{{document.created_by}}</td>
                   <td>{{document.status}}</td>
                   <td class="actions">

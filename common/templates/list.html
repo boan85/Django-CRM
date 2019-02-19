@@ -15,7 +15,7 @@
         <div class="table_container_row row marl">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body crm-table">
                         <div class="list text-right my-table-title-bg my-table-color ">
                             <span  class="float-left total_count">Users - {% if show_pageitems %} {% show_pageitems %}{% else %}
                                 {{ users|length }}{% endif %}</span>
@@ -24,7 +24,7 @@
             </span>
                         </div>
                         <div class="table-responsive">
-                            <table class="table crm-table">
+                            <table class="table">
                                 <thead>
                                 {% if users|length > 0 %}
                                     <tr>
@@ -44,7 +44,7 @@
                                 {% endif %}
                                 {% for user in users %}
                                     <tr class="text-center">
-                                        <td><a href="{% url 'common:view_user' user.id %}">{{ user.username }}</a></td>
+                                        <td><a href="{% url 'common:view_user' user.id %}"><div class="links_and_buttons">{{ user.username }}</div></a></td>
                                         <td>{{ user.email }}</td>
                                         <td class="user_role">{% if user.is_superuser %} Admin {% else %}
                                             {{ user.role }} {% endif %}</td>

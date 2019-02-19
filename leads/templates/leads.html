@@ -152,7 +152,8 @@
                                                 <tr class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'leads:view_lead' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a>
+                                                        <a href="{% url 'leads:view_lead' lead.id %}"><div class="links_and_buttons">
+                                                            {{ lead.first_name }} {{ lead.last_name }}</div></a>
                                                     </td>
                                                     <td>{{ lead.get_status_display }}</td>
                                                     <td>

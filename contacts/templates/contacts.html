@@ -103,11 +103,11 @@
                                     <tr>
                                         <td scope="row">{{ forloop.counter }}</td>
                                         <td class="ghost-color">
-                                            <a href="{% url 'contacts:view_contact' contact.id %}">{{ contact.first_name }}</a>
+                                            <a href="{% url 'contacts:view_contact' contact.id %}"><div class="links_and_buttons">{{ contact.first_name }}</div></a>
                                         </td>
                                         <td>
                                             {% if contact.company %}
-                                                <a href="{% url 'accounts:view_account' contact.company.id %}">{{ contact.company }}</a>
+                                                <a href="{% url 'accounts:view_account' contact.company.id %}"><div class="links_and_buttons">{{ contact.company }}</div></a>
                                             {% else %}
                                                 No Related Company
                                             {% endif %}

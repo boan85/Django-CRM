@@ -112,10 +112,10 @@
                 {% for case in cases %}
                 <tr class="case_row{{case.id}}" style="text-align:center;">
                   <td scope="row">{{ forloop.counter }}</td>
-                  <td><a href="{% url 'cases:view_case' case.id %}">{{ case.name }}</a></td>
+                    <td><a href="{% url 'cases:view_case' case.id %}"><div class="links_and_buttons">{{ case.name }}</div></a></td>
                   <td>
                     {% if case.account %}
-                    <a href="{% url  'accounts:view_account' case.account.id %}">{{ case.account }}</a>
+                        <a href="{% url  'accounts:view_account' case.account.id %}"><div class="links_and_buttons">{{ case.account }}</div></a>
                     {% else %}
                         <p style="color: ghostwhite">No Related Company</p>
                     {% endif %}

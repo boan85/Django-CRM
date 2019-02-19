@@ -126,7 +126,7 @@
             </div>
             <div class="col-md-12">
               <div class="created_information">
-                Created by <b>{{ opportunity_record.created_by }}</b> created on <i><b>{{ opportunity_record.created_on }}</b></i> 
+                Created by <b>{{ opportunity_record.created_by }}</b> created on <i><b class="my-date-color">{{ opportunity_record.created_on }}</b></i>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@
 
                     <div class="stream-container">
                       <pre class="float-left">{{ attachment.created_by }}</pre>
-                        <pre class="float-right date"><div class="my-label-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
+                        <pre class="float-right date"><div class="my-date-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                     </div>
                   </li>
                   {% endfor %}
@@ -217,7 +217,7 @@
                     </div>
                     <div class="stream-container">
                       <pre class="float-left">{{ comment.commented_by }}</pre>
-                        <pre class="float-right date"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
+                        <pre class="float-right date"><div class="my-date-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                     </div>
                   </li>
                   {% endfor %}

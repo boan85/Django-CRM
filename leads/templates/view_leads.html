@@ -138,7 +138,7 @@
             </div>
             <div class="col-md-12">
                 <div class="created_information">
-                  Created by <b>{{ lead_record.created_by }}</b> created on <i><b>{{ lead_record.created_on }}</b></i> 
+                  Created by <b>{{ lead_record.created_by }}</b> created on <i><b class="my-date-color">{{ lead_record.created_on }}</b></i>
                 </div>
               </div>
           </div>
@@ -230,7 +230,7 @@
                     <div class="stream-post-container" id="comment_name{{comment.id}}"><pre class="ghost-color"><div class="my-label-color">{{ comment.comment }}</div></pre></div>
                   <div class="stream-container">
                       <pre class="float-left ghost-color"><div class="my-label-color">{{ comment.commented_by}}</div></pre>
-                    <pre class="float-right date ghost-color"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
+                    <pre class="float-right date ghost-color"><div class="my-date-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                   </div>
                 </li>
                 {% endfor %}
