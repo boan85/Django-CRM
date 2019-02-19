@@ -7,7 +7,12 @@
   <!-- heading_create starts here -->
   <div class="row marl">
     <div class="col-lg-12 text-right">
-      <span class="d-inline"><a class="primary_btn" href="{% url 'cases:add_case' %}"><i class="fa fa-plus"></i> Add New Case</a></span>
+{#      <span class="d-inline"><a class="primary_btn" href="{% url 'cases:add_case' %}"><i class="fa fa-plus"></i> Add New Case</a></span>#}
+        <a href="{% url 'cases:add_case' %}">
+            <button class="btn my-button-addnew-case">
+                Add New Case
+            </button>
+        </a>
     </div>
   </div>
   <div class="filter_row list_filter_row row marl">
@@ -48,9 +53,9 @@
                 </div>
                 <div class="filter_col col-md-3">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Account</label>
+                    <label for="exampleInputEmail1">Company</label>
                     <select class="form-control" id="id_account" name="account">
-                      <option value="">--Select Account--</option>
+                      <option value="">--Select Company--</option>
                       {% for ac in accounts %}
                       <option value="{{ac.id}}" {% ifequal acc ac.id %} selected {% endifequal %} >{{ac.name}}</option>
                       {% endfor %}
@@ -61,8 +66,8 @@
                 <input type="hidden" id="per_page_field" name="per_page">
                 <div class="filter_col text-left col-2">
                   <div class="form-group buttons_row text-center">
-                    <button class="btn btn-primary save" id="filter_click" type="submit">Search</button>
-                    <a href="{% url 'cases:list' %}" id="filter_clear" class="btn btn-default clear">Clear</a>
+                    <button class="btn my-button-search" id="filter_click" type="submit">Search</button>
+                    <a href="{% url 'cases:list' %}" id="filter_clear"><button class="btn my-button-clear">Clear</button></a>
                   </div>
                 </div>
               </div>
@@ -81,7 +86,7 @@
           <div class="panel-heading-list card-title text-right">
             <span class="total_count float-left black-color">Cases - {% if show_pageitems %} {% show_pageitems %}{% else %}{{ cases|length }}{% endif %}</span>
             <span class="filter_toggle ">
-            <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
+            <a href="#" class="my-button-filter"><i class="fas fa-filter"></i></a>
             </span>
           </div>
           <div class="table-responsive">
@@ -91,7 +96,7 @@
                 <tr>
                   <th style="color: ghostwhite" width="5%">S.No</th>
                   <th style="color: ghostwhite" width="20%">Name</th>
-                  <th style="color: ghostwhite" width="20%">Account</th>
+                  <th style="color: ghostwhite" width="20%">Company</th>
                   <th style="color: ghostwhite" width="15%">Status</th>
                   <th style="color: ghostwhite" width="15%">Priority</th>
                   <th style="color: ghostwhite" width="15%">Actions</th>
@@ -112,17 +117,17 @@
                     {% if case.account %}
                     <a href="{% url  'accounts:view_account' case.account.id %}">{{ case.account }}</a>
                     {% else %}
-                        <p style="color: ghostwhite">No Related Account</p>
+                        <p style="color: ghostwhite">No Related Company</p>
                     {% endif %}
                   </td>
                   <td style="color: ghostwhite" id="status_id{{case.id}}" status="{{case.status}}">{{ case.status }}</td>
                   <td style="color: ghostwhite">{{ case.priority }}</td>
                   <td class="actions">
                     {#  <a href="{% url 'cases:view_case' case.id %}" class="btn btn-info view"><i class="fas fa-eye"></i> View</a> #}
-                    <a href="{% url 'cases:edit_case' case.id %}" class="btn btn-success edit"><i class="fas fa-pencil-alt"></i></a>
-                    <a href="{% url 'cases:remove_case' case.id %}" class="btn btn-danger delete remove_case"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'cases:edit_case' case.id %}" class="btn my-button-edit edit"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="{% url 'cases:remove_case' case.id %}" class="btn my-button-remove delete remove_case"><i class="fas fa-trash-alt"></i></a>
                     {% if case.status != 'Closed' %}
-                    <a onclick="close_case({{case.id}}, '{% url 'cases:close_case' %}')" class="btn btn-warning"><i class="fas fa-times"></i> </a>
+                    <a onclick="close_case({{case.id}}, '{% url 'cases:close_case' %}')" class="btn my-button-close-case"><i class="fas fa-times"></i> </a>
                     {% endif %}
                   </td>
                 </tr>

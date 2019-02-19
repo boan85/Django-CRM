@@ -141,7 +141,7 @@
                                 <div class="row marl buttons_row text-center form_btn_row">
                                     <button class="btn my-button-save" type="submit">Save</button>
                                     {% if not contact_obj %}
-                                        <button class="btn my-button-save save savenew" type="submit">Save & New</button>
+                                        <button class="btn my-button-save" type="submit">Save & New</button>
                                     {% endif %}
                                     <a {% if request.GET.view_account %}
                                         href="{% url 'accounts:view_account' request.GET.view_account %}" {% else %}

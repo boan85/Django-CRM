@@ -301,7 +301,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button class="btn btn-default save ghost-color" id="comment_edit"
+                                                        <button class="btn my-button-update" id="comment_edit"
                                                                 type="submit">Update
                                                         </button>
                                                     </div>
@@ -347,12 +347,12 @@
                                                     <td style="color: ghostwhite">{{ contact.phone }}</td>
                                                     <td style="color: ghostwhite">{{ contact.email }}</td>
                                                     <td class="actions">
-                                                        <a href="{% url 'contacts:view_contact' pk=contact.id %}"
-                                                           class="btn btn-primary">View</a>
+                                                        <a href="{% url 'contacts:view_contact' pk=contact.id %}">
+                                                            <button class="btn my-button-view">View</button></a>
                                                         <a href="{% url 'contacts:edit_contact' pk=contact.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-success">Edit</a>
+                                                           class="btn my-button-edit">Edit</a>
                                                         <a href="{% url 'contacts:remove_contact' pk=contact.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-danger">Remove</a>
+                                                           class="btn my-button-remove">Remove</a>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
@@ -401,11 +401,11 @@
                                                         % {% endif %}</td>
                                                     <td class="actions">
                                                         <a href="{% url 'opportunities:opp_view' pk=opportunity.id %}"
-                                                           class="btn btn-primary">View</a>
+                                                           class="btn my-button-view">View</a>
                                                         <a href="{% url 'opportunities:opp_edit' pk=opportunity.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-success">Edit</a>
+                                                           class="btn my-button-edit">Edit</a>
                                                         <a href="{% url 'opportunities:opp_remove' pk=opportunity.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-danger">Remove</a>
+                                                           class="btn my-button-remove">Remove</a>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
@@ -453,11 +453,11 @@
                                                     <td style="color: ghostwhite">{{ case.priority }}</td>
                                                     <td class="actions">
                                                         <a href="{% url 'cases:view_case' pk=case.id %}"
-                                                           class="btn btn-primary">View</a>
+                                                           class="btn my-button-view">View</a>
                                                         <a href="{% url 'cases:edit_case' pk=case.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-success">Edit</a>
+                                                           class="btn my-button-edit">Edit</a>
                                                         <a href="{% url 'cases:remove_case' case_id=case.id %}?view_account={{ account_record.id }}"
-                                                           class="btn btn-danger">Remove</a>
+                                                           class="btn my-button-edit">Remove</a>
                                                     </td>
                                                 </tr>
                                             {% endfor %}

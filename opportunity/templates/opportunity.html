@@ -9,7 +9,12 @@
   <!-- heading_create starts here -->
   <div class="row marl">
     <div class="col-lg-12 text-right">
-      <span class="d-inline"><a class="primary_btn"  href="{% url 'opportunities:save'%}"><i class="fa fa-plus"></i> Add New Opportunity</a></span>
+{#      <span class="d-inline"><a class="primary_btn"  href="{% url 'opportunities:save'%}"><i class="fa fa-plus"></i> Add New Opportunity</a></span>#}
+        <a href="{% url 'opportunities:save'%}">
+            <button class="btn my-button-addnew-opportunity">
+                Add New Opportunity
+            </button>
+        </a>
     </div>
   </div>
   <!-- heading_create ends here -->
@@ -62,8 +67,8 @@
               </div>
               <div class="filter_col text-left col-2">
                 <div class="form-group buttons_row">
-                  <button class="btn btn-primary save" type="submit">Search</button>
-                  <a href="{% url 'opportunities:list' %}" class="btn btn-default clear">Clear</a>
+                  <button class="btn my-button-search" type="submit">Search</button>
+                  <a href="{% url 'opportunities:list' %}"><button class="btn my-button-clear">Clear</button></a>
                 </div>
               </div>
             </div>
@@ -81,7 +86,7 @@
          <div class="panel-heading-list card-title text-right">
            <span class="float-left black-color">Opportunities - {% if show_pageitems %} {% show_pageitems %}{% else %} {{ opportunity_list|length }}{% endif %}</span>
               <span class="filter_toggle">
-                <a href="#" class="primary_btn"><i class="fas fa-filter"></i></a>
+                <a href="#" class="my-button-filter"><i class="fas fa-filter"></i></a>
               </span>
          
         </div>
@@ -133,8 +138,8 @@
                 <td style="color: ghostwhite">{% if opportunity.lead_source %}{{ opportunity.lead_source }}{% else %}Not Specified{% endif %}</td>
                 <td class="actions">
                   {# <a href="{% url 'opportunities:opp_view' opportunity.id %}" class="btn btn-info view"><i class="fas fa-eye"></i> View</a> #}
-                  <a href="{% url 'opportunities:opp_edit' opportunity.id %}" class="btn btn-success edit"><i class="fas fa-pencil-alt"></i></a>
-                  <a href="{% url 'opportunities:opp_remove' opportunity.id %}" class="btn btn-danger delete remove_account"><i class="fas fa-trash-alt"></i></a>
+                  <a href="{% url 'opportunities:opp_edit' opportunity.id %}" class="btn my-button-edit edit"><i class="fas fa-pencil-alt"><button></button></i></a>
+                  <a href="{% url 'opportunities:opp_remove' opportunity.id %}" class="btn my-button-delete delete remove_account"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
               {% endfor %}
