@@ -18,7 +18,7 @@
             <div class="col-md-8">
                 <div class="card bg-color">
                     <div class="card-body" id="datashow">
-                        <div class="card-title text-right">
+                        <div class="my-table-title-bg my-table-color text-right">
                             <h5>
                                 <span class="float-left title">Overview</span>
                                 <span style="margin-top: 0px;" data-style="">
@@ -110,8 +110,12 @@
                     <div class="col-md-12">
                         <div class="card crm-secondary">
                             <div class="card-body">
-                                <div class="panel-heading-list card-title view-pad">
-                                    <h5 style="color: black">Comments</h5>
+                                {#                                <div class="panel-heading-list my-table-title-bg view-pad">#}
+                                {#                                    <div class="text-right my-table-title-bg my-table-color">#}
+                                <div class="my-table-title-bg my-table-color text-left">
+                                    <h5><span>Comments</span>
+                                    </h5>
+
                                 </div>
                                 <div class="row marl">
                                     <div class="col-md-12">
@@ -158,7 +162,8 @@
                                                         <pre style="color: ghostwhite">{{ comment.comment }}</pre>
                                                     </div>
                                                     <div class="stream-container">
-                                                        <pre style="color: ghostwhite" class="float-left">{{ comment.commented_by }}</pre>
+                                                        <pre style="color: ghostwhite"
+                                                             class="float-left">{{ comment.commented_by }}</pre>
                                                         <pre class="float-right date">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
                                                     </div>
                                                 </li>
@@ -189,7 +194,8 @@
                                                         <input type="hidden" value="" name="commentid" id="commentid">
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer" style="background-color: #576b75; color: ghostwhite">
+                                                <div class="modal-footer"
+                                                     style="background-color: #576b75; color: ghostwhite">
                                                     <button class="btn my-button-update" id="comment_edit"
                                                             type="submit">Update
                                                     </button>
@@ -207,7 +213,7 @@
                         <div class="col-md-12">
                             <div class="card crm-secondary">
                                 <div class="card-body">
-                                    <div class="panel-heading-list card-title view-pad" style="color: black">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Companies
                                     </div>
                                     <div class="table-responsive">
@@ -229,7 +235,8 @@
                                                     <td>
                                                         <a href="{% url 'accounts:view_account' account.id %}">{{ account.name }}</a>
                                                     </td>
-                                                    <td style="color: ghostwhite" class="ghost-color">{{ account.phone }}</td>
+                                                    <td style="color: ghostwhite"
+                                                        class="ghost-color">{{ account.phone }}</td>
                                                     <td style="color: ghostwhite">{{ account.email }}</td>
                                                 </tr>
                                             {% endfor %}
@@ -250,7 +257,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body crm-secondary">
-                                    <div class="panel-heading-list card-title view-pad" style="color: black">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Contacts
                                     </div>
                                     <div class="table-responsive">
@@ -293,7 +300,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body crm-secondary">
-                                    <div class="panel-heading-list card-title view-pad" style="color: black">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Opportunities
                                     </div>
                                     <div class="table-responsive">
@@ -301,10 +308,15 @@
                                             {% if opportunity_list|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th  width="5%" style="text-align:center; color: ghostwhite">S.No</th>
-                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name</th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">Stage</th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">Probability</th>
+                                                    <th width="5%" style="text-align:center; color: ghostwhite">S.No
+                                                    </th>
+                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name
+                                                    </th>
+                                                    <th width="20%" style="text-align:center; color: ghostwhite">Stage
+                                                    </th>
+                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                        Probability
+                                                    </th>
                                                 </tr>
                                                 </thead>
                                             {% endif %}
@@ -316,8 +328,9 @@
                                                         <a href="{% url 'opportunities:opp_view' opportunity.id %}">{{ opportunity.name }}</a>
                                                     </td>
                                                     <td style="color: ghostwhite">{{ opportunity.stage }}</td>
-                                                    <td style="color: ghostwhite">{{ opportunity.probability }} {% if opportunity.probability %}
-                                                        % {% endif %}</td>
+                                                    <td style="color: ghostwhite">{{ opportunity.probability }}
+                                                        {% if opportunity.probability %}
+                                                            % {% endif %}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -337,7 +350,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body crm-secondary">
-                                    <div class="panel-heading-list card-title view-pad" style="color: black">
+                                    <div class="panel-heading-list my-table-title-bg my-table-color text-left">
                                         Cases
                                     </div>
                                     <div class="table-responsive">
@@ -345,10 +358,16 @@
                                             {% if cases|length > 0 %}
                                                 <thead>
                                                 <tr>
-                                                    <th width="5%" style="text-align:center; color: ghostwhite">S.No</th>
-                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name</th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">Status</th>
-                                                    <th width="20%" style="text-align:center; color: ghostwhite">Priority</th>
+                                                    <th width="5%" style="text-align:center; color: ghostwhite">S.No
+                                                    </th>
+                                                    <th width="30%" style="text-align:center; color: ghostwhite">Name
+                                                    </th>
+                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                        Status
+                                                    </th>
+                                                    <th width="20%" style="text-align:center; color: ghostwhite">
+                                                        Priority
+                                                    </th>
                                                 </tr>
                                                 </thead>
                                             {% endif %}
