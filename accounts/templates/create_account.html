@@ -33,36 +33,37 @@
                             <div class="col-md-4">
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="required">Name
+                                        <label for="exampleInputEmail1" class="required">
+                                            <div class="my-label-color">Name
                                             {% if account_form.name.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ account_form.name }}
                                         <span class="error">{{ account_form.name.errors }}</span>
                                     </div>
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Website
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Website
                                             {% if account_form.website.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ account_form.website }}
                                         <span class="error">{{ account_form.website.errors }}</span>
                                     </div>
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="required">Phone
+                                        <label for="exampleInputEmail1" class="required"><div class="my-label-color">Phone
                                             {% if account_form.phone.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ account_form.phone }}
                                         <span class="error">{{ account_form.phone.errors }}</span>
                                     </div>
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group ">
-                                        <label for="exampleInputEmail1" class="required">Email Address
+                                        <label for="exampleInputEmail1" class="required"><div class="my-label-color">Email Address
                                             {% if account_form.email.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ account_form.email }}
                                         <span class="error">{{ account_form.email.errors }}</span>
                                     </div>
@@ -71,54 +72,54 @@
                             <div class="col-md-4">
                                 <div class="filter_col billing_block col-md-12" style="padding: 0px;">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Billing Address
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Billing Address
                                             {% if billing_form.address_line.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ billing_form.address_line }}
                                         <span class="error">{{ billing_form.address_line.errors }}</span>
                                     </div>
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Street
+                                                <label for="exampleInputEmail1"><div class="my-label-color">Street
                                                     {% if billing_form.street.field.required %}
-                                                        <span class="error">*</span>{% endif %}</label>
+                                                        <span class="error">*</span>{% endif %}</div></label>
                                                 {{ billing_form.street }}
                                                 <span class="error">{{ billing_form.street.errors }}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">PostCode
+                                                <label for="exampleInputEmail1"><div class="my-label-color">PostCode
                                                     {% if billing_form.postcode.field.required %}
-                                                        <span class="error">*</span>{% endif %}</label>
+                                                        <span class="error">*</span>{% endif %}</div></label>
                                                 {{ billing_form.postcode }}
                                                 <span class="error">{{ billing_form.postcode.errors }}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">City
+                                                <label for="exampleInputEmail1"><div class="my-label-color">City
                                                     {% if billing_form.city.field.required %}
-                                                        <span class="error">*</span>{% endif %}</label>
+                                                        <span class="error">*</span>{% endif %}</div></label>
                                                 {{ billing_form.city }}
                                                 <span class="error">{{ billing_form.city.errors }}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">State
+                                                <label for="exampleInputEmail1"><div class="my-label-color">State
                                                     {% if billing_form.state.field.required %}
-                                                        <span class="error">*</span>{% endif %}</label>
+                                                        <span class="error">*</span>{% endif %}</div></label>
                                                 {{ billing_form.state }}
                                                 <span class="error">{{ billing_form.state.errors }}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="margin-top: 10px;">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Country
+                                                <label for="exampleInputEmail1"><div class="my-label-color">Country
                                                     {% if billing_form.country.field.required %}
-                                                        <span class="error">*</span>{% endif %}</label>
+                                                        <span class="error">*</span>{% endif %}</div></label>
                                                 {{ billing_form.country }}
                                                 <span class="error">{{ billing_form.country.errors }}</span>
                                             </div>
@@ -126,13 +127,13 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h6 style="color:white;">Copy Address</h6>
+                                    <h6 class="my-label-color">Copy Address</h6>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="filter_col col-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Assigned Users</label>
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Assigned Users</div></label>
                                         {{ request.POST.assigned_to }}
                                         <select class="assigned_users form-control" name="assigned_to"
                                                 multiple="multiple">
@@ -147,15 +148,15 @@
                                 </div>
                                 <div class="filter_col col-12">
                                     <div class="form-group">
-                                        <label for="id_sattus">Status{% if account_form.status.field.required %}
-                                            <span class="error">*</span>{% endif %}</label>
+                                        <label for="id_sattus"><div class="my-label-color">Status{% if account_form.status.field.required %}
+                                            <span class="error">*</span>{% endif %}</div></label>
                                         {{ account_form.status }}
                                         <span class="error">{{ account_form.status.errors }}</span>
                                     </div>
                                 </div>
                                 <div class="filter_col col-12">
                                     <div class="form-group">
-                                        <label>Tags</label>
+                                        <label><div class="my-label-color">Tags</div></label>
                                         <div class="txt-box-div" id="tag-div"><input type="text" name="tags" id="tags_1"
                                                                                      value="
                                                                                              {% for t in account_obj.tags.all %}{{ t.name }}, {% endfor %}"
