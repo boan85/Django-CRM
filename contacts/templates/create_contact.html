@@ -16,7 +16,7 @@
     <form id="add_form" method="POST" action='' novalidate>
         <div class="overview_form_block row marl justify-content-center">
             <div class="col-md-9">
-                <div class="card bg-color">
+                <div class="card crm-table">
                     <div class="card-body">
                         <div class="my-table-color my-table-title-bg text-center">
                             {% if contact_obj %}EDIT{% else %}CREATE{% endif %} CONTACT
@@ -25,9 +25,10 @@
                             <div class="col-md-4">
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="required">Name
+                                        <label for="exampleInputEmail1" class="required">
+                                            <div class="my-label-color">Name
                                             {% if contact_form.first_name.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         <div class="row">
                                             <div class="filter_col col-md-6">
                                                 {{ contact_form.first_name }}
@@ -42,9 +43,9 @@
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Company
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Company
                                             {% if contact_form.company.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {% if company %}
                                             <select name="account" placeholder="Company" class="form-control"
                                                     id="id_account" readonly>
@@ -58,18 +59,18 @@
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group ">
-                                        <label for="exampleInputEmail1" class="required">Phone
+                                        <label for="exampleInputEmail1" class="required"><div class="my-label-color">Phone
                                             {% if contact_form.phone.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ contact_form.phone }}
                                         <span class="error">{{ contact_form.phone.errors }}</span>
                                     </div>
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group ">
-                                        <label for="exampleInputEmail1" class="required">Email Address
+                                        <label for="exampleInputEmail1" class="required"><div class="my-label-color">Email Address
                                             {% if contact_form.email.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ contact_form.email }}
                                         <span class="error">{{ contact_form.email.errors }}</span>
                                     </div>
@@ -78,7 +79,7 @@
                             <div class="col-md-4">
                                 <div class="filter_col col-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Assigned Users</label>
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Assigned Users</div></label>
                                         <select class="assigned_users form-control" name="assigned_to"
                                                 multiple="multiple">
                                             {% for user in users %}
@@ -92,7 +93,7 @@
                                 </div>
                                 <div class="filter_col col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Address</label>
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Address</div></label>
                                         {{ address_form.address_line }}
                                         <span class="error">{{ address_form.address_line.errors }}</span>
                                     </div>
@@ -123,9 +124,9 @@
                                 <br clear="all">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Description
+                                        <label for="exampleInputEmail1"><div class="my-label-color">Description
                                             {% if contact_form.description.field.required %}
-                                                <span class="error">*</span>{% endif %}</label>
+                                                <span class="error">*</span>{% endif %}</div></label>
                                         {{ contact_form.description }}
                                         <span class="error">{{ contact_form.description.errors }}</span>
                                     </div>
