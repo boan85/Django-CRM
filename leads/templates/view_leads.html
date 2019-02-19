@@ -36,14 +36,14 @@
             <div class="col-md-4">
               <div class="filter_col col-md-12" id="iname">
                 <div class="form-group" >
-                  <label class="lead_field_label" for="id_name" data-name="name">Name</label>
+                  <label class="lead_field_label" for="id_name" data-name="name"><div class="my-label-color">Name</div></label>
                   <div class="lead_field" id="lead_name" data-name="name">{{ lead_record.first_name }} {{ lead_record.last_name }}</div>
                 </div>
               </div>
               <div class="filter_col col-md-12">
                 
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_contact_account" data-name="name">Account Name</label>
+                    <label class="lead_field_label" for="id_contact_account" data-name="name"><div class="my-label-color">Account Name</div></label>
                   {% if lead_record.account_name %}
                   <div class="lead_field" id ="contact_account" data-name="name">{{ lead_record.account_name }}</div>
                   {% else %}
@@ -53,7 +53,7 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_title" data-name="name">Title</label>
+                    <label class="lead_field_label" for="id_title" data-name="name"><div class="my-label-color">Title</div></label>
                   {% if lead_record.title %}
                     <div class="lead_field" id="lead_title" data-name="name">{{ lead_record.title }}</div>
                   {% else %}
@@ -63,7 +63,7 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_phone" data-name="name">Phone</label>
+                    <label class="lead_field_label" for="id_phone" data-name="name"><div class="my-label-color">Phone</div></label>
                   {% if lead_record.phone %}
                   <div class="lead_field" id="lead_phone" data-name="name">{{ lead_record.phone }}</div>
                   {% else %}
@@ -76,7 +76,7 @@
             <div class="col-md-4">
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_email" data-name="name">Email</label>
+                    <label class="lead_field_label" for="id_email" data-name="name"><div class="my-label-color">Email</div></label>
                   {% if lead_record.email %}
                   <div class="lead_field" id="lead_email" data-name="name">{{ lead_record.email }}</div>
                   {% else %}
@@ -86,7 +86,7 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_status" data-name="name">Status</label>
+                    <label class="lead_field_label" for="id_status" data-name="name"><div class="my-label-color">Status</div></label>
                   {% if lead_record.status %}
                     <div class="lead_field" id="lead_status" data-name="name">{{ lead_record.status }}</div>
                   {% else %}
@@ -96,7 +96,7 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_source" data-name="name">Source</label>
+                    <label class="lead_field_label" for="id_source" data-name="name"><div class="my-label-color">Source</div></label>
                 {% if lead_record.source %}
                   <div class="lead_field" id="lead_source" data-name="name">{{ lead_record.source }}</div>
                 {% else %}
@@ -106,7 +106,7 @@
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="lead_field_label" for="id_website" data-name="name">Website</label>
+                    <label class="lead_field_label" for="id_website" data-name="name"><div class="my-label-color">Website</div></label>
                 {% if lead_record.website %}
                   <div class="lead_field" id="lead_website" data-name="name">{{ lead_record.website }}</div>
                 {% else %}
@@ -165,7 +165,7 @@
                   </form>
                   <ul class="list-group" id="attachment_div">
                       {% for attachment in attachments %}
-                          <li class="list-group-item list-row" id="attachment{{attachment.id}}" style="background: #4f616a">
+                          <li class="list-group-item list-row" id="attachment{{attachment.id}}">
                             {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == attachment.created_by %}
                               <div class="float-right right-container">
                                 <div class="list-row-buttons btn-group float-right">
@@ -176,12 +176,12 @@
 
                               
                               <div class="stream-post-container" id="attachment_name{{attachment.id}}">
-                                <pre> <span class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}} ghost-color"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
+                                <pre> <span class="icon"><i style="font-size:1.5rem;" class="{{attachment.get_file_type_display}}"></i> </span> <a href="{% url 'common:download_attachment' attachment.id %}">Download</a></pre>
                               </div>
 
                               <div class="stream-container">
-                                <pre class="float-left ghost-color">{{ attachment.created_by }}</pre>
-                                <pre class="float-right ghost-color">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                                <pre class="float-left">{{ attachment.created_by }}</pre>
+                                <pre class="float-right">{{ attachment.created_on|date:'m/d/Y,  h:i:s A' }}</pre>
                               </div>
                           </li>
                       {% endfor %}
@@ -201,7 +201,7 @@
             <div class="col-md-12">
               <form id="comment_form" method="POST" enctype="multipart/form-data">
                 <div class="form-group ">
-                  <textarea class="form-control bg-color" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea><div><i id="CommentError" style="display:none; color:red"></i></div>
+                  <textarea class="form-control" textarea cols="40" rows="3" id="id_comments" name="comment" placeholder="Submit Your Comments Here"></textarea><div><i id="CommentError" style="display:none; color:red"></i></div>
                   </br>
                   <div class="buttons_row">
                   <button class="btn my-button-submit" style="text-align: center;" id="comment_submit">Submit</button>
@@ -211,7 +211,7 @@
               </form>
               <ul class="list-group" id="comments_div">
                 {% for comment in comments %}
-                <li class="list-group-item list-row" id="comment{{comment.id}}" style="background-color: #4f616a">
+                <li class="list-group-item list-row" id="comment{{comment.id}}">
                   {% if request.user.is_superuser or request.user.role == 'ADMIN' or request.user == comment.commented_by %}
                   <div class="float-right right-container">
                     <div class="list-row-buttons btn-group float-right">
@@ -227,10 +227,10 @@
                     </div>
                   </div>
                   {% endif %}
-                  <div class="stream-post-container" id="comment_name{{comment.id}}"><pre class="ghost-color">{{ comment.comment }}</pre></div>
+                    <div class="stream-post-container" id="comment_name{{comment.id}}"><pre class="ghost-color"><div class="my-label-color">{{ comment.comment }}</div></pre></div>
                   <div class="stream-container">
-                    <pre class="float-left ghost-color">{{ comment.commented_by}}</pre>
-                    <pre class="float-right date ghost-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</pre>
+                      <pre class="float-left ghost-color"><div class="my-label-color">{{ comment.commented_by}}</div></pre>
+                    <pre class="float-right date ghost-color"><div class="my-label-color">{{ comment.commented_on|date:'m/d/Y,  h:i:s A' }}</div></pre>
                   </div>
                 </li>
                 {% endfor %}

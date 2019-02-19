@@ -33,7 +33,8 @@
               <div class="col-md-4">
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1" class="name" >Name{% if lead_form.first_name.field.required %}<span class="error">*</span>{% endif %}</label>
+                    <label for="exampleInputEmail1" class="name">
+                        <div class="my-label-color">Name{% if lead_form.first_name.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     <div class="row">
                       <div class="filter_col col-md-6">
                         {{ lead_form.first_name }}
@@ -48,7 +49,8 @@
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1" {% if request.POST.status == "converted" %} class="required" {% endif %}>Contact email{% if lead_form.contact_email.field.required %}<span class="error">*</span>{% endif %}</label>
+                    <label for="exampleInputEmail1" {% if request.POST.status == "converted" %} class="required" {% endif %}>
+                        <div class="my-label-color">Contact email{% if lead_form.contact_email.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.contact_email }}
                     <span class="error">{{ lead_form.contact_email.errors }}</span>
                     {% if error %}
@@ -65,14 +67,14 @@
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group ">
-                    <label for="exampleInputEmail1">Phone{% if lead_form.phone.field.required %}<span class="error">*</span>{% endif %}</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Phone{% if lead_form.phone.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.phone }}
                     <span class="error">{{ lead_form.phone.errors }}</span>
                   </div>
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group ">
-                    <label for="exampleInputEmail1" class="required">Email Address{% if lead_form.email.field.required %}<span class="error">*</span>{% endif %}</label>
+                      <label for="exampleInputEmail1" class="required"><div class="my-label-color">Email Address{% if lead_form.email.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.email }}
                     <span class="error">{{ lead_form.email.errors }}</span>
                   </div>
@@ -82,21 +84,21 @@
               <div class="col-md-4">
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Website{% if lead_form.website.field.required %}<span class="error">*</span>{% endif %}</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Website{% if lead_form.website.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.website }}
                     <span class="error">{{ lead_form.website.errors }}</span>
                   </div>
                 </div>
                 <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label for="exampleInputEmail1" >Memo{% if lead_form.memo.field.required %}<span class="error">*</span>{% endif %}</label>
+                    <label for="exampleInputEmail1"><div class="my-label-color">Memo{% if lead_form.memo.field.required %}<span class="error">*</span>{% endif %}</div></label>
                   {{ lead_form.memo }}
                   <span class="error">{{ lead_form.memo.errors }}</span>
                 </div>
               </div>
               <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Assigned Users</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Assigned Users</div></label>
                      <select class="assigned_users form-control" name="assigned_to" multiple="multiple">
                       {% for user in users %}
                         <option value="{{user.id}}" {% if user in lead_obj.assigned_to.all or user.id in assignedto_list %} selected="" {% endif %}>{{user.email}}</option>
@@ -108,7 +110,7 @@
 
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1"/>Status{% if lead_form.status.field.required %}<span class="error">*</span>{% endif %}</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Status{% if lead_form.status.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.status }}
                     <span class="error">{{ lead_form.status.errors }}</span>
                   </div>
@@ -118,14 +120,14 @@
 
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1"/>Source{% if lead_form.source.field.required %}<span class="error">*</span>{% endif %}</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Source{% if lead_form.source.field.required %}<span class="error">*</span>{% endif %}</div></label>
                     {{ lead_form.source }}
                     <span class="error">{{ lead_form.source.errors }}</span>
                   </div>
                 </div>
                 <div class="filter_col col-md-12">
                   <div class="form-group">
-                    <label for="exampleInputEmail1" >Address</label>
+                      <label for="exampleInputEmail1"><div class="my-label-color">Address</div></label>
                     {{ address_form.address_line }}
                     <span class="error">{{ address_form.address_line.errors }}</span>
                   </div>
@@ -153,7 +155,7 @@
                 <br>
                 <div class="filter_col col-12">
                   <div class="form-group">
-                    <label>Tags</label>
+                      <label><div class="my-label-color">Tags</div></label>
                      <div class="txt-box-div" id="tag-div"><input type="text" name="tags" id="tags_1" value="{% for t in lead_obj.tags.all %}{{t.name}}, {% endfor %}" class="tags"/>
                     </div>
                   </div>
