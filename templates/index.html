@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                                        <div class="container">
+                    <div class="container">
                         <div class="row slab rounded">
                             <div class="col-sm-4">
                                 <div class="container">
@@ -131,8 +131,9 @@
                 <div class="col-md-6 table_container_row">
                     <div class="card" style="background-color: #576b75;">
                         <div class="card-body">
-                            <div class="card-title">
+                            <div class="my-table-title-bg my-table-color">
                                 <span>Open Companies</span>
+
                             </div>
                             <div class="table-responsive">
                                 <table class="table" style="background-color: #576b75;">
@@ -167,10 +168,81 @@
                         </div>
                     </div>
                 </div>
+
+                {#            <div class="container">#}
+                {#                <div class="row">#}
+                {#                    <div class="col-sm-6">#}
+                {#                        <table class="table table-bordered my-table-color">#}
+                {#                            <tbody>#}
+                {#                            <tr>#}
+                {#                                <td class="my-table-title-bg" colspan="2">#}
+                {#                                    Open Companies#}
+                {#                                </td>#}
+                {#                            </tr>#}
+                {#                            <tr>#}
+                {#                                <td>Name</td>#}
+                {#                                <td>Tags</td>#}
+                {#                            </tr>#}
+                {#                            {% for account in accounts|slice:"15" %}#}
+                {#                                <tr>#}
+                {#                                    <td><a href="{% url 'accounts:view_account' account.id %}"#}
+                {#                                           class="my-table-color">{{ account.name }}</a>#}
+                {#                                    </td>#}
+                {#                                    <td style="display: block;">#}
+                {#                                        {% for tag in account.tags.all|slice:'3' %}#}
+                {#                                            <span class="text-left color{{ forloop.counter }}"#}
+                {#                                                  id="list_tag">{{ tag.name }}</span>#}
+                {#                                        {% empty %}#}
+                {#                                            <span class="text-left">No Tags</span>#}
+                {#                                        {% endfor %}#}
+                {#                                        {% if account.tags.all|length > 3 %}#}
+                {#                                            <span class="text-left"#}
+                {#                                                  id="list_tag">{{ account.tags.all|length|subtract:'3' }}<span>+</span></span>#}
+                {#                                        {% endif %}#}
+                {#                                    </td>#}
+                {#                                </tr>#}
+                {#                            {% endfor %}#}
+                {#                            </tbody>#}
+                {#                        </table>#}
+                {#                    </div>#}
+                {#                    <div class="col-sm-6">#}
+                {#                        <table class="table table-bordered my-table-color">#}
+                {#                            <tbody>#}
+                {#                            <tr>#}
+                {#                                <td class="my-table-title-bg" colspan="2">Open Opportunities</td>#}
+                {#                            </tr>#}
+                {#                            <tr>#}
+                {#                                <td>#}
+                {#                                    Name#}
+                {#                                </td>#}
+                {#                                <td>Tags</td>#}
+                {#                            </tr>#}
+                {#                            {% for opportunity in opportunities|slice:"15" %}#}
+                {#                                <tr>#}
+                {#                                    <td><a href="{% url 'opportunity:opp_view' opportunity.id %}" class="my-table-color">{{ opportunity.name }}</a></td>#}
+                {#                                    <td style="display: block;">#}
+                {#                                        {% for tag in opportunity.tags.all|slice:'3' %}#}
+                {#                                            <span class="text-left color{{ forloop.counter }}" id="list_tag">{{ tag.name }}</span>#}
+                {#                                        {% empty %}#}
+                {#                                            <span class="text-left">No Tags</span>#}
+                {#                                        {% endfor %}#}
+                {#                                        {% if opportunity.tags.all|length > 3 %}#}
+                {#                                            {{ opportunity.tags.all|length|subtract:'3' }}<span>+</span>#}
+                {#                                        {% endif %}#}
+                {#                                    </td>#}
+                {#                                </tr>#}
+                {#                            {% endfor %}#}
+                {#                            </tbody>#}
+                {#                        </table>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {#            </div>#}
+
+
                 <div class="col-md-6 table_container_row">
-                    <div class="card" style="background-color: #576b75;">
+                    <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
+                            <div class="my-table-color my-table-title-bg">
                                 <span>Open Opportunities</span>
                             </div>
                             <div class="table-responsive">

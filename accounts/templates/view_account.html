@@ -25,7 +25,7 @@
                   <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a style="background-color: #576b75; color: ghostwhite" href="{% url 'accounts:edit_account' account_record.id %}">Edit</a></li>
+                    <li><a class="my-drop-down-titles" href="{% url 'accounts:edit_account' account_record.id %}">Edit</a></li>
                   </ul>
                 </div>
               </span>
@@ -253,11 +253,11 @@
                                                                     Actions<span class="caret"></span></button>
                                                                 <ul class="dropdown-menu text-center">
                                                                     <li>
-                                                                        <a class="action" style="background-color: #576b75; color: ghostwhite"
+                                                                        <a class="action my-drop-down-titles"
                                                                            onclick="edit_comment({{ comment.id }})">Edit</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="action" style="background-color: #576b75; color: ghostwhite"
+                                                                        <a class="action my-drop-down-titles"
                                                                            onclick="remove_comment({{ comment.id }})">Remove</a>
                                                                     </li>
                                                                 </ul>

@@ -27,7 +27,7 @@
                   <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a class="bg-color" style="color: ghostwhite" href="{% url 'opportunities:opp_edit' opportunity_record.id %}" >Edit</a></li>
+                    <li><a class="my-drop-down-titles" href="{% url 'opportunities:opp_edit' opportunity_record.id %}" >Edit</a></li>
                   </ul>
                 </div>
               </span>
@@ -203,10 +203,10 @@
                         <button class="btn my-button-action btn-sm dropdown-toggle" data-toggle="dropdown" type="button">Actions <span class="caret"></span></button>
                         <ul class="dropdown-menu text-center">
                           <li>
-                            <a class="action bg-color" style="color: ghostwhite" onclick="edit_comment({{comment.id}})">Edit</a>
+                            <a class="action my-drop-down-titles" onclick="edit_comment({{comment.id}})">Edit</a>
                           </li>
                           <li>
-                            <a class="action bg-color" style="color: ghostwhite" onclick="remove_comment({{comment.id}})">Remove</a>
+                            <a class="action my-drop-down-titles" onclick="remove_comment({{comment.id}})">Remove</a>
                           </li>
                         </ul>
                       </div>

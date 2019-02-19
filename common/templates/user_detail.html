@@ -26,7 +26,7 @@
                   <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a class="text-input" style="color: ghostwhite" href="{% url 'common:edit_user' user_obj.id %}">Edit</a></li>
+                    <li><a class="my-drop-down-titles" href="{% url 'common:edit_user' user_obj.id %}">Edit</a></li>
                   </ul>
                 </div>
               </span>
@@ -142,13 +142,13 @@
                                                                     class="caret"></span></button>
                                                             <ul class="dropdown-menu text-center comment_actions">
                                                                 <li>
-                                                                    <a class="action edit_comment" style="background-color: #4f616a; color: ghostwhite"
+                                                                    <a class="action edit_comment my-drop-down-titles"
                                                                        onclick="edit_comment({{ comment.id }})"
                                                                        id="{% url 'common:edit_comment' comment.id %}">Edit</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="action remove_comment"
-                                                                       onclick="remove_comment({{ comment.id }})" style="background-color: #4f616a; color: ghostwhite">Remove</a>
+                                                                    <a class="action remove_comment my-drop-down-titles"
+                                                                       onclick="remove_comment({{ comment.id }})">Remove</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
