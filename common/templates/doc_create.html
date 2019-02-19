@@ -21,14 +21,16 @@
             <div class="col-md-12">
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label for="id_firstname">Title {% if doc_form.title.field.required %}<span class="error">*</span>{% endif %}</label>
+                  <label for="id_firstname"><div class="my-label-color">
+                      Title {% if doc_form.title.field.required %}<span class="error">*</span>{% endif %}</div></label>
                   <input type="text" class="form-control" name="title" value="{% if doc_obj %}{{ doc_obj.title }}{% else %}{{request.POST.title}}{% endif %}" placeholder="Document title">
                 </div>
                 <span class="error" id="id_title">{{ errors.title }}</span>
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Upload Document{% if doc_form.document_file.field.required %}<span class="error">*</span>{% endif %}</label>
+                  <label for="exampleInputEmail1"><div class="my-label-color">
+                      Upload Document{% if doc_form.document_file.field.required %}<span class="error">*</span>{% endif %}</div></label>
                   <input type="file" name="document_file" class="form-control" />
                 </div>
                 {% if doc_obj %}<span>{{doc_obj.document_file }}</span>{% endif %}
@@ -38,7 +40,9 @@
               {% if doc_obj %}
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label for="id_status">Status{% if doc_form.status.field.required %}<span class="error">*</span>{% endif %}</label>
+                  <label for="id_status"><div class="my-label-color">
+                      Status{% if doc_form.status.field.required %}<span class="error">*</span>{% endif %}
+                  </div></label>
                   {{ doc_form.status }}
                   <span class="error">{{ doc_form.status.errors }}</span>
                 </div>

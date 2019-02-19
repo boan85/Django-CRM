@@ -19,7 +19,7 @@
               {% if doc_obj.title %}
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="contact_field_label" for="id_title" data-name="title">Title</label>
+                    <label class="contact_field_label" for="id_title" data-name="title"><div class="my-label-color">Title</div></label>
                   <div class="contact_field" id="doc_title" data-name="name">{{ doc_obj.title }} </div>
                 </div>
               </div>
@@ -27,20 +27,20 @@
               {% if doc_obj.status %}
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="contact_field_label" for="id_status" data-name="status">Status</label>
+                    <label class="contact_field_label" for="id_status" data-name="status"><div class="my-label-color">Status</div></label>
                   <div class="contact_field" id="doc_status" data-name="status">{{ doc_obj.status }} </div>
                 </div>
               </div>
               {% endif %}
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="contact_field_label" for="id_created_by" data-name="created_by">Created By</label>
+                    <label class="contact_field_label" for="id_created_by" data-name="created_by"><div class="my-label-color">Created By</div></label>
                   <div class="contact_field" id="created_by" data-name="created_by">{{ doc_obj.created_by }}</div>
                 </div>
               </div>
               <div class="filter_col col-md-12">
                 <div class="form-group">
-                  <label class="contact_field_label" for="id_created_on" data-name="created_on">Created On</label>
+                    <label class="contact_field_label" for="id_created_on" data-name="created_on"><div class="my-label-color">Created On</div></label>
                   <div class="contact_field" id="created_on" data-name="created_on">{{ doc_obj.created_on }}</div>
                 </div>
               </div>
