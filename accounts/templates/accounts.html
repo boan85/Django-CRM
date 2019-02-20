@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load paginate %}
+{% load common_tags %}
+
 {% block extralinks %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
     <link href="{% static 'css/main.scss' %}" rel="stylesheet">
@@ -11,7 +13,9 @@
         <!-- heading_create starts here -->
         <div class="row marl">
             <div class="col-lg-12 text-right">
-                <a href="{% url 'accounts:new_account' %}"><button class="btn my-button-addnew-company">Add new Company</button></a>
+                <a href="{% url 'accounts:new_account' %}">
+                    <button class="btn my-button-addnew-company">Add new Company</button>
+                </a>
             </div>
         </div>
         <div class="filter_row list_filter_row row marl">
@@ -79,7 +83,9 @@
                                     <div class="filter_col col-lg-2">
                                         <div class="form-group buttons_row">
                                             <button class="btn my-button-search" type="submit">Search</button>
-                                            <a href="{% url 'accounts:list' %}"><button class="btn my-button-clear">Clear</button></a>
+                                            <a href="{% url 'accounts:list' %}">
+                                                <button class="btn my-button-clear">Clear</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +149,9 @@
                                                     <tr id="account_details{{ each_account.id }}" class="text-center">
                                                         <td scope="row">{{ forloop.counter }}</td>
                                                         <td>{% if each_account.name %}
-                                                            <a href="{% url 'accounts:view_account' each_account.id %}"><div class="links_and_buttons">{{ each_account.name }}</div></a>{% endif %}
+                                                            <a href="{% url 'accounts:view_account' each_account.id %}">
+                                                                <div class="links_and_buttons">{{ each_account.name }}</div>
+                                                            </a>{% endif %}
                                                         </td>
                                                         <td>{% if each_account.billing_address.city %}
                                                             {{ each_account.billing_address.city }} {% else %} Not
@@ -163,16 +171,23 @@
                                                                 {% endif %}
                                                             {% endwith %}
                                                         </td>
-                                                        <td >{% if each_account.industry %}
+                                                        <td>{% if each_account.industry %}
                                                             {{ each_account.industry }} {% else %} Not
                                                             specified {% endif %}</td>
                                                         <td>
                                                             {% with tags=each_account.tags.all %}
                                                                 {% if tags %}
-                                                                    {% for tag in tags %}
+                                                                    {% if tags|length > 3 %}
                                                                         <span class="text-left color1"
-                                                                              id="list_tag">{{ tag.name }}</span>
-                                                                    {% endfor %}
+                                                                              id="list_tag">{{ tags|length|subtract:'3' }}<span>+</span></span>
+                                                                    {% endif %}
+                                                                    {% if tags|length <= 3 %}
+                                                                        {% for tag in tags %}
+                                                                            <span class="text-left color1"
+                                                                                  id="list_tag">{{ tag.name }}</span>
+                                                                            <br>
+                                                                        {% endfor %}
+                                                                    {% endif %}
                                                                 {% else %}
                                                                     No Tags
                                                                 {% endif %}
@@ -264,10 +279,17 @@
                                                         <td>
                                                             {% with tags=each_account.tags.all %}
                                                                 {% if tags %}
-                                                                    {% for tag in tags %}
+                                                                    {% if tags|length > 3 %}
                                                                         <span class="text-left color1"
-                                                                              id="list_tag">{{ tag.name }}</span>
-                                                                    {% endfor %}
+                                                                              id="list_tag">{{ tags|length|subtract:'3' }}<span>+</span></span>
+                                                                    {% endif %}
+                                                                    {% if tags|length <= 3 %}
+                                                                        {% for tag in tags %}
+                                                                            <span class="text-left color1"
+                                                                                  id="list_tag">{{ tag.name }}</span>
+                                                                            <br>
+                                                                        {% endfor %}
+                                                                    {% endif %}
                                                                 {% else %}
                                                                     No Tags
                                                                 {% endif %}

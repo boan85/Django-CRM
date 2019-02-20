@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load paginate %}
 {% block extralinks %}
+    {% load common_tags %}
     <link href="{% static 'css/main.scss' %}" rel="stylesheet"/>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
@@ -93,7 +94,8 @@
                                             <a href="{% url 'leads:list' %}">
                                                 <button class="btn my-button-clear">
                                                     Clear
-                                                </button></a>
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,8 +154,10 @@
                                                 <tr class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'leads:view_lead' lead.id %}"><div class="links_and_buttons">
-                                                            {{ lead.first_name }} {{ lead.last_name }}</div></a>
+                                                        <a href="{% url 'leads:view_lead' lead.id %}">
+                                                            <div class="links_and_buttons">
+                                                                {{ lead.first_name }} {{ lead.last_name }}</div>
+                                                        </a>
                                                     </td>
                                                     <td>{{ lead.get_status_display }}</td>
                                                     <td>
@@ -170,16 +174,24 @@
                                                     <td>
                                                         {% with tags=lead.tags.all %}
                                                             {% if tags %}
-                                                                {% for tag in tags %}
+                                                                {% if tags|length > 3 %}
                                                                     <span class="text-left color1"
-                                                                          id="list_tag">{{ tag.name }}</span><br>
-                                                                {% endfor %}
+                                                                          id="list_tag">{{ tags|length|subtract:'3' }}<span>+</span></span>
+                                                                {% endif %}
+                                                                {% if tags|length <= 3 %}
+                                                                    {% for tag in tags %}
+                                                                        <span class="text-left color1"
+                                                                              id="list_tag">{{ tag.name }}</span><br>
+                                                                    {% endfor %}
+                                                                {% endif %}
                                                             {% else %}
                                                                 No Tags
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td><div class="my-date-color">{{ lead.created_on }}</div></td>
+                                                    <td>
+                                                        <div class="my-date-color">{{ lead.created_on }}</div>
+                                                    </td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}"
                                                            class="btn my-button-edit edit"><i
@@ -237,7 +249,10 @@
                                                 <tr class="text-center">
                                                     <td scope="row">{{ forloop.counter }}</td>
                                                     <td>
-                                                        <a href="{% url 'leads:view_lead' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a>
+                                                        <a href="{% url 'leads:view_lead' lead.id %}">
+                                                            <div class="links_and_buttons">
+                                                                {{ lead.first_name }} {{ lead.last_name }}</div>
+                                                        </a>
                                                     </td>
                                                     <td>{{ lead.get_status_display }}</td>
                                                     <td>
@@ -254,21 +269,29 @@
                                                     <td>
                                                         {% with tags=lead.tags.all %}
                                                             {% if tags %}
-                                                                {% for tag in tags %}
-                                                                    <span class="text-left"
-                                                                          id="list_tag">{{ tag.name }}</span><br>
-                                                                {% endfor %}
+                                                                {% if tags|length > 3 %}
+                                                                    <span class="text-left color1"
+                                                                          id="list_tag">{{ tags|length|subtract:'3' }}<span>+</span></span>
+                                                                {% endif %}
+                                                                {% if tags|length <= 3 %}
+                                                                    {% for tag in tags %}
+                                                                        <span class="text-left color1"
+                                                                              id="list_tag">{{ tag.name }}</span><br>
+                                                                    {% endfor %}
+                                                                {% endif %}
                                                             {% else %}
                                                                 No Tags
                                                             {% endif %}
                                                         {% endwith %}
                                                     </td>
-                                                    <td><div class="my-date-color">{{ lead.created_on }}</div></td>
+                                                    <td>
+                                                        <div class="my-date-color">{{ lead.created_on }}</div>
+                                                    </td>
                                                     <td class="actions">
                                                         <a href="{% url 'leads:edit_lead' lead.id %}">
                                                             <button class="btn my-button-edit">
                                                                 <i
-                                                                class="fas fa-pencil-alt"></i>
+                                                                        class="fas fa-pencil-alt"></i>
                                                             </button>
                                                         </a>
                                                         <a href="{% url 'leads:remove_lead' lead.id %}"
