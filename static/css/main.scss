@@ -11,22 +11,24 @@
 }
 
 .my-footer {
-  position: relative;
+  //position: relative;
   left: 0px;
-  bottom: 0px;
   height: 75px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
   background: #12314B;
 }
 
-.my-footer-lists {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 75px;
-  width: 100%;
-  background: #12314B;
-}
+//.my-footer-lists {
+//  position: fixed;
+//  left: 0px;
+//  bottom: 0px;
+//  height: 75px;
+//  width: 100%;
+//  background: #12314B;
+//  margin-bottom: 0px;
+//}
 
 .my-header-bg {
   background-color: #27425B;
@@ -246,6 +248,8 @@ body {
   font-weight: 500;
   margin: 0;
   padding-top: 60px;
+  bottom: 0;
+  height: 100%;
   font-size: 15px;
   @media(min-width: $large) {
     font-size: 18px;

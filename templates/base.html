@@ -110,7 +110,7 @@
 {% endblock js_block %}
 <script type="text/javascript">
     $(document).ready(function () {
-        word = window.location.pathname.split('/')[1]
+        word = window.location.pathname.split('/')[1];
         if (word == "") {
             $("#dashboard").addClass('active')
         }
@@ -118,26 +118,30 @@
             $('#' + word).addClass('active')
         }
         var pathname = window.location.pathname;
-        if (pathname === '/' ||
-            pathname === '/users/list/' ||
-            pathname === '/companies/list/' ||
-            pathname === '/contacts/list/' ||
-            pathname === '/leads/list/' ||
-            pathname === '/opportunities/list/' ||
-            pathname === '/cases/list/' ||
-            pathname === '/documents/list/') {
-            $("#my-footer").removeClass('my-footer');
-            $('#my-footer').addClass('my-footer-lists');
-        }
-
-        if (pathname.search('create') > 0) {
-            $("#my-footer").removeClass('my-footer');
-            $('#my-footer').addClass('my-footer-lists');
-        }
-        if (pathname.search('edit') > 0) {
-            $("#my-footer").removeClass('my-footer');
-            $('#my-footer').addClass('my-footer-lists');
-        }
+        {#if (pathname === '/' ||#}
+        {#    pathname === '/users/list/' ||#}
+        {#    pathname === '/companies/list/' ||#}
+        {#    pathname === '/contacts/list/' ||#}
+        {#    pathname === '/leads/list/' ||#}
+        {#    pathname === '/opportunities/list/' ||#}
+        {#    pathname === '/cases/list/' ||#}
+        {#    pathname === '/documents/list/') {#}
+        {#    $("#my-footer").removeClass('my-footer');#}
+        {#    $('#my-footer').addClass('my-footer-lists');#}
+        {#}#}
+        {##}
+        {#if (pathname.search('create') > 0) {#}
+        {#    $("#my-footer").removeClass('my-footer');#}
+        {#    $('#my-footer').addClass('my-footer-lists');#}
+        {#}#}
+        {#if (pathname.search('edit') > 0) {#}
+        {#    $("#my-footer").removeClass('my-footer');#}
+        {#    $('#my-footer').addClass('my-footer-lists');#}
+        {#}#}
+        {#if (pathname.search('view') > 0) {#}
+        {#    $("#my-footer").removeClass('my-footer');#}
+        {#    $('#my-footer').addClass('my-footer-lists');#}
+        {#}#}
     });
 </script>
 </body>
