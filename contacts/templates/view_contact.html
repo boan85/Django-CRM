@@ -4,7 +4,7 @@
 {% block breadcrumb %}
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-  <li class="breadcrumb-item"> <a  href="{% url 'contacts:list' %}">Contacts</a></li>
+    <li class="breadcrumb-item"> <a  href="{% url 'contacts:list' %}"><div class="links_and_buttons">Contacts</div></a></li>
   <li class="breadcrumb-item active" style="color: ghostwhite">{{ contact_record.first_name }}</li>
 </ol>
 </nav>

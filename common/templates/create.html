@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             {% if request.user != user_obj %}
-                <li class="breadcrumb-item"><a href="{% url 'common:users_list' %}">Users</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'common:users_list' %}"><div class="links_and_buttons">Users</div></a></li>
                 <li class="breadcrumb-item" style="color: ghostwhite">{% if user_obj %}Edit{% else %}Create{% endif %}</li>
             {% endif %}
         </ol>

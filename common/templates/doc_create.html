@@ -3,7 +3,7 @@
 {% block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'common:doc_list' %}">Documents</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'common:doc_list' %}"><div class="links_and_buttons">Documents</div></a></li>
     <li class="breadcrumb-item" style="color: ghostwhite">{% if doc_obj %}Edit{% else %}Create{% endif %}</li>
   </ol>
 </nav>

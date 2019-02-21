@@ -6,7 +6,7 @@
 {% endblock %}
 <nav aria-label="breadcrumb">
    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'opportunities:list' %}">Opportunities</a></li>
+       <li class="breadcrumb-item"><a href="{% url 'opportunities:list' %}"><div class="links_and_buttons">Opportunities</div></a></li>
       <li class="breadcrumb-item active" style="color: ghostwhite">{% if opportunity_obj %}Edit{% else %}Create{% endif %}</li>
    </ol>
 </nav>
