@@ -5,11 +5,21 @@
 }
 
 .bg-color {
-  background-color: #29455D;
+  background-color: #DDDFE3;
+  //background-color: #29455D;
   opacity: 0.9;
 }
 
 .my-footer {
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+  height: 75px;
+  width: 100%;
+  background: #12314B;
+}
+
+.my-footer-lists {
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -20,6 +30,7 @@
 
 .my-header-bg {
   background-color: #27425B;
+  opacity: 0.7;
 }
 
 .my-table-title-bg {
