@@ -1,5 +1,6 @@
 import datetime
 import json
+from pprint import pprint
 
 import requests
 from woocommerce import API
@@ -23,9 +24,11 @@ _STORE_HOURS = 1
 _STORE_DAYS = 1
 _STORE_MONTHS = 1
 _STORE_YEARS = 1
+_STORE_MINS = 1
 
 # logging fields
-_LOG_FILE = '../wc_utils/wc.log'
+_LOG_FILE = 'wc.log'
+# _LOG_FILE = '../wc_utils/wc.log'
 _FILE_MODE = 'a'
 _LOGGING_FORMAT = '[[%(asctime)s] [%(name)s] [%(levelname)s]]: %(message)s'
 _LOGGING_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
@@ -60,6 +63,7 @@ def redis_connection_exception(error_text=None):
     :param error_text: if not empty - log this text
     :return:
     """
+
     def real_redis_connection_exception(function):
         def wrapper(*args, **kwargs):
             try:
@@ -115,8 +119,7 @@ def garbage_collector(key):
             minute=result.get('minute'),
             second=result.get('second')
         )
-        if now.hour - result_datetime.hour >= _STORE_HOURS or now.day - result_datetime.day >= _STORE_DAYS \
-                or now.month - result_datetime.month >= _STORE_MONTHS or now.year - result_datetime.year >= _STORE_YEARS:
+        if now.year - result_datetime.year >= _STORE_YEARS or now.month - result_datetime.month >= _STORE_MONTHS or now.day - result_datetime.day >= _STORE_DAYS or now.hour - result_datetime.hour >= _STORE_HOURS or now.minute - result_datetime.minute >= _STORE_MINS:
             r.delete(key)
             r.delete(date_key)
             return 'Key {} was cleared from the cache, because it comes too old.\n'.format(key.upper())
@@ -176,6 +179,69 @@ def keys_logging(to_log):
             return "Too big result to log it.\n"
     else:
         return 'Wrong type!\n'
+
+
+def checking_string_format(*to_check):
+    """
+    Checking if elements of given *args are strings.
+    :param to_check: Tuple with strings.
+    :return: True/False
+    """
+    # convert tuple to list
+    try:
+        to_check_list = list(*to_check)
+    except TypeError:
+        to_check_list = []
+        for i in to_check:
+            to_check_list.append(i)
+    counter = 0
+    for i in to_check_list:
+        if isinstance(i, str):
+            counter += 1
+        else:
+            logging.error('Wrong format for {}. It should be a string.\n'.format(i))
+    if counter is len(to_check_list):
+        return True
+    else:
+        return False
+
+
+def checking_date_format(*string_date):
+    """
+    Checking if elements of given *args are in correct format.
+    :param string_date: Tuple with strings (format for strings = 'YYYY-MM-DD')
+    :return: True/False
+    """
+    string_date = list(*string_date)
+    counter = 0
+    for date in string_date:
+        try:
+            datetime_date = datetime.datetime.strptime(date, "%Y-%m-%d")
+            counter += 1
+        except ValueError:
+            logging.error('Wrong date format for {}. It should be YYYY-MM-DD format.\n'.format(date))
+    if counter == len(string_date):
+        return True
+    else:
+        return False
+
+
+def checking_date(*dates):
+    """
+    Checking if elements of give *args are strings and have good date format.
+    :param dates: Tuple of strings (format for strings = 'YYYY-MM-DD'
+    :return: True/False
+    """
+    dates_list = []
+    try:
+        dates_list = list(dates)
+    except TypeError:
+        for i in dates:
+            dates_list.append(i)
+    if checking_string_format(dates_list) and checking_date_format(dates_list):
+        return True
+    else:
+        return False
 
 
 @redis_connection_exception()
@@ -257,7 +323,7 @@ def get_orders_list(console_logging=False):
         except TypeError:
             orders_list_dict = json.loads(orders_list.decode('utf-8'))
         # checking list length, if it is not too high - than log result.
-        logging.info(keys_logging(orders_list_dict), '\n')
+        logging.info(keys_logging(orders_list_dict))
 
         # using garbage collector to check if info in cache is too old.
         garbage = garbage_collector('orders_list')
@@ -415,3 +481,109 @@ def get_reports_list(console_logging=False):
                 logging.exception("Wrong type of result. It should be a list.")
         elif not result:
             logging.error("Response return empty list. There are not any REPORT, or something when wrong.\n")
+
+
+@redis_connection_exception()
+def get_sales_report(date_min=None, date_max=None, period=None, context=None, console_logging=False):
+    """
+    Get sales report from cache, or via API.
+    :param date_min: Get sales for a specific start date, the date need to be in the YYYY-MM-DD format.
+    :param date_max: Get sales for a specific end date, the date need to be in the YYYY-MM-DD format.
+    :param period: Report period. Default is week. Options: week, month, last_month and year
+    :param context: Scope under which the request is made; determines fields present in response. Default is view. Options: view.
+    :param console_logging: True - write logs to stdout, if False - does not.
+    :return:
+    """
+    if console_logging:
+        logging.getLogger().addHandler(logging.StreamHandler())
+    api_url = 'reports/sales'
+    if date_min and not date_max:
+        # checking good format for date_min
+        if checking_date(date_min):
+            api_url = "reports/sales?date_min={}".format(date_min)
+        else:
+            return None
+    if date_max and not date_min:
+        # checking good format for date max
+        if checking_date(date_max):
+            api_url = "reports/sales?date_max={}".format(date_max)
+        else:
+            return None
+    if date_min and date_max:
+        # checking good format for date_min and date_max
+        if checking_date(date_min, date_max):
+            api_url = "reports/sales?date_min={0}&date_max={1}".format(date_min, date_max)
+        else:
+            return None
+    if period:
+        if isinstance(period, str):
+            if period == 'week' or period == 'month' or period == 'last_month' or period == 'year':
+                if date_max or date_min or (date_min and date_max):
+                    api_url = api_url + '&period={}'.format(period)
+                else:
+                    api_url = api_url + 'period={}'.format(period)
+            else:
+                logging.error('Wrong period {}. It should be "week", "month", "last_month" or "year"'.format(period))
+                return 4
+        else:
+            logging.error('Wrong period {} type. It should be a string'.format(period))
+            return None
+    if context:
+        if isinstance(context, str):
+            if date_max or date_min or (date_min and date_max) or period:
+                api_url = api_url + '&context={}'.format(context)
+            else:
+                api_url = api_url + 'context={}'.format(context)
+        else:
+            logging.error('Wrong context {} type. It should be a string'.format(context))
+            return None
+
+    # get sales report from redis cache
+    sales_report = r.get(api_url)
+    # If sales report does not exists - than find it using woocommerce API
+    if sales_report:
+        logging.info("Get SALES REPORT info from cache.")
+        # convert bytes to dictionary
+        try:
+            sales_report_dict = json.loads(sales_report)
+        except TypeError:
+            sales_report_dict = json.loads(sales_report.decode('utf-8'))
+        # checking list length, if it is not too high - than log result.
+        logging.info(keys_logging(sales_report_dict))
+
+        # using garbage collector to check if info in cache is too old.
+        garbage = garbage_collector(api_url)
+        if garbage:
+            logging.info(garbage)
+        return sales_report_dict
+    else:
+        logging.info("Get SALES REPORT info from website.")
+        # getting orders list from website with woocommerce api
+        try:
+            result = wcapi.get(api_url).json()
+        except requests.exceptions.MissingSchema:
+            logging.error('Can not connect to website, invalid url: {}'.format(_URL))
+            return None
+        if result:
+            if isinstance(result, list):
+                # checking list length, if it is not too high - than log result.
+                logging.info(keys_logging(result))
+                # converting list to string format
+                result = json.dumps(result, ensure_ascii=False)
+                # write result to redis cache
+                r.set(api_url, result)
+                # for all info in cache we create key with writing time.
+                creating_process = set_writing_time(api_url)
+                logging.info("Save SALES REPORT info to redis cache.\n")
+                if creating_process:
+                    logging.info(creating_process)
+                return result
+            elif isinstance(result, dict):
+                status = result.get('data', {})
+                if status.get('status', int) == 404:
+                    logging.error('{0}. Status code 404'.format(result.get('message', str)))
+                    return None
+            else:
+                logging.error("Wrong type of result. It should be a list.")
+        elif not result:
+            logging.error("Response return empty list. There are not any SALES REPORTS, or something when wrong.\n")

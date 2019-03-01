@@ -92,7 +92,7 @@ class LeadsPostrequestTestCase(TestLeadModel, TestCase):
 
     def test_leads_list_html(self):
         response = self.client.get('/leads/list/')
-        self.assertTemplateUsed(response, 'leads.html')
+        self.assertTemplateUsed(response, 'orders.html')
 
 
 class LeadsCreateUrlTestCase(TestLeadModel, TestCase):
@@ -150,7 +150,7 @@ class LeadListTestCase(TestLeadModel, TestCase):
         self.lead = Lead.objects.all()
         response = self.client.get('/leads/list/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'leads.html')
+        self.assertTemplateUsed(response, 'orders.html')
 
     def test_leads_list_queryset(self):
         self.lead = Lead.objects.all()
@@ -158,7 +158,7 @@ class LeadListTestCase(TestLeadModel, TestCase):
                 'city': "hyd", 'email': "contact@gmail.com", 'status': "Assigned"}
         response = self.client.post('/leads/list/', data)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'leads.html')
+        self.assertTemplateUsed(response, 'orders.html')
 
 
 class GetLeadsViewTestCase(TestLeadModel, TestCase):

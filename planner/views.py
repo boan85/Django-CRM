@@ -695,12 +695,12 @@
 #         paginator = Paginator(leads, 5)
 #         try:
 #             leads = paginator.page(request.GET.get('page'))
-#             return render(request, 'leads.html',
+#             return render(request, 'orders.html',
 #                           {'leads': leads})
 #         except PageNotAnInteger:
 #             leads = paginator.page(1)
 #         except EmptyPage:
 #             leads = paginator.page(paginator.num_pages)
-#         return render(request, 'leads.html', {'leads': leads})
+#         return render(request, 'orders.html', {'leads': leads})
 #     else:
 #         return JsonResponse({'METHOD': 'INVALID'})
