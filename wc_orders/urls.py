@@ -3,7 +3,7 @@ from django.conf.urls import url
 from wc_orders.forms import OrderForm
 from wc_orders.views import OrderDetailView, OrderUpdateView, OrderNoteCreate, CustomFieldCreate, OrderEditView, \
     OrderEditDetailView, OrderNoteDelete, OrderCouponDelete, OrderCustomFieldDelete, OrderBillingEditView, \
-    OrderShippingEditView, OrderEditActionView, OrderNoteAdd, CustomFieldAdd
+    OrderShippingEditView, OrderEditActionView, OrderNoteAdd, CustomFieldAdd, GetOrdersFromAPI
 from . import views
 from django.urls import path
 from django.conf.urls.static import static
@@ -27,4 +27,6 @@ urlpatterns = [
     path('<int:cf>/<int:order>/delete-order-cf', OrderCustomFieldDelete.as_view(), name='order_cf_delete'),
     path('<int:pk>/create-custom-field', CustomFieldCreate.as_view(), name='order_custom_field_create'),
     path('<int:pk>/add-custom-field', CustomFieldAdd.as_view(), name='order_custom_field_add'),
+
+    path('update-orders-api/', GetOrdersFromAPI.as_view(), name='update_orders_api')
 ]

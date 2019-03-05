@@ -28,7 +28,7 @@ _STORE_MINS = 1
 
 # logging fields
 _LOG_FILE = 'wc.log'
-# _LOG_FILE = '../wc_utils/wc.log'
+# _LOG_FILE = '../wc_utils/wc1.log'
 _FILE_MODE = 'a'
 _LOGGING_FORMAT = '[[%(asctime)s] [%(name)s] [%(levelname)s]]: %(message)s'
 _LOGGING_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
@@ -313,8 +313,9 @@ def get_orders_list(console_logging=False):
     if console_logging:
         logging.getLogger().addHandler(logging.StreamHandler())
     # get orders list from redis cache
-    orders_list = r.get('orders_list')
+    # orders_list = r.get('orders_list')
     # If orders list does not exists - than find it using woocommerce API
+    orders_list = None
     if orders_list:
         logging.info("Get ORDERS LIST info from cache.")
         # convert bytes to dictionary
@@ -343,15 +344,16 @@ def get_orders_list(console_logging=False):
                 # checking list length, if it is not too high - than log result.
                 logging.info(keys_logging(result))
                 # converting list to string format
+                return_result = result
                 result = json.dumps(result, ensure_ascii=False)
                 # write result to redis cache
-                r.set('orders_list', result)
+                # r.set('orders_list', result)
                 # for all info in cache we create key with writing time.
-                creating_process = set_writing_time('orders_list')
+                # creating_process = set_writing_time('orders_list')
                 logging.info("Save ORDERS LIST info to redis cache.\n")
-                if creating_process:
-                    logging.info(creating_process)
-                return result
+                # if creating_process:
+                #     logging.info(creating_process)
+                return return_result
             else:
                 logging.exception("Wrong type of result. It should be a list.")
         elif not result:

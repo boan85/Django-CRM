@@ -1,16 +1,19 @@
 import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView, DetailView, UpdateView
+from requests import Response
 
 from wc_coupons.models import Coupon
 from wc_orders.forms import OrderForm
-from wc_orders.models import Order, CustomFields, OrderNote
+from wc_orders.models import Order, CustomFields, OrderNote, OrderBilling, OrderShipping
 from pprint import pprint
+
+from wc_utils.wc_utils import get_orders_list
 
 
 class GetOrdersView(LoginRequiredMixin, TemplateView):
@@ -317,3 +320,98 @@ class OrderCustomFieldDelete(LoginRequiredMixin, View):
         custom_field = CustomFields.objects.get(id=kwargs.get('cf')).delete()
         redirect_url = '/orders/{}/edit/'.format(kwargs.get('order'))
         return HttpResponseRedirect(redirect_url)
+
+
+class GetOrdersFromAPI(View):
+
+    def post(self, request, *args, **kwargs):
+        orders = get_orders_list()
+        if type(orders) is list:
+            for order in orders:
+                try:
+                    ord = Order.objects.get(order_number=int(order.get('id')))
+                except Order.DoesNotExist as e:
+                    billing = order.get('billing')
+                    try:
+                        post_code_b = int(billing.get('postcode'))
+                    except ValueError:
+                        post_code_b = 0
+                    new_billing = OrderBilling.objects.create(
+                        first_name=billing.get('first_name'),
+                        last_name=billing.get('last_name'),
+                        company=billing.get('company'),
+                        address_line_one=billing.get('address_1'),
+                        address_line_two=billing.get('address_2'),
+                        country=billing.get('country'),
+                        email_address=billing.get('email'),
+                        phone=billing.get('phone'),
+                        post_code=post_code_b,
+                        state_or_country=billing.get('state'),
+                        city=billing.get('city')
+                    )
+                    new_billing.save()
+                    shipping = order.get('shipping')
+                    try:
+                        post_code_s = int(shipping.get('postcode'))
+                    except ValueError:
+                        post_code_s = 0
+                    # customer_note = order.get('customer_note')
+                    new_shipping = OrderShipping.objects.create()
+                    new_shipping.first_name = shipping.get('first_name')
+                    new_shipping.last_name = shipping.get('last_name')
+                    new_shipping.company = shipping.get('company')
+                    new_shipping.address_line_one = shipping.get('address_1')
+                    new_shipping.address_line_two = shipping.get('address_2')
+                    new_shipping.city = shipping.get('city')
+                    new_shipping.post_code = post_code_s
+                    new_shipping.country = shipping.get('country')
+                    new_shipping.state_or_country = shipping.get('state')
+                    new_shipping.customer_provided_note = order.get('customer_note')
+                    new_shipping.save()
+
+                    date_created = datetime.datetime.strptime(order.get('date_created')[0:-9], '%Y-%m-%d')
+                    order_number = order.get('order_number')
+                    order_type = order.get('status')
+                    if order_type == 'pending':
+                        order_type = Order.PENDING_PAYMENT
+                    if order_type == 'processing':
+                        order_type = Order.PROCESSING
+                    if order_type == 'on-hold':
+                        order_type = Order.ON_HOLD
+                    if order_type == 'completed':
+                        order_type = Order.COMPLETED
+                    if order_type == 'cancelled':
+                        order_type = Order.CANCELLED
+                    if order_type == 'refunded':
+                        order_type = Order.REFUNDED
+                    if order_type == 'failed':
+                        order_type = Order.FAILED
+                    new_order = Order.objects.create()
+                    new_order.order_number = order_number
+                    new_order.order_type = order_type
+                    new_order.date_created = date_created
+                    new_order.billing = new_billing
+                    new_order.order_number = order.get('id')
+                    new_order.shipping = new_shipping
+                    new_order.save()
+                    custom_fields = order.get('meta_data')
+                    for cs in custom_fields:
+                        new_custom_field = CustomFields.objects.create(
+                            name=cs.get('key'),
+                            value=cs.get('value'),
+                            order=new_order
+                        )
+                        new_custom_field.save()
+                    coup = order.get('coupon_lines')
+                    coupons = []
+                    for c in coup:
+                        coupon = {'coupon_code': c.get('code')}
+                        coupons.append(coupon)
+                    for coupon in coupons:
+                        try:
+                            coup = Coupon.objects.get(coupon_code=coupon.get('coupon_code'))
+                        except Coupon.DoesNotExist:
+                            coup = Coupon.objects.create(coupon_code=coupon.get('coupon_code'), order=new_order,
+                                                         expiry_date=date_created)
+                            coup.save()
+        return HttpResponse(orders)
