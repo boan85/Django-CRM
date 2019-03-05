@@ -48,13 +48,36 @@
                                             {% for order in orders %}
                                                 <tr class="text-center">
                                                     <td>
-                                                        #{{ order.id }} {{ order.shipping.first_name }} {{ order.shipping.first_name }}
+                                                        <a href="{% url 'wc_orders:view_order' order.id %}"><div class="links_and_buttons">
+                                                            #{{ order.order_number }} {{ order.shipping.first_name }} {{ order.shipping.first_name }}
+                                                        </div></a>
+
                                                     </td>
                                                     <td>
-                                                        {{ order.date_modified }}
+                                                        {{ order.date_created }}
                                                     </td>
                                                     <td>
-                                                        {{ order.status }}
+                                                        {% if order.order_type == 'PP' %}
+                                                        Pending payment
+                                                        {% endif %}
+                                                        {% if order.order_type == 'PR' %}
+                                                        Processing
+                                                        {% endif %}
+                                                        {% if order.order_type == 'OH' %}
+                                                        On hold
+                                                        {% endif %}
+                                                        {% if order.order_type == 'CP' %}
+                                                        Completed
+                                                        {% endif %}
+                                                        {% if order.order_type == 'CL' %}
+                                                        Cancelled
+                                                        {% endif %}
+                                                        {% if order.order_type == 'RF' %}
+                                                        Refunded
+                                                        {% endif %}
+                                                        {% if order.order_type == 'FA' %}
+                                                        Failed
+                                                        {% endif %}
                                                     </td>
                                                     <td>
                                                         £{{ order.total }}

@@ -1,4 +1,6 @@
 import json
+import pprint
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
@@ -147,11 +149,11 @@ class ContactDetailView(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         queryset = super(ContactDetailView, self).get_queryset()
+        pprint.pprint(queryset)
         return queryset.select_related("address")
 
     def get_context_data(self, **kwargs):
         context = super(ContactDetailView, self).get_context_data(**kwargs)
-
         assigned_data = []
         for each in context['contact_record'].assigned_to.all():
             assigned_dict = {}

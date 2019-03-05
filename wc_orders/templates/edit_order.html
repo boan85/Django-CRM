@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">
+                <div class="links_and_buttons">Orders</div>
+            </a></li>
+            <li class="breadcrumb-item active">
+                #{{ order_record.order_number }}
+            </li>
+        </ol>
+    </nav>
+{% endblock %}
+{% block content %}
+    <!-- CONTACTS VIEW STARTS -->
+    <div class="main_container" id="maincontainer">
+        <div class="overview_form_block row marl justify-content-center">
+            <div class="col-md-8">
+                <div class="card crm-table">
+
+                    <div class="card-body" id="datashow">
+
+                        <div class="my-table-color my-table-title-bg text-right">
+                            <h5>
+                                <span class="float-left title">Overview</span>
+                                <span class="" style="margin-top: 0px">
+                <div class="dropdown buttons_row">
+                  <button class="btn my-button-action dropdown-toggle" type="button" data-toggle="dropdown">Actions
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a class="my-drop-down-titles" href="{% url 'wc_orders:edit_order' order_record.id %}">Edit</a></li>
+                  </ul>
+                </div>
+              </span>
+                            </h5>
+                        </div>
+
+                        <div class="row marl">
+                            <div class="col-md-3">
+                                <div class="filter_col col-md-12" id="iname">
+                                    <div class="form-group">
+                                        <form action="{% url 'wc_orders:edit_order_post' order_record.id %}"
+                                              method="post">
+                                            <label class="contact_field_label" for="id_name" data-name="name">
+                                                <div class="my-label-color">Date created</div>
+                                            </label>
+                                            <div class="contact_field" id="date_created">
+                                                <label for="new_order_date"></label>
+                                                <input type="date" name="new_order_date"></input>
+                                            </div>
+                                            <div class="contact_field" id="date_created" data-name="name">
+                                                {{ order_record.date_created }}
+                                            </div>
+                                            <label class="contact_field_label" for="id_name" data-name="name">
+                                                <div class="my-label-color">Payment status</div>
+                                            </label>
+                                            <div class="contact_field" id="date_created" data-name="name">
+                                                <label for="new_order_status"></label>
+                                                <select name="new_order_status" class="form-control">
+                                                    <option value="">--Select--</option>
+                                                    {% for status in  order_statuses %}
+                                                        <option>{{ status.1 }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <label class="contact_field_label" for="id_name" data-name="name">
+                                                <div class="my-label-color">Customer</div>
+                                            </label>
+                                            <div class="contact_field" id="date_created" data-name="name">
+                                                <label for="new_order_customer"></label>
+                                                <input type="text" value="{{ order_record.customer }}"
+                                                       name="new_order_customer"></input>
+                                            </div>
+                                            <button class="btn my-button-submit" id="update_order_action" type="submit">
+                                                Update
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <form action="{% url 'wc_orders:edit_order_post_billing' order_record.id %}"
+                                      method="post">
+                                    <label class="contact_field_label" for="id_name" data-name="name">
+                                        <div class="my-label-color">Billing</div>
+                                    </label>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_first_name"></label>
+                                        <input type="text" value="{{ order_record.billing.first_name }}"
+                                               name="billing_first_name"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_last_name"></label>
+                                        <input type="text" value="{{ order_record.billing.last_name }}"
+                                               name="billing_last_name"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <div class="contact_field" id="date_created" data-name="name">
+                                            <label for="billing_company"></label>
+                                            <input type="text" value="{{ order_record.billing.company }}"
+                                                   name="billing_company"></input>
+                                        </div>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_address_line_one"></label>
+                                        <input type="text" value="{{ order_record.billing.address_line_one }}"
+                                               name="billing_address_line_one"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_address_line_two"></label>
+                                        <input type="text" value="{{ order_record.billing.address_line_two }}"
+                                               name="billing_address_line_two"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_city"></label>
+                                        <input type="text" value="{{ order_record.billing.city }}"
+                                               name="billing_city"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_state_or_country"></label>
+                                        <input type="text" value="{{ order_record.billing.state_or_country }}"
+                                               name="billing_state_or_country"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_post_code"></label>
+                                        <input type="text" value="{{ order_record.billing.post_code }}"
+                                               name="billing_post_code"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_country"></label>
+                                        <input type="text" value="{{ order_record.billing.country }}"
+                                               name="billing_country"></input>
+                                    </div>
+                                    <label class="contact_field_label" for="id_name" data-name="name">
+                                        <div class="my-label-color">Email address</div>
+                                    </label>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_email_address"></label>
+                                        <input type="email" value="{{ order_record.billing.email_address }}"
+                                               name="billing_email_address"></input>
+                                    </div>
+                                    <label class="contact_field_label" for="id_name" data-name="name">
+                                        <div class="my-label-color">Phone</div>
+                                    </label>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="billing_phone"></label>
+                                        <input type="text" value="{{ order_record.billing.phone }}"
+                                               name="billing_phone"></input>
+                                    </div>
+                                    <button class="btn my-button-submit" id="update_billing" type="submit">
+                                        Update
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-3">
+                                <form action="{% url 'wc_orders:edit_order_post_shipping' order_record.id %}"
+                                      method="post">
+                                    <label class="contact_field_label" for="id_name" data-name="name">
+                                        <div class="my-label-color">Shipping</div>
+                                    </label>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_first_name"></label>
+                                        <input type="text" value="{{ order_record.shipping.first_name }}"
+                                               name="shipping_first_name"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_last_name"></label>
+                                        <input type="text" value="{{ order_record.shipping.last_name }}"
+                                               name="shipping_last_name"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_company"></label>
+                                        <input type="text" value="{{ order_record.shipping.company }}"
+                                               name="shipping_company"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_address_line_one"></label>
+                                        <input type="text" value="{{ order_record.shipping.address_line_one }}"
+                                               name="shipping_address_line_one"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_address_line_two"></label>
+                                        <input type="text" value="{{ order_record.shipping.address_line_two }}"
+                                               name="shipping_address_line_two"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_city"></label>
+                                        <input type="text" value="{{ order_record.shipping.city }}"
+                                               name="shipping_city"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_state_or_country"></label>
+                                        <input type="text" value="{{ order_record.shipping.state_or_country }}"
+                                               name="shipping_state_or_country"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_post_code"></label>
+                                        <input type="text" value="{{ order_record.shipping.post_code }}"
+                                               name="shipping_post_code"></input>
+                                    </div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_country"></label>
+                                        <input type="text" value="{{ order_record.shipping.country }}"
+                                               name="shipping_country"></input>
+                                    </div>
+                                    <label class="contact_field_label" for="id_name" data-name="name">
+                                        <div class="my-label-color">Customer provided note:</div>
+                                    </label>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        <label for="shipping_customer_provided_note"></label>
+                                        <input type="text" value="{{ order_record.shipping.customer_provided_note }}"
+                                               name="shipping_customer_provided_note"></input>
+                                    </div>
+                                    <button class="btn my-button-submit" id="update_billing" type="submit">
+                                        Update
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="contact_field_label" for="id_name" data-name="name">
+                                    <div class="my-label-color">Order actions</div>
+                                </label>
+                                <div class="contact_field" id="date_created" data-name="name">
+                                    {{ order_record.order_actions }}
+                                </div>
+                                <form action="{% url 'wc_orders:edit_order_post_action' order_record.id %}" method="post">
+                                    <label for="order_action_choices"></label>
+                                    <select class="form-control" name="order_action"
+                                            id="order_action_choices"
+                                            multiple="multiple">
+                                        {% for action in order_actions_choices %}
+                                            <option value="{{ action }}">{{ action }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn my-button-submit" id="update_order_action" type="submit">Update
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="contact_field_label" for="id_name" data-name="name">
+                                    <div class="my-label-color">Order Notes</div>
+                                    <div class="contact_field" id="date_created" data-name="name">
+                                        {% for on in order_notes %}
+                                            <form action="{% url 'wc_orders:order_note_delete' on.id order_record.id %}"
+                                                  method="post">
+                                                <div class="col">{{ on.note_text }}</div>
+                                                <div class="col">{{ on.date_created }}</div>
+                                                <button class="btn my-button-submit" id="update_billing" type="submit">
+                                                    Delete note
+                                                </button>
+                                            </form>
+                                        {% endfor %}
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="col-md-3">
+                                <form action="{% url 'wc_orders:edit_order_post_note' order_record.id %}" method="post">
+                                    <label class="create_new_oder_node" id="create_new_order_node" for="add_note_text">
+                                        Add Note
+                                    </label>
+                                    <textarea id="add_note_text" class="form-control"
+                                              name="create_order_note_text"></textarea>
+                                    <label id="create_new_order_note_select_value"
+                                           for="create_new_order_note_select"></label>
+                                    <select id="create_new_order_note_select" class="form-control"
+                                            name="create_order_note">
+                                        <option id="private_note" value="PN">Private note</option>
+                                        <option id="customer_note" value="NC">Note to customer
+                                        </option>
+                                    </select>
+                                    <button class="btn my-button-submit" id="add_new_coupon" type="submit">Add
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-8">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Item</div>
+                            </label>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Cost</div>
+                            </label>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Qty</div>
+                            </label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Total</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-12">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Coupon(s)</div>
+                            </label>
+                        </div>
+                        {% for coupon in coupons %}
+                            <div class="col-md-9">
+                                {{ coupon.coupon_code }}
+                                <a href="{% url 'wc_orders:order_coupon_delete' coupon.id order_record.id %}"
+                                   style="color: red">Delete</a>
+                            </div>
+                            <div class="col-md-1">
+                                Total:
+                            </div>
+                            <div class="col-md-1">
+                                £{{ coupon.total }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn my-button-submit" id="add_new_coupon" type="submit">Apply coupon</button>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-12">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Custom fields</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-6">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Name</div>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Value</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        {% for cf in custom_fields %}
+                            <div class="col-md-6">
+                                {{ cf.name }}
+                            Update
+                                <a href="{% url 'wc_orders:order_cf_delete' cf.id order_record.id %}"
+                                   style="color: red">Delete</a>
+                            </div>
+                            <br/>
+                            <div class="col-md-6">
+                                {{ cf.value }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-6">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Add new custom field</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-4">
+                            <form action="{% url 'wc_orders:order_custom_field_add' order_record.id %}"
+                                  method="post">
+                                <table class="crm-table">
+                                    <tbody>
+                                    <tr>
+                                        <label for="custom_fields_names">
+                                            Name
+                                        </label></tr>
+                                    <tr>
+                                        <label for="new_custom_field_value">
+                                            Value
+                                        </label>
+                                    </tr>
+                                    <td>
+                                        <select name="custom_fields_names" class="form-control">
+                                            <option value="">--Select--</option>
+                                            {% for name in  custom_fields_choices %}
+                                                <option>{{ name.0 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="new_custom_field_value"></td>
+                                    </td>
+                                    </tbody>
+                                </table>
+                                <button class="btn my-button-submit" id="update_order_action" type="submit">Add custom
+                                    field
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row marl">
+                        <div class="col-md-12">
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">Downloadable product permissions</div>
+                            </label>
+                            <label class="contact_field_label" for="id_name" data-name="name">
+                                <div class="my-label-color">{{ order.get_order_actions_display }}</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
