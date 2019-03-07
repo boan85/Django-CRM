@@ -4,6 +4,20 @@
   font-family: 'Muli', sans-serif;
 }
 
+.hidden_field_info {
+  display: none;
+  //visibility: hidden;
+}
+
+.show_field_info {
+  display: block;
+  //visibility: visible;
+}
+
+.choices {
+  padding-left:5em
+}
+
 .bg-color {
   background-color: #DDDFE3;
   //background-color: #29455D;

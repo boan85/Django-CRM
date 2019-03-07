@@ -14,6 +14,7 @@ urlpatterns = [
     path('cases/', include('cases.urls', namespace="cases")),
     path('emails/', include('emails.urls', namespace="emails")),
     path('orders/', include('wc_orders.urls', namespace="wc_orders")),
+    path('gravity-forms/', include('wc_gravity_forms.urls', namespace="wc_gravity_forms")),
     # path('planner/', include('planner.urls', namespace="planner")),
     path('logout/', views.LogoutView, {'next_page': '/login/'}, name="logout"),
 ]

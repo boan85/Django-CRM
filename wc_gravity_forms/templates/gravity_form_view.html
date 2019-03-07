@@ -1,0 +1,454 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">
+                <div class="links_and_buttons">Gravity forms</div>
+            </a></li>
+            <li class="breadcrumb-item active">
+                {{ gravity_form.title }}
+            </li>
+        </ol>
+    </nav>
+{% endblock %}
+{% block content %}
+    {% for field in gravity_form.fields %}
+        <div>
+            <div class="main_container" id="maincontainer">
+                <div class="overview_form_block row marl justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card crm-table">
+                            <div class="card-body" id="datashow">
+                                <div class="my-table-color my-table-title-bg text-right"  id="field_{{ forloop.counter }}">
+                                    <h5>
+                                        <span class="float-left title">{{ field.label }}</span>
+                                        <span class="" style="margin-top: 0px">
+                                    <button class="btn my-button-submit">Info
+                                    </button>
+                                        </span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-8 hidden_field_info" id="hidden_fiends_{{ forloop.counter }}">
+                            <div>
+                                {% if field.adminLabel != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color" for="">Admin Label: </label>
+                                        <input type="text"
+                                               name="adminLabel_{{ forloop.counter }}"
+                                               id="adminLabel_{{ forloop.counter }}"
+                                               value="{{ field.adminLabel }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.calculationFormula != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Calculation Formula: </label>
+                                        <input type="text"
+                                               name="calculationFormula_{{ forloop.counter }}"
+                                               id="calculationFormula_{{ forloop.counter }}"
+                                               value="{{ field.calculationFormula }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.calculationRounding != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Calculation Rounding: </label>
+                                        <input type="text"
+                                               name="calculationRounding_{{ forloop.counter }}"
+                                               id="calculationRounding_{{ forloop.counter }}"
+                                               value="{{ field.calculationRounding }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.choices != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Choices: </label>
+                                    </div>
+                                    {% for choice in field.choices %}
+                                        {% if choice.text != '' %}
+                                            <div class="col choices">
+                                                <label class="my-label-color">Text: </label>
+                                                <input type="text"
+                                                       name="choice_text_{{ forloop.counter }}"
+                                                       id="choice_text_{{ forloop.counter }}"
+                                                       value="{{ choice.text }}">
+                                                </input>
+                                            </div>
+                                        {% endif %}
+                                        {% if choice.value != '' %}
+                                            <div class="col choices">
+                                                <label class="my-label-color">Value: </label>
+                                                <input type="text"
+                                                       name="choice_value_{{ forloop.counter }}"
+                                                       id="choice_value_{{ forloop.counter }}"
+                                                       value="{{ choice.value }}">
+                                                </input>
+                                            </div>
+                                        {% endif %}
+                                        {% if choice.isSelected != '' %}
+                                            <div class="col choices">
+                                                <label class="my-label-color">Selected: </label>
+                                                <input type="text"
+                                                       name="choice_isSelected_{{ forloop.counter }}"
+                                                       id="choice_isSelected_{{ forloop.counter }}"
+                                                       value="{{ choice.isSelected }}">
+                                                </input>
+                                            </div>
+                                        {% endif %}
+                                        {% if choice.price != '' %}
+                                            <div class="col choices">
+                                                <label class="my-label-color">Price: </label>
+                                                <input type="text"
+                                                       name="choice_price_{{ forloop.counter }}"
+                                                       id="choice_price_{{ forloop.counter }}"
+                                                       value="{{ choice.price }}">
+                                                </input>
+                                            </div>
+                                        {% endif %}
+                                        {% if choice.price != '' %}
+                                            <div class="col choices">
+                                                <label></label>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                                {% if field.cssClass != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">CSS Class: </label>
+                                        <input type="text"
+                                               name="cssClass_{{ forloop.counter }}"
+                                               id="cssClass_{{ forloop.counter }}"
+                                               value="{{ field.cssClass }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+
+                                {% if field.placeholder != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Placeholder: </label>
+                                        <input type="text"
+                                               name="placeholder_{{ forloop.counter }}"
+                                               id="placeholder_{{ forloop.counter }}"
+                                               value="{{ field.placeholder }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.defaultValue != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Default Value: </label>
+                                        <input type="text"
+                                               name="defaultValue_{{ forloop.counter }}"
+                                               id="defaultValue_{{ forloop.counter }}"
+                                               value="{{ field.defaultValue }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.descriptionPlacement != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Description Placement:  </label>
+                                        <input type="text"
+                                               name="descriptionPlacement_{{ forloop.counter }}"
+                                               id="descriptionPlacement_{{ forloop.counter }}"
+                                               value="{{ field.descriptionPlacement }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.disableQuantity != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Disable Quantity:  </label>
+                                        <input type="text"
+                                               name="disableQuantity_{{ forloop.counter }}"
+                                               id="disableQuantity_{{ forloop.counter }}"
+                                               value="{{ field.disableQuantity }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.displayAllCategories != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Display All Categories:  </label>
+                                        <input type="text"
+                                               name="displayAllCategories_{{ forloop.counter }}"
+                                               id="displayAllCategories_{{ forloop.counter }}"
+                                               value="{{ field.displayAllCategories }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.displayOnly != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Display Only:  </label>
+                                        <input type="text"
+                                               name="displayOnly_{{ forloop.counter }}"
+                                               id="displayOnly_{{ forloop.counter }}"
+                                               value="{{ field.displayOnly }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.enableCalculation != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Enable Calculation:  </label>
+                                        <input type="text"
+                                               name="enableCalculation_{{ forloop.counter }}"
+                                               id="enableCalculation_{{ forloop.counter }}"
+                                               value="{{ field.enableCalculation }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.errorMessage != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Error Message:  </label>
+                                        <input type="text"
+                                               name="errorMessage_{{ forloop.counter }}"
+                                               id="errorMessage_{{ forloop.counter }}"
+                                               value="{{ field.errorMessage }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.inputMask != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Input Mask:  </label>
+                                        <input type="text"
+                                               name="inputMask_{{ forloop.counter }}"
+                                               id="inputMask_{{ forloop.counter }}"
+                                               value="{{ field.inputMask }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.inputMaskValue != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Input Mask Value:  </label>
+                                        <input type="text"
+                                               name="inputMaskValue_{{ forloop.counter }}"
+                                               id="inputMaskValue_{{ forloop.counter }}"
+                                               value="{{ field.inputMaskValue }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.inputName != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">input Name:  </label>
+                                        <input type="text"
+                                               name="inputName_{{ forloop.counter }}"
+                                               id="inputName_{{ forloop.counter }}"
+                                               value="{{ field.inputName }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.inputs %}
+                                    <div class="col">
+                                        <label class="my-label-color">Inputs:  </label>
+                                            {% for input in field.inputs %}
+                                            {% if choice.text != '' %}
+                                                <div class="col choices">
+                                                    <label class="my-label-color">Label: </label>
+                                                    <input type="text"
+                                                           name="choice_text_{{ forloop.counter }}"
+                                                           id="choice_text_{{ forloop.counter }}"
+                                                           value="{{ choice.text }}">
+                                                    </input>
+                                                </div>
+                                            {% endif %}
+                                            {% if choice.value != '' %}
+                                                <div class="col choices">
+                                                    <label class="my-label-color">Name: </label>
+                                                    <input type="text"
+                                                           name="choice_value_{{ forloop.counter }}"
+                                                           id="choice_value_{{ forloop.counter }}"
+                                                           value="{{ choice.value }}">
+                                                    </input>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                                {% if field.isRequired != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Required:  </label>
+                                        <input type="text"
+                                               name="isRequired_{{ forloop.counter }}"
+                                               id="isRequired_{{ forloop.counter }}"
+                                               value="{{ field.isRequired }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.label != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Label:  </label>
+                                        <input type="text"
+                                               name="label_{{ forloop.counter }}"
+                                               id="label_{{ forloop.counter }}"
+                                               value="{{ field.label }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.labelPlacement != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Label Placement:  </label>
+                                        <input type="text"
+                                               name="labelPlacement_{{ forloop.counter }}"
+                                               id="labelPlacement_{{ forloop.counter }}"
+                                               value="{{ field.labelPlacement }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.maxFiles != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Max Files:  </label>
+                                        <input type="text"
+                                               name="maxFiles_{{ forloop.counter }}"
+                                               id="maxFiles_{{ forloop.counter }}"
+                                               value="{{ field.maxFiles }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.multipleFiles %}
+                                    <div class="col">
+                                        <label class="my-label-color">Multiple Files:  </label>
+                                        <input type="text"
+                                               name="multipleFiles_{{ forloop.counter }}"
+                                               id="multipleFiles_{{ forloop.counter }}"
+                                               value="{{ field.multipleFiles }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.noDuplicates != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Duplicates:  </label>
+                                        <input type="text"
+                                               name="noDuplicates_{{ forloop.counter }}"
+                                               id="noDuplicates_{{ forloop.counter }}"
+                                               value="{{ field.noDuplicates }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.phoneFormat %}
+                                    <div class="col">
+                                        <label class="my-label-color">Phone Format:  </label>
+                                        <input type="text"
+                                               name="phoneFormat_{{ forloop.counter }}"
+                                               id="phoneFormat_{{ forloop.counter }}"
+                                               value="{{ field.phoneFormat }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.placeholder != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Placeholder:  </label>
+                                        <input type="text"
+                                               name="placeholder_{{ forloop.counter }}"
+                                               id="placeholder_{{ forloop.counter }}"
+                                               value="{{ field.placeholder }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.productField != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Product Field:  </label>
+                                        <input type="text"
+                                               name="productField_{{ forloop.counter }}"
+                                               id="productField_{{ forloop.counter }}"
+                                               value="{{ field.productField }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.subLabelPlacement != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">SubLabel Placement:  </label>
+                                        <input type="text"
+                                               name="subLabelPlacement_{{ forloop.counter }}"
+                                               id="subLabelPlacement_{{ forloop.counter }}"
+                                               value="{{ field.subLabelPlacement }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.type != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Type:  </label>
+                                        <input type="text"
+                                               name="type_{{ forloop.counter }}"
+                                               id="type_{{ forloop.counter }}"
+                                               value="{{ field.type }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.useRichTextEditor != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Use Rich Text Editor:  </label>
+                                        <input type="text"
+                                               name="useRichTextEditor_{{ forloop.counter }}"
+                                               id="useRichTextEditor_{{ forloop.counter }}"
+                                               value="{{ field.useRichTextEditor }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+
+                                {% if field.visibility != '' %}
+                                    <div class="col">
+                                        <label class="my-label-color">Visibility:  </label>
+                                        <input type="text"
+                                               name="visibility_{{ forloop.counter }}"
+                                               id="visibility_{{ forloop.counter }}"
+                                               value="{{ field.visibility }}">
+                                        </input>
+                                    </div>
+                                {% endif %}
+                                <button class="btn my-button-submit" id="update_field_{{ forloop.counter }}">Update</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% block js_block %}
+                <script type="text/javascript">
+                    $("#field_{{ forloop.counter }}").click(function(){
+                        if ($("#hidden_fiends_{{ forloop.counter }}").hasClass('hidden_field_info')) {
+                            $("#hidden_fiends_{{ forloop.counter }}").removeClass("hidden_field_info");
+                        } else {
+                            $("#hidden_fiends_{{ forloop.counter }}").addClass("hidden_field_info");
+                        }
+                    });
+
+                    $("#update_field_{{ forloop.counter }}").click(function() {
+                        item = {
+                            'visibility': $("#visibility_{{ forloop.counter }}").text(),
+                            'placeholder': $("#placeholder_{{ forloop.counter }}").value()
+                        }
+                        console.log(item)
+                    })
+                </script>
+    {% endblock js_block %}
+        {% endfor %}
+{% endblock %}

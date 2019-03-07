@@ -62,7 +62,7 @@ chardet==3.0.4
 codacy-coverage==1.3.11
 coloredlogs==10.0
 coverage==4.5.2
-Django==2.0.13
+
 django-appconf==1.0.2
 django-compressor==2.2
 django-crm==0.2.0
@@ -87,7 +87,7 @@ pytest-cov==2.6.1
 pytest-django==3.4.5
 pytz==2018.9
 rcssmin==1.0.6
-redis==3.2.0
+
 requests==2.21.0
 rjsmin==1.0.12
 scandir==1.9.0
