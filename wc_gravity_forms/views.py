@@ -1,6 +1,7 @@
 from pprint import pprint
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -21,3 +22,11 @@ class GravityFormView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         gravity_form = GravityFormsUtils().get_form(kwargs.get('pk'))
         return render(request, "gravity_form_view.html", {'gravity_form': gravity_form})
+
+
+class UpdateRedis(View):
+    def post(self, request, *args, **kwargs):
+        gf_instance = GravityFormsUtils()
+        gf_instance.update_forms()
+        return HttpResponse(request)
+

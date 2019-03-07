@@ -13,5 +13,6 @@ app_name = 'gravity_forms'
 
 urlpatterns = [
     path('list/', views.GravityFormsList.as_view(), name="gravity_forms_list"),
+    path('update-gravity-forms/', views.UpdateRedis.as_view(), name="update_gravity_forms"),
     path('<int:pk>/view/', views.GravityFormView.as_view(), name="gravity_forms_view"),
 ]

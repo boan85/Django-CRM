@@ -1,17 +1,14 @@
 import schedule
 import time
-
-from wc_gravity_forms.gravity_forms_utils import GravityFormsUtils
+import requests
 
 
 def job():
-    import requests
     response = requests.post('http://127.0.0.1:8000/orders/update-orders-api/')
 
 
 def update_gravity_forms():
-    gf_instance = GravityFormsUtils()
-    gf_instance.update_forms()
+    response = requests.post('http://127.0.0.1:8000/gravity-forms/update-gravity-forms/')
 
 
 schedule.every(1).minutes.do(job)
